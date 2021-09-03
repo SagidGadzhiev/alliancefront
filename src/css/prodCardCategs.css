@@ -1,0 +1,17 @@
+.prodCardCategs__categories {
+    background: #2b262b;
+    width: 265px;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.prodCardCategs__categories__link {
+    padding: 5px 0 5px 15px;
+    color: white;
+    font-size: 14px;
+    display: block;
+}
+
+.prodCardCategs__categories__link:hover {
+    background: #525252;
+}

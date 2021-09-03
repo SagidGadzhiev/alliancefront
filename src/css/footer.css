@@ -1,0 +1,57 @@
+.footer {
+    background: #cbcbcb;
+    padding: 20px 0;
+}
+
+.footer__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__block__footerNews {
+    height: 178px;
+    padding: 0 15px;
+    width: 300px;
+    border-right: 1px solid #ddd;
+}
+
+.footer__block__footerNews:first-child {
+    padding: 0;
+}
+
+.footer__block__footerNews:last-child {
+    border-right: none;
+}
+
+.footer__block__aboutShop {
+    font-size: 12px !important;
+    color: #666;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+.footer__block__text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer__block__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__block__list__link {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.footer__block__list__link:hover {
+    color: #e33033;
+}
+
+.footer__block__list__link:last-child {
+    margin-bottom: 0;
+}

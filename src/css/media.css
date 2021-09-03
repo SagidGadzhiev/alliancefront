@@ -1,0 +1,430 @@
+@media (max-width: 1280px) {
+    .searching__form {
+        width: 40%;
+    }
+
+    .mainPageProducts__product {
+        width: 33%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .prodCard__itemDescription__img {
+        min-width: 350px;
+        min-height: 350px;
+        max-width: 350px;
+        max-height: 350px;
+    }
+
+    .searching__form {
+        width: 35%;
+    }
+
+    .mainPageProducts__product {
+        width: 45%;
+    }
+
+    .carousel-img {
+        margin-bottom: 20px;
+    }
+
+    .carousel-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 960px) {
+
+    .sameProds__product {
+        padding: 3px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sameProds__productsBlock__name {
+        font-size: 12px;
+    }
+
+    .sameProds__productsBlock__price {
+        font-size: 14px;
+    }
+
+    .sameProds__productsBlock__code {
+        font-size: 12px;
+    }
+
+    .footer__block {
+        flex-wrap: wrap;
+    }
+
+    .footer__block__footerNews:first-child {
+        padding: 0 15px;
+    }
+
+    .prodsUndCategs {
+        margin-top: 102px;
+    }
+
+    .burger-menu {
+        margin-top: 10px;
+        height: 40px;
+        width: 42px;
+        position: relative;
+        border-radius: 4px;
+        background: linear-gradient(to bottom, #474747 0%, #212121 100%);
+        border: solid 1px #000;
+        cursor: pointer;
+        padding: 9px 8px;
+    }
+
+    .burger-menu.active {
+        z-index: 9999;
+    }
+
+    .burger-menu.active .burger-menu__line {
+        transition: 0.6s;
+        transform: rotateY(45deg);
+    }
+
+    .burger-menu__line {
+        position: absolute;
+        background: #fff;
+        width: 25px;
+        height: 3px;
+        border-radius: 1px;
+    }
+
+    .burger-menu__line::before {
+        position: absolute;
+        content: "";
+        background: #fff;
+        width: 25px;
+        height: 3px;
+        top: 10px;
+        border-radius: 1px;
+    }
+
+    .burger-menu__line::after {
+        position: absolute;
+        content: "";
+        background: #fff;
+        width: 25px;
+        height: 3px;
+        top: 20px;
+        border-radius: 1px;
+    }
+
+    .categories, .prodCardCategs__categories {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background: #00000080;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        transition: 0.6s;
+        /*width: 200px;*/
+        height: 100vh;
+        overflow: auto;
+        z-index: 9998;
+        max-height: unset;
+    }
+
+    .categories.active, .prodCardCategs__categories.active {
+        right: 0;
+    }
+
+    .categories__link, .prodCardCategs__categories__link {
+        color: #fff;
+    }
+
+    .prodCard__itemDescription__aboutProdBlock__text {
+        font-size: 13px;
+    }
+
+    .prodCard__itemDescription__aboutProdBlock__name {
+        font-size: 17px;
+    }
+
+    .prodCard__itemDescription__aboutProdBlock__price {
+        font-size: 18px;
+    }
+
+    .categPageProducts__product__name {
+        max-width: 330px;
+        max-height: 53px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .searching__category__title {
+        font-size: 18px;
+    }
+
+    .searching__category__pic {
+        width: 17px;
+        height: 17px;
+    }
+
+    .logotype {
+        font-size: 20px;
+    }
+
+    .header__nav__link {
+        font-size: 11px;
+    }
+
+    .prodsUndCategs {
+        width: 100%;
+    }
+
+    .carousel-text:last-child {
+        margin-bottom: 15px;
+    }
+
+    .searching__form {
+        width: 36%;
+    }
+
+    .searching__category {
+        width: 28%;
+    }
+
+    .mainPage__content__productsAndCategs {
+        width: 28%;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .searching__wishes__wish__pic, .searching__wishes__cart__pic {
+        width: 15px;
+        height: 15px;
+    }
+
+    .searching__wishes__wish__title, .searching__wishes__cart__title {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wishesItems {
+        margin: 0;
+    }
+
+    .wishesItems__table {
+        display: block;
+        overflow: auto;
+    }
+
+    .mainPageProducts__title:before {
+        width: unset;
+    }
+
+    .footer__block__footerNews:last-child {
+        border-right: 1px solid #ddd;
+        padding-top: 30px;
+    }
+
+    .prodsUndCategs__productsBlock {
+        justify-content: center;
+    }
+
+    .mainPage__content__productsAndCategs {
+        width: unset;
+    }
+
+    .prodsUndCategs {
+        margin-top: 0;
+    }
+
+    .burger-menu {
+        position: absolute;
+        top: 73px;
+        left: 10px;
+    }
+
+    .searching__wishes__wish__pic, .searching__wishes__cart__pic {
+        width: 20px;
+        height: 20px;
+    }
+
+    .searching__wishes__wish__title, .searching__wishes__cart__title {
+        display: none;
+    }
+
+    .mainPageProducts__product {
+        width: 50%;
+    }
+
+    .mainPageProducts {
+        padding-left: 0;
+    }
+
+    .carousel-root {
+        padding: 0;
+        background: transparent;
+    }
+
+    .carousel-text {
+        font-size: 12px;
+        color: black;
+    }
+
+    .container {
+        max-width: unset !important;
+    }
+
+    .mainPage__content {
+        flex-direction: column-reverse;
+    }
+
+    .searching {
+        max-width: unset;
+        margin: 0;
+    }
+
+    .searching__wishes__wish, .searching__wishes__cart {
+        padding: 5px;
+    }
+
+    .searching__form {
+        width: 50%;
+        margin-left: 100px;
+    }
+
+    .searching__category {
+        display: none;
+    }
+
+    .header__nav__link {
+        font-size: 13px;
+    }
+
+    .header .container {
+        flex-direction: column;
+    }
+
+    .header__nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 575px) {
+    .otherProds__product__code {
+        font-size: 10px;
+    }
+    .otherProds__product__comment {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 10px;
+    }
+    .otherProds__product {
+        padding: 10px 10px 40px 10px;
+    }
+    .otherProds__product__price {
+        font-size: 12px;
+    }
+    .otherProds__product__name {
+        font-size: 13px;
+    }
+    .otherProds__product__img {
+        width: 90% !important;
+        height: unset;
+    }
+    .sameProds__title:before {
+        width: unset;
+    }
+    .sameProds__productsBlock__block {
+        display: flex;
+    }
+    .sameProds__productsBlock__price {
+        font-size: 14px;
+    }
+    .sameProds__product__img {
+        width: 100%;
+    }
+    .sameProds__productsBlock__name {
+        font-size: 13px;
+        line-height: 1.5;
+        max-height: unset;
+    }
+    .sameProds__productsBlock {
+        flex-direction: column;
+    }
+    .sameProds__product {
+        flex-direction: unset;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    .prodCard__itemDescription__img {
+        display: block;
+        margin: 0 auto;
+    }
+    .prodCard__itemDescription {
+        display: block;
+    }
+    .categPageProducts__product__wishBuy__block {
+        background: none;
+        border: none;
+    }
+    .categPageProducts__product__wishBuy__block__pic {
+        fill: black;
+    }
+    .categPageProducts__product__price {
+        font-size: 11px;
+    }
+    .categPageProducts__product__text {
+        font-size: 11px;
+    }
+    .categPageProducts__product__picPriceBlock {
+        padding: 5px;
+    }
+    .categPageProducts__product__code {
+        font-size: 10px;
+    }
+    .categPageProducts__product__warranty {
+        font-size: 11px;
+    }
+    .categPageProducts__product__name {
+        max-width: 175px;
+        max-height: unset;
+        font-size: 13px;
+    }
+    .categPageProducts__product__img {
+        width: 80px;
+        height: 80px;
+    }
+    .shoppingForm__form__label {
+        width: unset;
+    }
+
+    .shoppingForm__form__label__input {
+        width: 50%;
+    }
+}
+
+@media (max-width: 567px) {
+    .burger-menu {
+        position: absolute;
+        top: 108px;
+        left: 10px;
+    }
+}
+
+@media (max-width: 533px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 320px) {
+
+}

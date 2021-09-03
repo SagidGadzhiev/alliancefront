@@ -1,0 +1,118 @@
+.prodsUndCategs {
+    width: 265px;
+    margin-top: 23px;
+}
+
+.prodsUndCategs__title {
+    position: relative;
+    border-bottom: 3px solid;
+    border-color: #ea3a3c;
+    font-size: 100%;
+    padding: 0;
+    margin: 0px 0px 35px 0px;
+    height: 40px;
+}
+
+.prodsUndCategs__title:before {
+    content: "";
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 100%;
+    /*width: 100%;*/
+    position: absolute;
+    z-index: -1;
+    top: 3px;
+    left: 0;
+    right: 0;
+}
+
+.prodsUndCategs__title > span {
+    display: inline-block;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+    line-height: 40px;
+    padding: 0 18px;
+    background-color: #ea3a3c;
+}
+
+.prodsUndCategs__title > span:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-bottom: 40px solid #ea3a3c;
+    right: -20px;
+    border-right: 20px solid transparent;
+}
+
+.prodsUndCategs__productsBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.prodsUndCategs__product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 280px;
+    height: 336px;
+    border: 1px solid #eee;
+    margin-bottom: 25px;
+    padding: 15px;
+    overflow: hidden;
+    font-size: 15px;
+    color: #444;
+}
+
+.prodsUndCategs__product:hover {
+    cursor: pointer;
+    border: 1px solid #2b262b;
+}
+
+.prodsUndCategs__product > p {
+    margin-bottom: 10px;
+}
+
+.prodsUndCategs__product__img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    object-position: center;
+    margin-bottom: 10px;
+}
+
+.prodsUndCategs__product__price {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.prodsUndCategs__product__warranty {
+    max-width: 280px;
+    max-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prodsUndCategs__product__name {
+    max-width: 280px;
+    max-height: 35px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.prodsUndCategs__product__name:hover {
+    color: #e33033;
+}
+
+.prodsUndCategs__product__googleSearch {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}

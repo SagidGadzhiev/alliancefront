@@ -1,0 +1,90 @@
+.categPageProducts {
+    margin: 20px 0;
+}
+
+.categPageProducts__product {
+    border-bottom: 1px solid #666666;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.categPageProducts__product__img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    object-position: center;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.categPageProducts__product__name {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.categPageProducts__product__name:hover {
+    color: #e33033;
+}
+
+.categPageProducts__product__warranty {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.categPageProducts__product__code {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.categPageProducts__product__wishBuy {
+    display: flex;
+}
+
+.categPageProducts__product__wishBuy__block {
+    background: #666666;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+    width: 40%;
+    border: 1px solid #666666;
+}
+
+.categPageProducts__product__wishBuy__block:hover {
+    border: 1px solid #e33033;
+    cursor: pointer;
+}
+
+.categPageProducts__product__wishBuy__block__pic {
+    width: 15px;
+    height: 15px;
+    fill: white;
+}
+
+.categPageProducts__product__wishBuy__block:hover .categPageProducts__product__wishBuy__block__pic {
+    fill: #e33033;
+}
+
+.categPageProducts__product__picPriceBlock {
+    background: #eee;
+    padding: 10px;
+    width: 20%;
+}
+
+.categPageProducts__product__price {
+    color: #e33033;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.categPageProducts__product__text {
+    font-size: 14px;
+    color: #4fdb51;
+    margin-bottom: 5px;
+}

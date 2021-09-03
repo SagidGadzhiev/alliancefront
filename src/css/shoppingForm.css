@@ -1,0 +1,76 @@
+.shoppingForm {
+    margin-top: 20px;
+}
+
+.shoppingForm__title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.1;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.shoppingForm__info {
+    line-height: 1.1;
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.shoppingForm__form__label {
+    width: 50%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shoppingForm__form__label__info {
+    margin-right: 15px;
+    line-height: 1.1;
+    color: #666666;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.shoppingForm__form__label__input {
+    width: 400px;
+    padding: 6px 12px;
+    height: 34px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+
+.shoppingForm__form__label__input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+}
+
+.shoppingForm__form__btn {
+    cursor: pointer;
+    color: #fff;
+    background-color: #337ab7;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+}
+
+.shoppingForm__form__btn:hover {
+    background: #2d5a91;
+}
+
+.shoppingForm__form__warning {
+    line-height: 1.1;
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}

@@ -1,0 +1,118 @@
+.mainPageProducts {
+    margin-top: 25px;
+    padding-left: 25px;
+}
+
+.mainPageProducts__title {
+    position: relative;
+    border-bottom: 3px solid;
+    border-color: #ea3a3c;
+    font-size: 100%;
+    padding: 0;
+    margin: 0px 0px 35px 0px;
+    height: 40px;
+}
+
+.mainPageProducts__title:before {
+    content: "";
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 3px;
+    left: 0;
+    right: 0;
+}
+
+.mainPageProducts__title > span {
+    display: inline-block;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+    line-height: 40px;
+    padding: 0 18px;
+    background-color: #ea3a3c;
+}
+
+.mainPageProducts__title > span:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-bottom: 40px solid #ea3a3c;
+    right: -20px;
+    border-right: 20px solid transparent;
+}
+
+.mainPageProducts__productsBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.mainPageProducts__product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    height: 336px;
+    border: 1px solid #eee;
+    margin-bottom: 25px;
+    padding: 15px;
+    overflow: hidden;
+    font-size: 15px;
+    color: #444;
+}
+
+.mainPageProducts__product:hover {
+    cursor: pointer;
+    border: 1px solid #2b262b;
+}
+
+.mainPageProducts__product > p {
+    margin-bottom: 10px;
+}
+
+.mainPageProducts__product__img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    object-position: center;
+    margin-bottom: 10px;
+}
+
+.mainPageProducts__product__price {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.mainPageProducts__product__warranty {
+    max-width: 280px;
+    max-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mainPageProducts__product__name {
+    max-width: 280px;
+    max-height: 35px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.mainPageProducts__product__name:hover {
+    color: #e33033;
+}
+
+.mainPageProducts__product__googleSearch {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}

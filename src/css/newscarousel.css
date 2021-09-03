@@ -1,0 +1,42 @@
+.carousel-root {
+    background: #2b262b;
+    padding-left: 25px;
+    padding-right: 23px;
+}
+
+.carousel-img {
+    margin-bottom: 20px;
+}
+
+.carousel-text {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.carousel-text:last-child {
+    margin-bottom: 0;
+}
+
+.carousel .slider-wrapper.axis-horizontal .slider .slide {
+    position: relative;
+    flex-direction: column;
+    flex-flow: column;
+}
+
+.carousel .slider-wrapper.axis-horizontal .slider .slide > div, .carousel .slider-wrapper.axis-horizontal .slider .slide > a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.carousel .slider-wrapper.axis-horizontal .slider .slide:last-child > div, .carousel .slider-wrapper.axis-horizontal .slider .slide:last-child > a {
+    position: unset;
+    top: unset;
+    left: unset;
+    transform: unset;
+    width: unset;
+}
