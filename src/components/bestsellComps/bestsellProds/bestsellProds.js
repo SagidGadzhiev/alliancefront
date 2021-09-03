@@ -17,7 +17,7 @@ const BestsellProds = ({currency, products}) => {
 
     return (
         <div style={{margin: "20px 0 0 0"}}>
-            <p className='prodsUndCategs__title'><span>Товары пользующиеся популярностью</span></p>
+            <p className='prodsUndCategs__title'><span>Популярные товары</span></p>
             <div className='prodsUndCategs__productsBlock'>
                 {
                     products.filter(i => {

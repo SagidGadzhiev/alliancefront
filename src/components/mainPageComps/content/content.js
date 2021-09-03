@@ -48,6 +48,11 @@ const Content = () => {
         return document.getElementById('navCateg').classList.toggle('active')
     };
 
+    const removeActive = () => {
+        document.getElementById('bgMenu').classList.remove('active')
+        return document.getElementById('navCateg').classList.remove('active')
+    }
+
     return (
         <div className='content'>
 
@@ -67,7 +72,10 @@ const Content = () => {
                     classes.map((i, idx, arr) => (
                         <div key={idx} className='categBlockWrap'>
                             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-                                <Link onClick={() => windowTop()} className='categories__link'
+                                <Link onClick={() => {
+                                    windowTop()
+                                    removeActive()
+                                }} className='categories__link'
                                       to={`/type/${i}`}>{i}</Link>
                                 <button className='categBlockWrapBtn' onClick={() => {
                                     setShow(!show)
@@ -87,7 +95,10 @@ const Content = () => {
                                     .map((el, iidx, arrray) => (
                                         <div key={iidx + 1} className='categBlock'>
                                             <Link className='categBlock__link'
-                                                  onClick={() => windowTop()}
+                                                  onClick={() => {
+                                                      windowTop()
+                                                      removeActive()
+                                                  }}
                                                   to={`/category/${el}`}>{el}</Link>
                                             {
                                                 subcategs
@@ -97,7 +108,10 @@ const Content = () => {
                                                         return !idx || a !== arr[idx - 1]
                                                     })
                                                     .map((cat, idxx) => (
-                                                        <Link className='subcateg__link' onClick={() => windowTop()}
+                                                        <Link className='subcateg__link' onClick={() => {
+                                                            windowTop()
+                                                            removeActive()
+                                                        }}
                                                               key={idxx + 2} style={{
                                                             color: "#fff",
                                                         }}

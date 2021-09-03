@@ -46,6 +46,11 @@ const ProdCardCategs = ({paginate}) => {
         return document.getElementById('navCateg').classList.toggle('active')
     };
 
+    const removeActive = () => {
+        document.getElementById('bgMenu').classList.remove('active')
+        return document.getElementById('navCateg').classList.remove('active')
+    }
+
     return (
         <div className='prodCardCategs'>
 
@@ -69,6 +74,7 @@ const ProdCardCategs = ({paginate}) => {
                                 <Link onClick={() => {
                                     windowTop()
                                     paginate(1)
+                                    removeActive()
                                 }} className='categories__link'
                                       to={`/type/${i}#page=1`}>{i}</Link>
                                 <button className='categBlockWrapBtn' onClick={() => {
@@ -92,6 +98,7 @@ const ProdCardCategs = ({paginate}) => {
                                                   onClick={() => {
                                                       windowTop()
                                                       paginate(1)
+                                                      removeActive()
                                                   }}
                                                   to={`/category/${el}#page=1`}>{el}</Link>
                                             {
@@ -105,6 +112,7 @@ const ProdCardCategs = ({paginate}) => {
                                                         <Link className='subcateg__link' onClick={() => {
                                                             windowTop()
                                                             paginate(1)
+                                                            removeActive()
                                                         }}
                                                               key={idxx + 2} style={{
                                                             color: "#fff",

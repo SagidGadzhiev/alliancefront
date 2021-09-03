@@ -44,7 +44,7 @@ const SaleProds = ({currency, products, selling, setSelling}) => {
                 }
             </div>
 
-            <p className='prodsUndCategs__title'><span>Системные блоки в сборке по супер-цене!</span></p>
+            <p className='prodsUndCategs__title'><span style={{fontSize: "13px"}}>Системные блоки в сборке по супер-цене!</span></p>
             <table style={{
                 width: "100%"
             }}>
