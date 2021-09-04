@@ -1,11 +1,20 @@
 import React, {useState} from 'react';
-import Header from "../components/mainPageComps/header";
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
-import Footer from "../components/mainPageComps/footer";
 import ShoppingItems from "../components/shoppingCartComps/shoppingItems";
 import ShoppingForm from "../components/shoppingCartComps/shoppingForm";
 
 const ShoppingCartPage = ({currency, shoppingProducts}) => {
+
+    let totalPrice = 0
+
+    function getTotalPrice() {
+        return shoppingProducts.map(i => {
+            totalPrice = totalPrice + (i.count * i.price)
+            return totalPrice
+        })
+    }
+
+    getTotalPrice()
 
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -13,13 +22,11 @@ const ShoppingCartPage = ({currency, shoppingProducts}) => {
 
     return (
         <div className='shoppingCartPage'>
-            {/*<Header/>*/}
             <div className="container" style={{display: "flex"}}>
                 <ProdCardCategs paginate={paginate}/>
-                <ShoppingItems currency={currency} shoppingProducts={shoppingProducts}/>
+                <ShoppingItems totalPrice={totalPrice} currency={currency} shoppingProducts={shoppingProducts}/>
             </div>
-            <ShoppingForm/>
-            {/*<Footer/>*/}
+            <ShoppingForm currency={currency} shoppingProducts={shoppingProducts} totalPrice={totalPrice}/>
         </div>
     );
 };

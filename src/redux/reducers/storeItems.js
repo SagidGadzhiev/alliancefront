@@ -98,6 +98,12 @@ export default (state = initState, action) => {
                 sales: action.sales
             }
         }
+        case actions.CLEAR__ALL__SHOPPING: {
+            return {
+                ...state,
+                shopping: []
+            }
+        }
         default:
             return state
     }
@@ -202,4 +208,10 @@ export const getSalesProducts = () => {
                 dispatch({type: actions.GET_SALES_PRODUCTS, sales: data})
             })
     }
+}
+
+export const clearAllShopping = () => {
+    return ({
+        type: actions.CLEAR__ALL__SHOPPING
+    })
 }

@@ -13,3 +13,26 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 20px;
     height: 20px;
 }
+
+.total__price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.total__price__title {
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.total__price__text {
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-weight: bold;
+}
