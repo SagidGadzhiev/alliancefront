@@ -9,7 +9,8 @@ const initState = {
     categ: '',
     loading: true,
     novas: [],
-    sales: []
+    sales: [],
+    ordered: []
 };
 
 export default (state = initState, action) => {
@@ -102,6 +103,18 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 shopping: []
+            }
+        }
+        case actions.GET_ORDERED: {
+            return {
+                ...state,
+                ordered: [...state.ordered, action.ordered]
+            }
+        }
+        case actions.GET_ORDERED_LOCALSTORAGE: {
+            return {
+                ...state,
+                ordered: action.ordered
             }
         }
         default:
@@ -213,5 +226,22 @@ export const getSalesProducts = () => {
 export const clearAllShopping = () => {
     return ({
         type: actions.CLEAR__ALL__SHOPPING
+    })
+}
+
+export const getOrdered = (shoppingArray, currentDate) => {
+    return ({
+        type: actions.GET_ORDERED,
+        ordered: {
+            shopping: shoppingArray,
+            orderDate: currentDate
+        }
+    })
+}
+
+export const getOrderedLocalStorage = (prod) => {
+    return ({
+        type: actions.GET_ORDERED_LOCALSTORAGE,
+        ordered: prod
     })
 }

@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import emailjs from 'emailjs-com'
 import {useDispatch} from "react-redux";
-import {clearAllShopping} from "../../../redux/reducers/storeItems";
+import {clearAllShopping, getOrdered} from "../../../redux/reducers/storeItems";
 
 const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
 
     const dispatch = useDispatch()
+
+    const date = new Date()
 
     const [tot, setTot] = useState('')
     const [pr, setPr] = useState('')
@@ -23,6 +25,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                     console.log(error.text);
                 });
             alert('Ваш заказ принят в обработку');
+            dispatch(getOrdered(shoppingProducts, `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`))
             dispatch(clearAllShopping())
         }
         return e.target.reset()

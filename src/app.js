@@ -3,7 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 import MainPage from "./pages/mainPage";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getNovasProducts,
+    getNovasProducts, getOrderedLocalStorage,
     getProducts, getSalesProducts,
     getSearchingLocalStorage,
     getShoppingLocalStorage,
@@ -20,6 +20,8 @@ import AdminPage from "./pages/adminPage";
 import NovaProductsPage from "./pages/novaProductsPage";
 import SalePage from "./pages/salePage";
 import BestsellersPage from "./pages/bestsellersPage";
+import OrderedPage from "./pages/orderedPage";
+import OrderedByDatePage from "./pages/orderedByDatePage";
 
 const App = () => {
 
@@ -32,6 +34,7 @@ const App = () => {
     const shopping = useSelector(s => s.storeItems.shopping);
     const loading = useSelector(s => s.storeItems.loading);
     const searching = useSelector(s => s.storeItems.searching);
+    const ordered = useSelector(s => s.storeItems.ordered);
 
     useEffect(() => {
         dispatch(getProducts());
@@ -40,13 +43,15 @@ const App = () => {
         dispatch(getWishesLocalStorage(JSON.parse(localStorage.getItem('wishes')) || []));
         dispatch(getShoppingLocalStorage(JSON.parse(localStorage.getItem('shopping')) || []));
         dispatch(getSearchingLocalStorage(JSON.parse(localStorage.getItem('searching')) || ''))
+        dispatch(getOrderedLocalStorage(JSON.parse(localStorage.getItem('ordered')) || []))
     }, []);
 
     useEffect(() => {
         localStorage.setItem('wishes', JSON.stringify(wishes));
         localStorage.setItem('shopping', JSON.stringify(shopping))
         localStorage.setItem('searching', JSON.stringify(searching))
-    }, [wishes, shopping, searching]);
+        localStorage.setItem('ordered', JSON.stringify(ordered))
+    }, [wishes, shopping, searching, ordered]);
 
     const currency = 86;
 
@@ -75,6 +80,8 @@ const App = () => {
                 <Route path='/new' component={() => <NovaProductsPage currency={currency} products={products} nova={nova} setNova={setNova}/>}/>
                 <Route path='/sale' component={() => <SalePage currency={currency} products={products} selling={selling} setSelling={setSelling}/>}/>
                 <Route path='/bestsellers' component={() => <BestsellersPage currency={currency} products={products}/>}/>
+                <Route path='/ordered' component={() => <OrderedPage/>}/>
+                <Route path='/order/:dating' component={() => <OrderedByDatePage currency={currency}/>}/>
                 <Route path='/security-admin-page' component={() => <AdminPage products={products} nova={nova} setNova={setNova} selling={selling} setSelling={setSelling}/>}/>
                 <Route path='/search=:searchingValue' component={() => <SearchingPage currency={currency} products={products}/>}/>
                 <Route path='/type/:categ' component={() => <CategoryPage currency={currency} products={products}/>}/>

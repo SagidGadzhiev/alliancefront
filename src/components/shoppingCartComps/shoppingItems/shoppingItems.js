@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {getCateg, removeShopping, updateCount} from "../../../redux/reducers/storeItems";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
 
     const [count, setCount] = useState(0);
 
     const dispatch = useDispatch();
+
+    const ordered = useSelector(s => s.storeItems.ordered)
 
     const removeShopProd = (wishProdId) => {
         return shoppingProducts.filter((i) => {
@@ -118,6 +120,11 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
 
                     </div>
             }
+
+            <Link onClick={windowTop} style={{display: `${ordered.length === 0 ? 'none' : 'block'}`}}
+                  className='shoppingItems__ordered'
+                  to='/ordered'>Список оформленных заказов</Link>
+
         </div>
     );
 };

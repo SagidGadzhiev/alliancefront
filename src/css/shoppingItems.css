@@ -36,3 +36,11 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 10px;
     font-weight: bold;
 }
+
+.shoppingItems__ordered {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 14px;
+    color: #2d5a91;
+    text-decoration: underline;
+}
