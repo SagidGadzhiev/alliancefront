@@ -30,12 +30,24 @@ const MainPageProducts = ({currency, products}) => {
                     novas
                         .slice(0, 18).map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
-                            <a className='mainPageProducts__product__googleSearch' title='Найти в google'
-                               target={i.img.length === 0 ? '_blank' : "_self"}
-                               href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                <img className='mainPageProducts__product__img'
-                                     src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                            </a>
+                            {
+                                i.img.length === 0 ?
+                                    <a className='mainPageProducts__product__googleSearch'
+                                       title='Найти в google'
+                                       target='_blank'
+                                       href={`http://www.google.kg/search?q=${i.product}`}>
+                                        <img className='mainPageProducts__product__img'
+                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                    </a> :
+                                    <Link onClick={() => {
+                                        getCategHandler(i.class)
+                                        windowTop()
+                                    }} className='mainPageProducts__product__googleSearch'
+                                          to={`/${i.code}`}>
+                                        <img className='mainPageProducts__product__img' src={i.img}
+                                             alt="pic"/>
+                                    </Link>
+                            }
                             <Link to={`/${i.code}`} onClick={() => {
                                 getCategHandler(i.class)
                                 windowTop()
@@ -60,12 +72,24 @@ const MainPageProducts = ({currency, products}) => {
                         //             i.category === 'Аsus' ? i : null;
                     }).slice(0, 18).map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
-                            <a className='mainPageProducts__product__googleSearch' title='Найти в google'
-                               target={i.img.length === 0 ? '_blank' : "_self"}
-                               href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                <img className='mainPageProducts__product__img'
-                                     src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                            </a>
+                            {
+                                i.img.length === 0 ?
+                                    <a className='mainPageProducts__product__googleSearch'
+                                       title='Найти в google'
+                                       target='_blank'
+                                       href={`http://www.google.kg/search?q=${i.product}`}>
+                                        <img className='mainPageProducts__product__img'
+                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                    </a> :
+                                    <Link onClick={() => {
+                                        getCategHandler(i.class)
+                                        windowTop()
+                                    }} className='mainPageProducts__product__googleSearch'
+                                          to={`/${i.code}`}>
+                                        <img className='mainPageProducts__product__img' src={i.img}
+                                             alt="pic"/>
+                                    </Link>
+                            }
                             <Link to={`/${i.code}`} onClick={() => {
                                 getCategHandler(i.category)
                                 windowTop()
@@ -91,12 +115,24 @@ const MainPageProducts = ({currency, products}) => {
                         //                     i.category === 'Электрочайники' ? i : null
                     }).slice(0, 30).map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
-                            <a className='mainPageProducts__product__googleSearch' title='Найти в google'
-                               target={i.img.length === 0 ? '_blank' : "_self"}
-                               href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                <img className='mainPageProducts__product__img'
-                                     src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                            </a>
+                            {
+                                i.img.length === 0 ?
+                                    <a className='mainPageProducts__product__googleSearch'
+                                       title='Найти в google'
+                                       target='_blank'
+                                       href={`http://www.google.kg/search?q=${i.product}`}>
+                                        <img className='mainPageProducts__product__img'
+                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                    </a> :
+                                    <Link onClick={() => {
+                                        getCategHandler(i.class)
+                                        windowTop()
+                                    }} className='mainPageProducts__product__googleSearch'
+                                          to={`/${i.code}`}>
+                                        <img className='mainPageProducts__product__img' src={i.img}
+                                             alt="pic"/>
+                                    </Link>
+                            }
                             <Link to={`/${i.code}`} onClick={() => {
                                 getCategHandler(i.category)
                                 windowTop()

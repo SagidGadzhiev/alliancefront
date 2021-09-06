@@ -24,17 +24,30 @@ const ProdsUndCategs = ({currency, products}) => {
                         return i.category === 'Acer' ? i : i.class === 'Клавиатуры' ? i : i.class === 'Мыши' ? i : null
                     }).slice(0, 20).map((i) => (
                         <div key={i.id} className='prodsUndCategs__product'>
-                            <a className='prodsUndCategs__product__googleSearch' title='Найти в google'
-                               target={i.img.length === 0 ? '_blank' : "_self"}
-                               href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                <img className='prodsUndCategs__product__img'
-                                     src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                            </a>
+                            {
+                                i.img.length === 0 ?
+                                    <a className='prodsUndCategs__product__googleSearch'
+                                       title='Найти в google'
+                                       target='_blank'
+                                       href={`http://www.google.kg/search?q=${i.product}`}>
+                                        <img className='prodsUndCategs__product__img'
+                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                    </a> :
+                                    <Link onClick={() => {
+                                        getCategHandler(i.class)
+                                        windowTop()
+                                    }} className='prodsUndCategs__product__googleSearch'
+                                          to={`/${i.code}`}>
+                                        <img className='prodsUndCategs__product__img' src={i.img}
+                                             alt="pic"/>
+                                    </Link>
+                            }
                             <Link to={`/${i.code}`} onClick={() => {
                                 getCategHandler(i.class)
                                 windowTop()
                             }} className="prodsUndCategs__product__name">{i.product}</Link>
-                            <p className="prodsUndCategs__product__price">{i.price}$ - {(i.price * currency).toFixed(0)}сом</p>
+                            <p className="prodsUndCategs__product__price">{i.price}$
+                                - {(i.price * currency).toFixed(0)}сом</p>
                             <p className="prodsUndCategs__product__warranty">Комментарий(гарантия) : {i.comment}</p>
                             <p className="prodsUndCategs__product__code">Код товара : {i.code}</p>
                         </div>

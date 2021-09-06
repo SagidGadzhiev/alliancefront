@@ -53,12 +53,24 @@ const SearchingProducts = ({currency, products, loading}) => {
                         return i.product.toLowerCase().includes(searching.toLowerCase())
                     }).map(i => (
                     <div className='categPageProducts__product' key={i.id}>
-                        <a className='categPageProducts__product__googleSearch' title='Найти в google'
-                           target={i.img.length === 0 ? '_blank' : "_self"}
-                           href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                            <img className='categPageProducts__product__img'
-                                 src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                        </a>
+                        {
+                            i.img.length === 0 ?
+                                <a className='categPageProducts__product__googleSearch'
+                                   title='Найти в google'
+                                   target='_blank'
+                                   href={`http://www.google.kg/search?q=${i.product}`}>
+                                    <img className='categPageProducts__product__img'
+                                         src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                </a> :
+                                <Link onClick={() => {
+                                    getCategHandler(i.class)
+                                    windowTop()
+                                }} className='categPageProducts__product__googleSearch'
+                                      to={`/${i.code}`}>
+                                    <img className='categPageProducts__product__img' src={i.img}
+                                         alt="pic"/>
+                                </Link>
+                        }
                         <div style={{width: "100%"}}>
                             <Link to={`/${i.code}`} onClick={() => {
                                 getCategHandler(i.category)

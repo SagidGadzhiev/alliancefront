@@ -24,12 +24,24 @@ const SaleProds = ({currency, products, selling, setSelling}) => {
                 {
                     sales.map((i, idx) => (
                         <div key={i.id} className='mainPageProducts__product'>
-                            <a className='mainPageProducts__product__googleSearch' title='Найти в google'
-                               target={i.img.length === 0 ? '_blank' : "_self"}
-                               href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                <img className='mainPageProducts__product__img'
-                                     src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                            </a>
+                            {
+                                i.img.length === 0 ?
+                                    <a className='mainPageProducts__product__googleSearch'
+                                       title='Найти в google'
+                                       target='_blank'
+                                       href={`http://www.google.kg/search?q=${i.product}`}>
+                                        <img className='mainPageProducts__product__img'
+                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                    </a> :
+                                    <Link onClick={() => {
+                                        getCategHandler(i.class)
+                                        windowTop()
+                                    }} className='mainPageProducts__product__googleSearch'
+                                          to={`/${i.code}`}>
+                                        <img className='mainPageProducts__product__img' src={i.img}
+                                             alt="pic"/>
+                                    </Link>
+                            }
                             <Link to={`/${i.code}`} onClick={() => {
                                 getCategHandler(i.class)
                                 windowTop()
@@ -44,7 +56,8 @@ const SaleProds = ({currency, products, selling, setSelling}) => {
                 }
             </div>
 
-            <p className='prodsUndCategs__title'><span style={{fontSize: "13px"}}>Системные блоки в сборке по супер-цене!</span></p>
+            <p className='prodsUndCategs__title'><span style={{fontSize: "13px"}}>Системные блоки в сборке по супер-цене!</span>
+            </p>
             <table style={{
                 width: "100%"
             }}>

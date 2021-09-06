@@ -1,7 +1,7 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import {getShopping, getWishes} from "../../../redux/reducers/storeItems";
+import {getCateg, getShopping, getWishes} from "../../../redux/reducers/storeItems";
 
 const ProdCard = ({currency, products}) => {
 
@@ -30,18 +30,38 @@ const ProdCard = ({currency, products}) => {
 
     const {productCode} = useParams();
 
+    const getCategHandler = (prodCateg) => {
+        return dispatch(getCateg(prodCateg));
+    };
+
+    const windowTop = () => {
+        return window.scrollTo(0, 0);
+    };
+
     return (
         <div className='prodCard'>
             <div className="container">
                 {
                     products.filter(i => i.code === productCode).map((i) => (
                         <div className='prodCard__itemDescription' key={i.id}>
-                            <a className='prodCard__itemDescription__googleSearch' title='Найти в google'
-                               target={i.img.length === 0 ? '_blank' : "_self"}
-                               href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                <img className='prodCard__itemDescription__img'
-                                     src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                            </a>
+                            {
+                                i.img.length === 0 ?
+                                    <a className='prodCard__itemDescription__googleSearch'
+                                       title='Найти в google'
+                                       target='_blank'
+                                       href={`http://www.google.kg/search?q=${i.product}`}>
+                                        <img className='prodCard__itemDescription__img'
+                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                    </a> :
+                                    <Link onClick={() => {
+                                        getCategHandler(i.class)
+                                        windowTop()
+                                    }} className='prodCard__itemDescription__googleSearch'
+                                          to={`/${i.code}`}>
+                                        <img className='prodCard__itemDescription__img' src={i.img}
+                                             alt="pic"/>
+                                    </Link>
+                            }
                             <div className='prodCard__itemDescription__aboutProduct'>
                                 <div className='prodCard__itemDescription__aboutProdBlock'>
                                     <p className='prodCard__itemDescription__aboutProdBlock__name'>{i.product}</p>

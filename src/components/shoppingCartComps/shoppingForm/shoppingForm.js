@@ -25,7 +25,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                     console.log(error.text);
                 });
             alert('Ваш заказ принят в обработку');
-            dispatch(getOrdered(shoppingProducts, `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`))
+            dispatch(getOrdered(shoppingProducts, `${('0' + date.getDate()).slice(-2)}-${('0' + date.getMonth()).slice(-2)}-${('0' + date.getFullYear()).slice(-2)}`))
             dispatch(clearAllShopping())
         }
         return e.target.reset()

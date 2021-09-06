@@ -54,19 +54,31 @@ const WishesItems = ({currency, wishesProducts}) => {
                                 <tr className='wishesItems__table__tbody__tr' key={i.id}>
                                     <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>{i.code}</td>
                                     <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
-                                        <a className='wishesItems__table__tbody__tr__td__googleSearch'
-                                           title='Найти в google'
-                                           target={i.img.length === 0 ? '_blank' : "_self"}
-                                           href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                            <img className='wishesItems__table__tbody__tr__td__img'
-                                                 src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img} alt="pic"/>
-                                        </a>
+                                        {
+                                            i.img.length === 0 ?
+                                                <a className='wishesItems__table__tbody__tr__td__googleSearch'
+                                                   title='Найти в google'
+                                                   target='_blank'
+                                                   href={`http://www.google.kg/search?q=${i.product}`}>
+                                                    <img className='wishesItems__table__tbody__tr__td__img'
+                                                         src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                                </a> :
+                                                <Link onClick={() => {
+                                                    getCategHandler(i.class)
+                                                    windowTop()
+                                                }} className='wishesItems__table__tbody__tr__td__googleSearch'
+                                                      to={`/${i.code}`}>
+                                                    <img className='wishesItems__table__tbody__tr__td__img' src={i.img}
+                                                         alt="pic"/>
+                                                </Link>
+                                        }
                                     </td>
                                     <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
-                                        <Link className='wishesItems__table__tbody__tr__td__name' to={`/${i.code}`} onClick={() => {
-                                            getCategHandler(i.class)
-                                            windowTop()
-                                        }}>{i.product}</Link>
+                                        <Link className='wishesItems__table__tbody__tr__td__name' to={`/${i.code}`}
+                                              onClick={() => {
+                                                  getCategHandler(i.class)
+                                                  windowTop()
+                                              }}>{i.product}</Link>
                                     </td>
                                     <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>{i.price}$
                                         - {(i.price * currency).toFixed(0)}сом
@@ -83,7 +95,8 @@ const WishesItems = ({currency, wishesProducts}) => {
                                                   d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
                                         </svg>
                                     </td>
-                                    <td onClick={() => addShopProd(i)} className='wishesItems__table__tbody__tr__td wishesItems__table__tbody__tr__td_card'
+                                    <td onClick={() => addShopProd(i)}
+                                        className='wishesItems__table__tbody__tr__td wishesItems__table__tbody__tr__td_card'
                                         rowSpan={1}>
                                         <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                              data-icon="shopping-cart"

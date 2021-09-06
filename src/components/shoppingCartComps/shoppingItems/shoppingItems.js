@@ -60,14 +60,25 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                     <tr className='wishesItems__table__tbody__tr' key={i.id}>
                                         <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>{i.code}</td>
                                         <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
-                                            <a className='wishesItems__table__tbody__tr__td__googleSearch'
-                                               title='Найти в google'
-                                               target={i.img.length === 0 ? '_blank' : "_self"}
-                                               href={i.img.length === 0 ? `http://www.google.kg/search?q=${i.product}` : `/${i.code}`}>
-                                                <img className='wishesItems__table__tbody__tr__td__img'
-                                                     src={i.img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.img}
-                                                     alt="pic"/>
-                                            </a>
+                                            {
+                                                i.img.length === 0 ?
+                                                    <a className='wishesItems__table__tbody__tr__td__googleSearch'
+                                                       title='Найти в google'
+                                                       target='_blank'
+                                                       href={`http://www.google.kg/search?q=${i.product}`}>
+                                                        <img className='wishesItems__table__tbody__tr__td__img'
+                                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                                    </a> :
+                                                    <Link onClick={() => {
+                                                        getCategHandler(i.class)
+                                                        windowTop()
+                                                    }} className='wishesItems__table__tbody__tr__td__googleSearch'
+                                                          to={`/${i.code}`}>
+                                                        <img className='wishesItems__table__tbody__tr__td__img'
+                                                             src={i.img}
+                                                             alt="pic"/>
+                                                    </Link>
+                                            }
                                         </td>
                                         <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
                                             <Link className='wishesItems__table__tbody__tr__td__name' to={`/${i.code}`}
