@@ -142,7 +142,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                            onChange={(e) => setTot(e.target.value)}/>
                     <input style={{display: "none"}} type="text" name='currency' value={currency}
                            onChange={(e) => setTot(e.target.value)}/>
-                    <input style={{display: "block"}} type="text" name='numberOrder'
+                    <input style={{display: "none"}} type="text" name='numberOrder'
                            value={orders[orders.length - 1].orderNumber + 1}
                            onChange={(e) => setTot(e.target.value)}/>
                 </form>
