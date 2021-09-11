@@ -33,7 +33,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
             alert('Ваша корзина пуста, добавьте товары чтобы оформить заказ')
         } else {
 
-            axios.post('http://localhost:8080/orders', {
+            axios.post('https://allianceplusserver.herokuapp.com/orders', {
                 shopping: shoppingProducts,
                 buyer: person,
                 phone,

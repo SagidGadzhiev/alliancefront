@@ -256,7 +256,7 @@ export const getOrderedLocalStorage = (prod) => {
 
 export const getAllOrders = () => {
     return (dispatch) => {
-        axios('http://localhost:8080/orders')
+        axios('https://allianceplusserver.herokuapp.com/orders')
             .then(({data}) => {
                 dispatch({type: actions.GET__ALL__ORDERS, orders: data})
             })
