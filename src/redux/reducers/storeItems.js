@@ -10,7 +10,8 @@ const initState = {
     loading: true,
     novas: [],
     sales: [],
-    ordered: []
+    ordered: [],
+    orders: [],
 };
 
 export default (state = initState, action) => {
@@ -115,6 +116,12 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 ordered: action.ordered
+            }
+        }
+        case actions.GET__ALL__ORDERS: {
+            return {
+                ...state,
+                orders: action.orders
             }
         }
         default:
@@ -229,12 +236,13 @@ export const clearAllShopping = () => {
     })
 }
 
-export const getOrdered = (shoppingArray, currentDate) => {
+export const getOrdered = (shoppingArray, currentDate, orderNum) => {
     return ({
         type: actions.GET_ORDERED,
         ordered: {
             shopping: shoppingArray,
-            orderDate: currentDate
+            orderDate: currentDate,
+            orderNum
         }
     })
 }
@@ -244,4 +252,13 @@ export const getOrderedLocalStorage = (prod) => {
         type: actions.GET_ORDERED_LOCALSTORAGE,
         ordered: prod
     })
+}
+
+export const getAllOrders = () => {
+    return (dispatch) => {
+        axios('http://localhost:8080/orders')
+            .then(({data}) => {
+                dispatch({type: actions.GET__ALL__ORDERS, orders: data})
+            })
+    }
 }

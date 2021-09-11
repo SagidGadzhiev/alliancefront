@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import MainPage from "./pages/mainPage";
 import {useDispatch, useSelector} from "react-redux";
 import {
+    getAllOrders,
     getNovasProducts, getOrderedLocalStorage,
     getProducts, getSalesProducts,
     getSearchingLocalStorage,
@@ -30,6 +31,12 @@ const App = () => {
     const [nova, setNova] = useState({});
     const [selling, setSelling] = useState({});
 
+    const products = useSelector(s => s.storeItems.products.map(i => {
+        return {...i, price: i.price}
+    }));
+    const wishesProducts = useSelector(s => s.storeItems.wishes);
+    const shoppingProducts = useSelector(s => s.storeItems.shopping);
+
     const wishes = useSelector(s => s.storeItems.wishes);
     const shopping = useSelector(s => s.storeItems.shopping);
     const loading = useSelector(s => s.storeItems.loading);
@@ -40,11 +47,16 @@ const App = () => {
         dispatch(getProducts());
         dispatch(getNovasProducts())
         dispatch(getSalesProducts())
+        dispatch(getAllOrders())
         dispatch(getWishesLocalStorage(JSON.parse(localStorage.getItem('wishes')) || []));
         dispatch(getShoppingLocalStorage(JSON.parse(localStorage.getItem('shopping')) || []));
         dispatch(getSearchingLocalStorage(JSON.parse(localStorage.getItem('searching')) || ''))
         dispatch(getOrderedLocalStorage(JSON.parse(localStorage.getItem('ordered')) || []))
     }, []);
+
+    useEffect(() => {
+        dispatch(getAllOrders())
+    }, [shoppingProducts])
 
     useEffect(() => {
         localStorage.setItem('wishes', JSON.stringify(wishes));
@@ -54,14 +66,6 @@ const App = () => {
     }, [wishes, shopping, searching, ordered]);
 
     const currency = 86;
-
-    const products = useSelector(s => s.storeItems.products.map(i => {
-        return {...i, price: i.price}
-    }));
-
-    const wishesProducts = useSelector(s => s.storeItems.wishes);
-
-    const shoppingProducts = useSelector(s => s.storeItems.shopping);
 
     if (loading) {
         return <div className='loadingBlock'>
@@ -81,7 +85,7 @@ const App = () => {
                 <Route path='/sale' component={() => <SalePage currency={currency} products={products} selling={selling} setSelling={setSelling}/>}/>
                 <Route path='/bestsellers' component={() => <BestsellersPage currency={currency} products={products}/>}/>
                 <Route path='/ordered' component={() => <OrderedPage/>}/>
-                <Route path='/order/:dating' component={() => <OrderedByDatePage currency={currency}/>}/>
+                <Route path='/order/:num' component={() => <OrderedByDatePage currency={currency}/>}/>
                 <Route path='/security-admin-page' component={() => <AdminPage products={products} nova={nova} setNova={setNova} selling={selling} setSelling={setSelling}/>}/>
                 <Route path='/search=:searchingValue' component={() => <SearchingPage currency={currency} products={products}/>}/>
                 <Route path='/type/:categ' component={() => <CategoryPage currency={currency} products={products}/>}/>

@@ -8,7 +8,7 @@ const OrderByDateProds = ({currency}) => {
 
     const dispatch = useDispatch()
 
-    const {dating} = useParams()
+    const {num} = useParams()
 
     const ordered = useSelector(s => s.storeItems.ordered);
 
@@ -25,11 +25,12 @@ const OrderByDateProds = ({currency}) => {
             {
                 ordered
                     .filter((i, idx) => {
-                        return i.orderDate === dating
+                        return +i.orderNum === +num
                     })
                     .map((obj, index, arr) => (
                         <div key={index + 1}>
                             <h2 className='orderByDate__title'>Заказ оформленный на число : {obj.orderDate}</h2>
+                            <h2 className='orderByDate__title'>Номер заказа : {obj.orderNum}</h2>
                             <div style={{
                                 display: "flex",
                                 flexWrap: "wrap",

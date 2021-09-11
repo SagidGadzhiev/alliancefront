@@ -1,16 +1,30 @@
 import React, {useState} from 'react';
 import emailjs from 'emailjs-com'
-import {useDispatch} from "react-redux";
-import {clearAllShopping, getOrdered} from "../../../redux/reducers/storeItems";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    clearAllShopping,
+    getAllOrders,
+    getOrdered
+} from "../../../redux/reducers/storeItems";
+import axios from "axios";
 
 const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
 
     const dispatch = useDispatch()
 
+    const orders = useSelector(s => s.storeItems.orders)
+
     const date = new Date()
 
     const [tot, setTot] = useState('')
-    const [pr, setPr] = useState('')
+
+    const [person, setPerson] = useState('')
+    const [phone, setPhone] = useState('')
+    const [address, setAddress] = useState('')
+    const [email, setEmail] = useState('')
+    const [payment, setPayment] = useState('')
+    const [shipping, setShipping] = useState('')
+    const [comment, setComment] = useState('')
 
     function sendEmail(e) {
         e.preventDefault();
@@ -18,14 +32,28 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
         if (shoppingProducts.length === 0) {
             alert('Ваша корзина пуста, добавьте товары чтобы оформить заказ')
         } else {
+
+            axios.post('http://localhost:8080/orders', {
+                shopping: shoppingProducts,
+                buyer: person,
+                phone,
+                address,
+                email,
+                payment,
+                shipping,
+                note: comment
+            }).then()
+
+            dispatch(getAllOrders())
+
             emailjs.sendForm('service_eubd3tq', 'template_pec0hbo', e.target, 'user_cQzLXAo3QHVA8ClatUpuP')
                 .then((result) => {
                     console.log(result.text);
                 }, (error) => {
                     console.log(error.text);
-                });
-            alert('Ваш заказ принят в обработку');
-            dispatch(getOrdered(shoppingProducts, `${('0' + date.getDate()).slice(-2)}-${('0' + date.getMonth()).slice(-2)}-${('0' + date.getFullYear()).slice(-2)}`))
+                })
+            alert(`Ваш заказ принят в обработку, номер заказа ${orders[orders.length - 1].orderNumber + 1}`);
+            dispatch(getOrdered(shoppingProducts, `${('0' + date.getDate()).slice(-2)}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getFullYear()).slice(-2)}`, orders[orders.length - 1].orderNumber + 1))
             dispatch(clearAllShopping())
         }
         return e.target.reset()
@@ -41,44 +69,68 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                 <form className='shoppingForm__form' onSubmit={sendEmail}>
                     <label className='shoppingForm__form__label'>
                         <p className='shoppingForm__form__label__info'>ФИО</p>
-                        <input required={true} type="text" className='shoppingForm__form__label__input' name='person'/>
+                        <input required={true} type="text" className='shoppingForm__form__label__input' name='person'
+                               onChange={(e) => {
+                                   setPerson(e.target.value)
+                               }}/>
                     </label>
                     <label className='shoppingForm__form__label'>
                         <p className='shoppingForm__form__label__info'>Номер телефона</p>
-                        <input placeholder='0XXX XX XX XX' pattern='[0-9]{4} [0-9]{2} [0-9]{2} [0-9]{2}' required={true}
-                               type="text" className='shoppingForm__form__label__input' name='phone'/>
+                        <input placeholder='0XXX XX XX XX' required={true}
+                               type="text" className='shoppingForm__form__label__input' name='phone'
+                               onChange={(e) => {
+                                   setPhone(e.target.value)
+                               }}/>
                     </label>
                     <label className='shoppingForm__form__label'>
                         <p className='shoppingForm__form__label__info'>Адрес доставки</p>
-                        <input required={true} type="text" className='shoppingForm__form__label__input' name='address'/>
+                        <input required={true} type="text" className='shoppingForm__form__label__input' name='address'
+                               onChange={(e) => {
+                                   setAddress(e.target.value)
+                               }}/>
                     </label>
                     <label className='shoppingForm__form__label'>
                         <p className='shoppingForm__form__label__info'>Email</p>
-                        <input required={true} type="email" className='shoppingForm__form__label__input' name='email'/>
+                        <input required={true} type="email" className='shoppingForm__form__label__input' name='email'
+                               onChange={(e) => {
+                                   setEmail(e.target.value)
+                               }}/>
                     </label>
                     <label className='shoppingForm__form__label'>
                         <p className='shoppingForm__form__label__info'>Способ оплаты</p>
-                        <select required={true} className='shoppingForm__form__label__input' name='payment'>
+                        <select onClick={(e) => {
+                            setPayment(e.target.value)
+                        }} required={true}
+                                className='shoppingForm__form__label__input' name='payment'>
+                            <option value="">Выбрать</option>
                             <option>Наличными</option>
                             <option>По карте</option>
                         </select>
                     </label>
                     <label className='shoppingForm__form__label'>
                         <p className='shoppingForm__form__label__info'>Способ доставки</p>
-                        <select required={true} className='shoppingForm__form__label__input' name='shipping'>
+                        <select required={true} className='shoppingForm__form__label__input' name='shipping'
+                                onClick={(e) => {
+                                    setShipping(e.target.value)
+                                }}>
+                            <option value="">Выбрать</option>
                             <option>Самовывоз</option>
                             <option>Курьер</option>
                         </select>
                     </label>
                     <label className='shoppingForm__form__label'>
                         <p className='shoppingForm__form__label__info'>Комментарий</p>
-                        <textarea className='shoppingForm__form__label__input' name='comment'/>
+                        <textarea className='shoppingForm__form__label__input' name='comment'
+                                  onChange={(e) => {
+                                      setComment(e.target.value)
+                                  }}/>
                     </label>
                     <button className='shoppingForm__form__btn' type="submit">Подтвердить заказ</button>
                     <p className='shoppingForm__form__warning'>Нажимая кнопку "Подтвердить заказ", вы принимаете
                         "Условия продажи товаров" электронной торговой площадки AlliancePlus.kg.</p>
 
-                    <input style={{display: "none"}} onChange={(e) => setPr(e.target.value)} name='products' type="text"
+                    <input style={{display: "none"}} onChange={(e) => setTot(e.target.value)} name='products'
+                           type="text"
                            value={
                                shoppingProducts.map(i => {
                                    return JSON.stringify(i)
@@ -90,7 +142,9 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                            onChange={(e) => setTot(e.target.value)}/>
                     <input style={{display: "none"}} type="text" name='currency' value={currency}
                            onChange={(e) => setTot(e.target.value)}/>
-
+                    <input style={{display: "block"}} type="text" name='numberOrder'
+                           value={orders[orders.length - 1].orderNumber + 1}
+                           onChange={(e) => setTot(e.target.value)}/>
                 </form>
             </div>
         </div>

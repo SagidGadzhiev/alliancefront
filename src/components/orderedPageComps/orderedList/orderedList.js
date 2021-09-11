@@ -14,7 +14,14 @@ const OrderedList = () => {
                         <img className='orderedBlock__img'
                              src={i.shopping[0].img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.shopping[0].img}
                              alt="pic"/>
-                        <Link className='orderedBlock__date' to={`/order/${i.orderDate}`}>Заказ на <span>{i.orderDate}</span></Link>
+                        <div>
+                            <Link className='orderedBlock__date' to={`/order/${i.orderNum}`}>Заказ
+                                на <span>{i.orderDate}</span></Link>
+                            <Link style={{
+                                display: "block",
+                                marginTop: "10px"
+                            }} className='orderedBlock__date' to={`/order/${i.orderNum}`}>Номер заказа - <span>{i.orderNum}</span></Link>
+                        </div>
                     </div>
                 ))
             }
