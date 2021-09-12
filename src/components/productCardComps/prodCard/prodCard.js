@@ -40,7 +40,7 @@ const ProdCard = ({currency, products}) => {
 
     return (
         <div className='prodCard'>
-            <div className="container">
+            {/*<div className="container">*/}
                 {
                     products.filter(i => i.code === productCode).map((i) => (
                         <div className='prodCard__itemDescription' key={i.id}>
@@ -124,7 +124,7 @@ const ProdCard = ({currency, products}) => {
                         </div>
                     ))
                 }
-            </div>
+            {/*</div>*/}
         </div>
     );
 };

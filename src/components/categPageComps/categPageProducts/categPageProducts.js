@@ -70,7 +70,7 @@ const CategPageProducts = ({currency, products, loading}) => {
                                              alt="pic"/>
                                     </Link>
                             }
-                            <div style={{width: "100%"}}>
+                            <div style={{maxWidth: "153px"}}>
                                 <Link to={`/${i.code}`} onClick={() => {
                                     getCategHandler(categ)
                                     windowTop()

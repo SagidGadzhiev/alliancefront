@@ -4,7 +4,9 @@
 
 .prodCard__itemDescription {
     display: flex;
+    justify-content: center;
     align-items: center;
+    /*flex-wrap: wrap;*/
 }
 
 .prodCard__itemDescription__aboutProduct {
@@ -109,11 +111,6 @@
     font-weight: bold;
     margin: 10px 0;
     color: #666666;
-}
-
-.prodCard__itemDescription__aboutProdBlock__block {
-    /*display: flex;*/
-    /*align-items: center;*/
 }
 
 .prodCard__itemDescription__wishBuy {
