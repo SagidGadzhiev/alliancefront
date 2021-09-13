@@ -1,18 +1,31 @@
 .carousel-root {
-    background: #2b262b;
-    padding-left: 25px;
-    padding-right: 23px;
+    /*background: #2b262b;*/
+    /*padding-left: 25px;*/
+    /*padding-right: 23px;*/
 }
 
 .carousel-img {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+}
+
+.carousel .control-prev.control-arrow:before {
+    border-right: 8px solid #000;
+}
+
+.carousel .control-next.control-arrow:before {
+    border-left: 8px solid #000;
+}
+
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow {
+    opacity: 1;
 }
 
 .carousel-text {
-    color: white;
+    /*color: white;*/
     font-weight: bold;
     text-align: center;
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
+    margin-top: 20px;
 }
 
 .carousel-text:last-child {
@@ -26,17 +39,17 @@
 }
 
 .carousel .slider-wrapper.axis-horizontal .slider .slide > div, .carousel .slider-wrapper.axis-horizontal .slider .slide > a {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
     width: 100%;
 }
 
 .carousel .slider-wrapper.axis-horizontal .slider .slide:last-child > div, .carousel .slider-wrapper.axis-horizontal .slider .slide:last-child > a {
-    position: unset;
-    top: unset;
-    left: unset;
-    transform: unset;
-    width: unset;
+    /*position: unset;*/
+    /*top: unset;*/
+    /*left: unset;*/
+    /*transform: unset;*/
+    /*width: unset;*/
 }
