@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getCateg, getNovasProducts} from "../../../redux/reducers/storeItems";
+import {getCateg} from "../../../redux/reducers/storeItems";
 import {Link} from "react-router-dom";
 
-const NovaProds = ({currency, products, nova, setNova}) => {
+const NovaProds = ({currency}) => {
 
     const novas = useSelector(s => s.storeItems.novas);
 
@@ -22,7 +22,7 @@ const NovaProds = ({currency, products, nova, setNova}) => {
             <p className='prodsUndCategs__title'><span>Недавно поступившие товары</span></p>
             <div className='prodsUndCategs__productsBlock'>
                 {
-                    novas.map((i, idx) => (
+                    novas.map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
                             {
                                 i.img.length === 0 ?
@@ -34,7 +34,7 @@ const NovaProds = ({currency, products, nova, setNova}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -43,7 +43,7 @@ const NovaProds = ({currency, products, nova, setNova}) => {
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.class)
+                                getCategHandler(i.class);
                                 windowTop()
                             }}
                                   className="mainPageProducts__product__name">{i.product}</Link>

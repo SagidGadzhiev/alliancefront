@@ -10,7 +10,7 @@ const WishesItems = ({currency, wishesProducts}) => {
     const shopping = useSelector(s => s.storeItems.shopping.map(i => i.code));
 
     const removeWishes = (wishProdId) => {
-        return wishesProducts.filter((i, idx) => {
+        return wishesProducts.filter((i) => {
             return i.id !== wishProdId
         })
     };
@@ -64,7 +64,7 @@ const WishesItems = ({currency, wishesProducts}) => {
                                                          src='https://enter.kg/images/yandex.png' alt="pic"/>
                                                 </a> :
                                                 <Link onClick={() => {
-                                                    getCategHandler(i.class)
+                                                    getCategHandler(i.class);
                                                     windowTop()
                                                 }} className='wishesItems__table__tbody__tr__td__googleSearch'
                                                       to={`/${i.code}`}>
@@ -76,7 +76,7 @@ const WishesItems = ({currency, wishesProducts}) => {
                                     <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
                                         <Link className='wishesItems__table__tbody__tr__td__name' to={`/${i.code}`}
                                               onClick={() => {
-                                                  getCategHandler(i.class)
+                                                  getCategHandler(i.class);
                                                   windowTop()
                                               }}>{i.product}</Link>
                                     </td>

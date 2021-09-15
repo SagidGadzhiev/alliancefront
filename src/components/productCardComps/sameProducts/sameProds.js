@@ -22,7 +22,7 @@ const SameProds = ({currency, products}) => {
             <p className='sameProds__title'><span>Похожие товары</span></p>
             <div className="sameProds__productsBlock">
                 {
-                    products.filter(i => i.class === categs ? i : i.category === categs ? i : i.subcategory === categs ? i : null).slice(0, 8).map((i, idx) => (
+                    products.filter(i => i.class === categs ? i : i.category === categs ? i : i.subcategory === categs ? i : null).slice(0, 8).map((i) => (
                         <div key={i.id} className='sameProds__product'>
                             {
                                 i.img.length === 0 ?
@@ -34,7 +34,7 @@ const SameProds = ({currency, products}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='sameProds__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -44,7 +44,7 @@ const SameProds = ({currency, products}) => {
                             }
                             <div className='sameProds__productsBlock__block'>
                                 <Link to={`/${i.code}`} onClick={() => {
-                                    getCategHandler(i.class)
+                                    getCategHandler(i.class);
                                     windowTop()
                                 }}
                                       className="sameProds__productsBlock__name">{i.product}</Link>

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const Content = () => {
 
     const [show, setShow] = useState(false);
-    const [newCateg, setNewCateg] = useState([])
+    const [newCateg, setNewCateg] = useState([]);
 
     // const categories = useSelector((s) => {
     //     return s.storeItems.products.map((i, idx) => {
@@ -25,33 +25,33 @@ const Content = () => {
             .filter((i, idx, arr) => {
                 return !idx || i !== arr[idx - 1]
             })
-    })
+    });
 
     const categs = useSelector((s) => {
         return s.storeItems.products.map((i) => {
             return {class: i.class, category: i.category}
         })
-    })
+    });
 
     const subcategs = useSelector((s) => {
         return s.storeItems.products.map((i) => {
             return {class: i.class, category: i.category, subcategory: i.subcategory}
         })
-    })
+    });
 
     const windowTop = () => {
         return window.scrollTo(0, 0);
     };
 
     const burgerMenu = () => {
-        document.getElementById('bgMenu').classList.toggle('active')
+        document.getElementById('bgMenu').classList.toggle('active');
         return document.getElementById('navCateg').classList.toggle('active')
     };
 
     const removeActive = () => {
-        document.getElementById('bgMenu').classList.remove('active')
+        document.getElementById('bgMenu').classList.remove('active');
         return document.getElementById('navCateg').classList.remove('active')
-    }
+    };
 
     return (
         <div className='content'>
@@ -69,34 +69,34 @@ const Content = () => {
                 {/*        ))*/}
                 {/*}*/}
                 {
-                    classes.map((i, idx, arr) => (
+                    classes.map((i, idx) => (
                         <div key={idx} className='categBlockWrap'>
                             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                                 <Link onClick={() => {
-                                    windowTop()
+                                    windowTop();
                                     removeActive()
                                 }} className='categories__link'
                                       to={`/type/${i}`}>{i}</Link>
                                 <button className='categBlockWrapBtn' onClick={() => {
-                                    setShow(!show)
+                                    setShow(!show);
                                     setNewCateg(categs.filter(q => q.class === i && q.category !== ''))
                                 }} type="submit">+
                                 </button>
                             </div>
                             {
                                 newCateg
-                                    .map((obj, indx, array) => {
+                                    .map((obj) => {
                                         return obj.class === i ? obj.category : ''
                                     })
                                     .sort()
                                     .filter((a, idx, arr) => {
                                         return !idx || a !== arr[idx - 1]
                                     })
-                                    .map((el, iidx, arrray) => (
+                                    .map((el, iidx) => (
                                         <div key={iidx + 1} className='categBlock'>
                                             <Link className='categBlock__link'
                                                   onClick={() => {
-                                                      windowTop()
+                                                      windowTop();
                                                       removeActive()
                                                   }}
                                                   to={`/category/${el}`}>{el}</Link>
@@ -109,7 +109,7 @@ const Content = () => {
                                                     })
                                                     .map((cat, idxx) => (
                                                         <Link className='subcateg__link' onClick={() => {
-                                                            windowTop()
+                                                            windowTop();
                                                             removeActive()
                                                         }}
                                                               key={idxx + 2} style={{

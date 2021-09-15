@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import MainPage from "./pages/mainPage";
 import {useDispatch, useSelector} from "react-redux";
@@ -31,9 +31,7 @@ const App = () => {
     const [nova, setNova] = useState({});
     const [selling, setSelling] = useState({});
 
-    const products = useSelector(s => s.storeItems.products.map(i => {
-        return {...i, price: i.price}
-    }));
+    const products = useSelector(s => s.storeItems.products.map(i => i));
     const wishesProducts = useSelector(s => s.storeItems.wishes);
     const shoppingProducts = useSelector(s => s.storeItems.shopping);
 
@@ -45,23 +43,23 @@ const App = () => {
 
     useEffect(() => {
         dispatch(getProducts());
-        dispatch(getNovasProducts())
-        dispatch(getSalesProducts())
-        dispatch(getAllOrders())
+        dispatch(getNovasProducts());
+        dispatch(getSalesProducts());
+        dispatch(getAllOrders());
         dispatch(getWishesLocalStorage(JSON.parse(localStorage.getItem('wishes')) || []));
         dispatch(getShoppingLocalStorage(JSON.parse(localStorage.getItem('shopping')) || []));
-        dispatch(getSearchingLocalStorage(JSON.parse(localStorage.getItem('searching')) || ''))
+        dispatch(getSearchingLocalStorage(JSON.parse(localStorage.getItem('searching')) || ''));
         dispatch(getOrderedLocalStorage(JSON.parse(localStorage.getItem('ordered')) || []))
     }, []);
 
     useEffect(() => {
         dispatch(getAllOrders())
-    }, [shoppingProducts])
+    }, [shoppingProducts]);
 
     useEffect(() => {
         localStorage.setItem('wishes', JSON.stringify(wishes));
-        localStorage.setItem('shopping', JSON.stringify(shopping))
-        localStorage.setItem('searching', JSON.stringify(searching))
+        localStorage.setItem('shopping', JSON.stringify(shopping));
+        localStorage.setItem('searching', JSON.stringify(searching));
         localStorage.setItem('ordered', JSON.stringify(ordered))
     }, [wishes, shopping, searching, ordered]);
 

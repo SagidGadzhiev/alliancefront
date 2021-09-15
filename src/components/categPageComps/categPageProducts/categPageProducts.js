@@ -62,7 +62,7 @@ const CategPageProducts = ({currency, products, loading}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='categPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -72,7 +72,7 @@ const CategPageProducts = ({currency, products, loading}) => {
                             }
                             <div className='categPageProducts__product__wrapBlock'>
                                 <Link to={`/${i.code}`} onClick={() => {
-                                    getCategHandler(categ)
+                                    getCategHandler(categ);
                                     windowTop()
                                 }} className="categPageProducts__product__name">{i.product}</Link>
                                 <p className="categPageProducts__product__warranty">Комментарий(гарантия)

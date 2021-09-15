@@ -2,7 +2,6 @@ import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {Carousel} from 'react-responsive-carousel';
 import electronics from '../../../img/electronics.jpg'
-import important from '../../../img/important.jpg'
 import sale from '../../../img/sale.jpg'
 import arrive from '../../../img/arrive.jpg'
 import {Link} from "react-router-dom";

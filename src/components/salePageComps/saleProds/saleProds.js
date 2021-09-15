@@ -3,9 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCateg} from "../../../redux/reducers/storeItems";
 import {Link} from "react-router-dom";
 
-const SaleProds = ({currency, products, selling, setSelling}) => {
+const SaleProds = ({currency}) => {
 
-    const sales = useSelector(s => s.storeItems.sales)
+    const sales = useSelector(s => s.storeItems.sales);
 
     const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ const SaleProds = ({currency, products, selling, setSelling}) => {
             <p className='prodsUndCategs__title'><span>Товары по акции</span></p>
             <div className='prodsUndCategs__productsBlock'>
                 {
-                    sales.map((i, idx) => (
+                    sales.map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
                             {
                                 i.img.length === 0 ?
@@ -34,7 +34,7 @@ const SaleProds = ({currency, products, selling, setSelling}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -43,7 +43,7 @@ const SaleProds = ({currency, products, selling, setSelling}) => {
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.class)
+                                getCategHandler(i.class);
                                 windowTop()
                             }}
                                   className="mainPageProducts__product__name">{i.product}</Link>

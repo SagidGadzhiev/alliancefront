@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {getCateg, removeShopping, updateCount} from "../../../redux/reducers/storeItems";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,7 +9,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
 
     const dispatch = useDispatch();
 
-    const ordered = useSelector(s => s.storeItems.ordered)
+    const ordered = useSelector(s => s.storeItems.ordered);
 
     const removeShopProd = (wishProdId) => {
         return shoppingProducts.filter((i) => {
@@ -70,7 +70,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                                     </a> :
                                                     <Link onClick={() => {
-                                                        getCategHandler(i.class)
+                                                        getCategHandler(i.class);
                                                         windowTop()
                                                     }} className='wishesItems__table__tbody__tr__td__googleSearch'
                                                           to={`/${i.code}`}>
@@ -83,7 +83,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                         <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
                                             <Link className='wishesItems__table__tbody__tr__td__name' to={`/${i.code}`}
                                                   onClick={() => {
-                                                      getCategHandler(i.class)
+                                                      getCategHandler(i.class);
                                                       windowTop()
                                                   }}>{i.product}</Link>
                                         </td>

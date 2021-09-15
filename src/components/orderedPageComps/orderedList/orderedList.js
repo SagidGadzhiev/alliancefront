@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const OrderedList = () => {
 
-    const ordered = useSelector(s => s.storeItems.ordered)
+    const ordered = useSelector(s => s.storeItems.ordered);
 
     return (
         <div className='orderedList'>

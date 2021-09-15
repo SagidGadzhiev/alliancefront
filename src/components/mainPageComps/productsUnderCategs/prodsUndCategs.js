@@ -34,7 +34,7 @@ const ProdsUndCategs = ({currency, products}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='prodsUndCategs__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -43,7 +43,7 @@ const ProdsUndCategs = ({currency, products}) => {
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.class)
+                                getCategHandler(i.class);
                                 windowTop()
                             }} className="prodsUndCategs__product__name">{i.product}</Link>
                             <p className="prodsUndCategs__product__price">{i.price}$

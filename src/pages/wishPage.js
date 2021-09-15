@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import Header from "../components/mainPageComps/header";
-import Footer from "../components/mainPageComps/footer";
 import WishesItems from "../components/wishPageComps/wishesItems";
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 

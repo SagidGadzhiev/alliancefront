@@ -7,7 +7,7 @@ const MainPageProducts = ({currency, products}) => {
 
     const dispatch = useDispatch();
 
-    const novas = useSelector(s => s.storeItems.novas)
+    const novas = useSelector(s => s.storeItems.novas);
 
     const getCategHandler = (prodCateg) => {
         return dispatch(getCateg(prodCateg));
@@ -40,7 +40,7 @@ const MainPageProducts = ({currency, products}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -49,7 +49,7 @@ const MainPageProducts = ({currency, products}) => {
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.class)
+                                getCategHandler(i.class);
                                 windowTop()
                             }}
                                   className="mainPageProducts__product__name">{i.product}</Link>
@@ -82,7 +82,7 @@ const MainPageProducts = ({currency, products}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -91,7 +91,7 @@ const MainPageProducts = ({currency, products}) => {
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.category)
+                                getCategHandler(i.category);
                                 windowTop()
                             }} className="mainPageProducts__product__name">{i.product}</Link>
                             <p className="mainPageProducts__product__price">{i.price}$
@@ -125,7 +125,7 @@ const MainPageProducts = ({currency, products}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -134,7 +134,7 @@ const MainPageProducts = ({currency, products}) => {
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.category)
+                                getCategHandler(i.category);
                                 windowTop()
                             }} className="mainPageProducts__product__name">{i.product}</Link>
                             <p className="mainPageProducts__product__price">{i.price}$

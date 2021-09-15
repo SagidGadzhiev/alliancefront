@@ -10,21 +10,21 @@ import axios from "axios";
 
 const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const orders = useSelector(s => s.storeItems.orders)
+    const orders = useSelector(s => s.storeItems.orders);
 
-    const date = new Date()
+    const date = new Date();
 
-    const [tot, setTot] = useState('')
+    const [tot, setTot] = useState('');
 
-    const [person, setPerson] = useState('')
-    const [phone, setPhone] = useState('')
-    const [address, setAddress] = useState('')
-    const [email, setEmail] = useState('')
-    const [payment, setPayment] = useState('')
-    const [shipping, setShipping] = useState('')
-    const [comment, setComment] = useState('')
+    const [person, setPerson] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
+    const [email, setEmail] = useState('');
+    const [payment, setPayment] = useState('');
+    const [shipping, setShipping] = useState('');
+    const [comment, setComment] = useState('');
 
     function sendEmail(e) {
         e.preventDefault();
@@ -42,18 +42,18 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                 payment,
                 shipping,
                 note: comment
-            }).then()
+            }).then();
 
-            dispatch(getAllOrders())
+            dispatch(getAllOrders());
 
             emailjs.sendForm('service_eubd3tq', 'template_pec0hbo', e.target, 'user_cQzLXAo3QHVA8ClatUpuP')
                 .then((result) => {
                     console.log(result.text);
                 }, (error) => {
                     console.log(error.text);
-                })
+                });
             alert(`Ваш заказ принят в обработку, номер заказа ${orders[orders.length - 1].orderNumber + 1}`);
-            dispatch(getOrdered(shoppingProducts, `${('0' + date.getDate()).slice(-2)}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getFullYear()).slice(-2)}`, orders[orders.length - 1].orderNumber + 1))
+            dispatch(getOrdered(shoppingProducts, `${('0' + date.getDate()).slice(-2)}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getFullYear()).slice(-2)}`, orders[orders.length - 1].orderNumber + 1));
             dispatch(clearAllShopping())
         }
         return e.target.reset()

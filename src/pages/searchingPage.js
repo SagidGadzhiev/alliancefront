@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import Header from "../components/mainPageComps/header";
-import Footer from "../components/mainPageComps/footer";
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 import SearchingProducts from "../components/searchPageComps/searchingProducts";
 import {useSelector} from "react-redux";
@@ -8,7 +6,7 @@ import Pagination from "../components/categPageComps/pagination";
 
 const SearchingPage = ({currency, products}) => {
 
-    const searching = useSelector(s => s.storeItems.searching)
+    const searching = useSelector(s => s.storeItems.searching);
 
     const loading = useSelector(s => s.storeItems.loading);
 

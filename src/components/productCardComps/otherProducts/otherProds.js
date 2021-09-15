@@ -23,7 +23,7 @@ const OtherProds = ({currency, products}) => {
             <Carousel className='otherProds' infiniteLoop={true} stopOnHover={true} autoPlay={false} interval={5000}
                       showArrows={true} showThumbs={false} centerMode={true} centerSlidePercentage={30}>
                 {
-                    products.slice(1100, 1118).map((i, idx) => (
+                    products.slice(1100, 1118).map((i) => (
                         <div className='otherProds__product' key={i.id}>
                             {
                                 i.img.length === 0 ?
@@ -35,7 +35,7 @@ const OtherProds = ({currency, products}) => {
                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                     </a> :
                                     <Link onClick={() => {
-                                        getCategHandler(i.class)
+                                        getCategHandler(i.class);
                                         windowTop()
                                     }} className='otherProds__product__googleSearch'
                                           to={`/${i.code}`}>
@@ -44,7 +44,7 @@ const OtherProds = ({currency, products}) => {
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.class)
+                                getCategHandler(i.class);
                                 windowTop()
                             }} className="otherProds__product__name">{i.product}</Link>
                             <p className="otherProds__product__price">{i.price}$

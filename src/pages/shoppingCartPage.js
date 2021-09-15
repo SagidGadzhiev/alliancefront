@@ -5,16 +5,16 @@ import ShoppingForm from "../components/shoppingCartComps/shoppingForm";
 
 const ShoppingCartPage = ({currency, shoppingProducts}) => {
 
-    let totalPrice = 0
+    let totalPrice = 0;
 
     function getTotalPrice() {
         return shoppingProducts.map(i => {
-            totalPrice = totalPrice + (i.count * i.price)
+            totalPrice = totalPrice + (i.count * i.price);
             return totalPrice
         })
     }
 
-    getTotalPrice()
+    getTotalPrice();
 
     const [currentPage, setCurrentPage] = useState(1);
 

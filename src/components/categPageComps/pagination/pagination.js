@@ -15,7 +15,7 @@ const Pagination = ({productsPerPage, totalProducts, paginate}) => {
     return (
         <div className='pagination'>
             {
-                pageNumbers.map((i, idx) => (
+                pageNumbers.map((i) => (
                     <a href={`#page=${i}`} key={i} className='page-link'
                        onClick={() => {
                            paginate(i);

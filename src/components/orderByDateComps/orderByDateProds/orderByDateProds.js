@@ -6,9 +6,9 @@ import {getCateg} from "../../../redux/reducers/storeItems";
 
 const OrderByDateProds = ({currency}) => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const {num} = useParams()
+    const {num} = useParams();
 
     const ordered = useSelector(s => s.storeItems.ordered);
 
@@ -24,20 +24,21 @@ const OrderByDateProds = ({currency}) => {
         <div className='orderByDate'>
             {
                 ordered
-                    .filter((i, idx) => {
+                    .filter((i) => {
                         return +i.orderNum === +num
                     })
-                    .map((obj, index, arr) => (
+                    .map((obj, index) => (
                         <div key={index + 1}>
                             <h2 className='orderByDate__title'>Заказ оформленный на число : {obj.orderDate}</h2>
                             <h2 className='orderByDate__title'>Номер заказа : {obj.orderNum}</h2>
                             <div style={{
                                 display: "flex",
+                                justifyContent: "space-between",
                                 flexWrap: "wrap",
                                 alignItems: "center"
                             }}>
                                 {
-                                    obj.shopping.map((i, idx, arr) => (
+                                    obj.shopping.map((i) => (
                                         <div key={i.id} className='mainPageProducts__product'>
                                             {
                                                 i.img.length === 0 ?
@@ -49,7 +50,7 @@ const OrderByDateProds = ({currency}) => {
                                                              src='https://enter.kg/images/yandex.png' alt="pic"/>
                                                     </a> :
                                                     <Link onClick={() => {
-                                                        getCategHandler(i.class)
+                                                        getCategHandler(i.class);
                                                         windowTop()
                                                     }} className='mainPageProducts__product__googleSearch'
                                                           to={`/${i.code}`}>
@@ -58,7 +59,7 @@ const OrderByDateProds = ({currency}) => {
                                                     </Link>
                                             }
                                             <Link to={`/${i.code}`} onClick={() => {
-                                                getCategHandler(i.class)
+                                                getCategHandler(i.class);
                                                 windowTop()
                                             }}
                                                   className="mainPageProducts__product__name">{i.product}</Link>
