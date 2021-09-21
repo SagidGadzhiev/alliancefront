@@ -77,18 +77,29 @@ const App = () => {
             <Header/>
             <Switch>
                 <Route exact path='/' component={() => <MainPage products={products} currency={currency}/>}/>
-                <Route path='/wishes' component={() => <WishPage currency={currency} wishesProducts={wishesProducts}/>}/>
-                <Route path='/shopping' component={() => <ShoppingCartPage currency={currency} shoppingProducts={shoppingProducts}/>}/>
-                <Route path='/new' component={() => <NovaProductsPage currency={currency} products={products} nova={nova} setNova={setNova}/>}/>
-                <Route path='/sale' component={() => <SalePage currency={currency} products={products} selling={selling} setSelling={setSelling}/>}/>
-                <Route path='/bestsellers' component={() => <BestsellersPage currency={currency} products={products}/>}/>
+                <Route path='/wishes'
+                       component={() => <WishPage currency={currency} wishesProducts={wishesProducts}/>}/>
+                <Route path='/shopping'
+                       component={() => <ShoppingCartPage currency={currency} shoppingProducts={shoppingProducts}/>}/>
+                <Route path='/new'
+                       component={() => <NovaProductsPage currency={currency} products={products} nova={nova}
+                                                          setNova={setNova}/>}/>
+                <Route path='/sale' component={() => <SalePage currency={currency} products={products} selling={selling}
+                                                               setSelling={setSelling}/>}/>
+                <Route path='/bestsellers'
+                       component={() => <BestsellersPage currency={currency} products={products}/>}/>
                 <Route path='/ordered' component={() => <OrderedPage/>}/>
                 <Route path='/order/:num' component={() => <OrderedByDatePage currency={currency}/>}/>
-                <Route path='/security-admin-page' component={() => <AdminPage products={products} nova={nova} setNova={setNova} selling={selling} setSelling={setSelling}/>}/>
-                <Route path='/search=:searchingValue' component={() => <SearchingPage currency={currency} products={products}/>}/>
+                <Route path='/security-admin-page'
+                       component={() => <AdminPage products={products} nova={nova} setNova={setNova} selling={selling}
+                                                   setSelling={setSelling}/>}/>
+                <Route path='/search=:searchingValue'
+                       component={() => <SearchingPage currency={currency} products={products}/>}/>
                 <Route path='/type/:categ' component={() => <CategoryPage currency={currency} products={products}/>}/>
-                <Route path='/category/:categ' component={() => <CategoryPage currency={currency} products={products}/>}/>
-                <Route path='/subcategory/:categ' component={() => <CategoryPage currency={currency} products={products}/>}/>
+                <Route path='/category/:categ'
+                       component={() => <CategoryPage currency={currency} products={products}/>}/>
+                <Route path='/subcategory/:categ'
+                       component={() => <CategoryPage currency={currency} products={products}/>}/>
                 <Route path='/:productCode' component={() => <ProductCard products={products} currency={currency}/>}/>
             </Switch>
             <Footer/>

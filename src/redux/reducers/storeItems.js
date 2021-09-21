@@ -11,7 +11,7 @@ const initState = {
     novas: [],
     sales: [],
     ordered: [],
-    orders: [],
+    orders: []
 };
 
 export default (state = initState, action) => {

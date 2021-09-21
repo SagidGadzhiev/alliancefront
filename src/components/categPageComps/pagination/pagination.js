@@ -19,7 +19,7 @@ const Pagination = ({productsPerPage, totalProducts, paginate}) => {
                     <a href={`#page=${i}`} key={i} className='page-link'
                        onClick={() => {
                            paginate(i);
-                           windowTop()
+                           windowTop();
                        }}>{i}</a>
                 ))
             }

@@ -92,3 +92,25 @@
 .categPageProducts__product__wrapBlock {
     width: 40%;
 }
+
+.categPageProducts__sortBtn {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ddd;
+    background: #666;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #6a6d71;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.categPageProducts__sortBtn:last-child {
+    margin-right: 0;
+}
+
+.categPageProducts__sortBtn:hover {
+    background: #e33033;
+    color: #fff;
+    border: 1px solid black;
+}

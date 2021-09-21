@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 import CategPageProducts from "../components/categPageComps/categPageProducts";
 import Pagination from "../components/categPageComps/pagination";
@@ -16,13 +16,41 @@ const CategoryPage = ({currency, products}) => {
 
     const lastCountryIndex = currentPage * productsPerPage;
     const firstCountryIndex = lastCountryIndex - productsPerPage;
-    const currentProduct = products.filter(i => {
-        return i.class === categ ? i :
-            i.category === categ ? i :
-                i.subcategory === categ ? i : null
-    }).slice(firstCountryIndex, lastCountryIndex);
+    // const currentProduct = products.filter(i => {
+    //     return i.class === categ ? i :
+    //         i.category === categ ? i :
+    //             i.subcategory === categ ? i : null
+    // }).slice(firstCountryIndex, lastCountryIndex);
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    };
+
+    const [currentProduct, setCurrentProduct] = useState([]);
+    useEffect(() => {
+        setCurrentProduct(
+            products.filter(i => {
+                return i.class === categ ? i :
+                    i.category === categ ? i :
+                        i.subcategory === categ ? i : null
+            })
+        )
+    }, [categ])
+
+    // const sortHandlerMin = (price) => {
+    //     return setCurrentProduct(
+    //         currentProduct.sort((a, b) => {
+    //             return a[price] > b[price] ? 1 : -1
+    //         })
+    //     )
+    // };
+    // const sortHandlerMax = (price) => {
+    //     return setCurrentProduct(
+    //         currentProduct.sort((a, b) => {
+    //             return a[price] < b[price] ? 1 : -1
+    //         })
+    //     )
+    // };
 
     return (
         <div className='categoryPage'>
@@ -34,7 +62,19 @@ const CategoryPage = ({currency, products}) => {
                             i.category === categ ? i :
                                 i.subcategory === categ ? i : null
                     }).length} paginate={paginate}/>
-                    <CategPageProducts currency={currency} products={currentProduct} loading={loading}/>
+
+                    {/*<button type="submit" onClick={() => {*/}
+                    {/*    sortHandlerMin('price')*/}
+                    {/*}}>Сортировать по возрастанию цены*/}
+                    {/*</button>*/}
+                    {/*<button type="submit" onClick={() => {*/}
+                    {/*    sortHandlerMax('price')*/}
+                    {/*}}>Сортировать по убыванию цены*/}
+                    {/*</button>*/}
+
+                    <CategPageProducts currency={currency} currentProduct={currentProduct} loading={loading}
+                                       firstCountryIndex={firstCountryIndex} lastCountryIndex={lastCountryIndex}
+                                       setCurrentProduct={setCurrentProduct}/>
                     <Pagination productsPerPage={productsPerPage} totalProducts={products.filter(i => {
                         return i.class === categ ? i :
                             i.category === categ ? i :

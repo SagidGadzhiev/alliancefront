@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCateg, getShopping, getWishes} from "../../../redux/reducers/storeItems";
 
-const CategPageProducts = ({currency, products, loading}) => {
+const CategPageProducts = ({currency, currentProduct, loading, firstCountryIndex, lastCountryIndex, setCurrentProduct}) => {
 
     const {categ} = useParams();
 
@@ -39,6 +39,21 @@ const CategPageProducts = ({currency, products, loading}) => {
         }
     };
 
+    const sortHandlerMin = (price) => {
+        return setCurrentProduct(
+            currentProduct.sort((a, b) => {
+                return a[price] > b[price] ? 1 : -1
+            })
+        )
+    };
+    const sortHandlerMax = (price) => {
+        return setCurrentProduct(
+            currentProduct.sort((a, b) => {
+                return a[price] < b[price] ? 1 : -1
+            })
+        )
+    };
+
     if (loading) {
         return <div className='loadingBlock'>
             <div className="lds-dual-ring"></div>
@@ -48,8 +63,18 @@ const CategPageProducts = ({currency, products, loading}) => {
 
     return (
         <div className='categPageProducts'>
+
+            <button className='categPageProducts__sortBtn' type="submit" onClick={() => {
+                sortHandlerMin('price')
+            }}>Цена +
+            </button>
+            <button className='categPageProducts__sortBtn' type="submit" onClick={() => {
+                sortHandlerMax('price')
+            }}>Цена -
+            </button>
+
             {
-                products
+                currentProduct
                     .map(i => (
                         <div className='categPageProducts__product' key={i.id}>
                             {
@@ -109,6 +134,7 @@ const CategPageProducts = ({currency, products, loading}) => {
                             </div>
                         </div>
                     ))
+                    .slice(firstCountryIndex, lastCountryIndex)
             }
         </div>
     );
