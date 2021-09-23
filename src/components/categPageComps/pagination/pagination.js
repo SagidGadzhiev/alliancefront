@@ -12,6 +12,8 @@ const Pagination = ({productsPerPage, totalProducts, paginate}) => {
         return window.scrollTo(0, 0);
     };
 
+    const pageLink = Array.from(document.getElementsByClassName('page-link'));
+
     return (
         <div className='pagination'>
             {
@@ -20,6 +22,7 @@ const Pagination = ({productsPerPage, totalProducts, paginate}) => {
                        onClick={() => {
                            paginate(i);
                            windowTop();
+                           pageLink[1].classList.remove('active')
                        }}>{i}</a>
                 ))
             }

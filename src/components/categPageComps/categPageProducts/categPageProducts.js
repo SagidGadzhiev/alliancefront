@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCateg, getShopping, getWishes} from "../../../redux/reducers/storeItems";
 
-const CategPageProducts = ({currency, currentProduct, loading, firstCountryIndex, lastCountryIndex, setCurrentProduct}) => {
+const CategPageProducts = ({currency, currentProduct, loading, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax}) => {
 
     const {categ} = useParams();
 
@@ -37,21 +37,6 @@ const CategPageProducts = ({currency, currentProduct, loading, firstCountryIndex
             alert(`Товар добавлен в корзину.`);
             return dispatch(getShopping(prod))
         }
-    };
-
-    const sortHandlerMin = (price) => {
-        return setCurrentProduct(
-            currentProduct.sort((a, b) => {
-                return a[price] > b[price] ? 1 : -1
-            })
-        )
-    };
-    const sortHandlerMax = (price) => {
-        return setCurrentProduct(
-            currentProduct.sort((a, b) => {
-                return a[price] < b[price] ? 1 : -1
-            })
-        )
     };
 
     if (loading) {

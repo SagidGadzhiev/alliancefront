@@ -16,11 +16,6 @@ const CategoryPage = ({currency, products}) => {
 
     const lastCountryIndex = currentPage * productsPerPage;
     const firstCountryIndex = lastCountryIndex - productsPerPage;
-    // const currentProduct = products.filter(i => {
-    //     return i.class === categ ? i :
-    //         i.category === categ ? i :
-    //             i.subcategory === categ ? i : null
-    // }).slice(firstCountryIndex, lastCountryIndex);
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -35,23 +30,36 @@ const CategoryPage = ({currency, products}) => {
                         i.subcategory === categ ? i : null
             })
         )
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categ]);
+    }, [products, categ]);
 
-    // const sortHandlerMin = (price) => {
-    //     return setCurrentProduct(
-    //         currentProduct.sort((a, b) => {
-    //             return a[price] > b[price] ? 1 : -1
-    //         })
-    //     )
-    // };
-    // const sortHandlerMax = (price) => {
-    //     return setCurrentProduct(
-    //         currentProduct.sort((a, b) => {
-    //             return a[price] < b[price] ? 1 : -1
-    //         })
-    //     )
-    // };
+    const pageLink = Array.from(document.getElementsByClassName('page-link'));
+
+    const sortHandlerMin = (price) => {
+        if (currentPage === 1) {
+            paginate(2);
+            pageLink[1].classList.add('active')
+        } else {
+            paginate(1)
+        }
+        return setCurrentProduct(
+            currentProduct.sort((a, b) => {
+                return a[price] > b[price] ? 1 : -1
+            })
+        )
+    };
+    const sortHandlerMax = (price) => {
+        if (currentPage === 1) {
+            paginate(2);
+            pageLink[1].classList.add('active')
+        } else {
+            paginate(1)
+        }
+        return setCurrentProduct(
+            currentProduct.sort((a, b) => {
+                return a[price] < b[price] ? 1 : -1
+            })
+        )
+    };
 
     return (
         <div className='categoryPage'>
@@ -63,19 +71,9 @@ const CategoryPage = ({currency, products}) => {
                             i.category === categ ? i :
                                 i.subcategory === categ ? i : null
                     }).length} paginate={paginate}/>
-
-                    {/*<button type="submit" onClick={() => {*/}
-                    {/*    sortHandlerMin('price')*/}
-                    {/*}}>Сортировать по возрастанию цены*/}
-                    {/*</button>*/}
-                    {/*<button type="submit" onClick={() => {*/}
-                    {/*    sortHandlerMax('price')*/}
-                    {/*}}>Сортировать по убыванию цены*/}
-                    {/*</button>*/}
-
                     <CategPageProducts currency={currency} currentProduct={currentProduct} loading={loading}
                                        firstCountryIndex={firstCountryIndex} lastCountryIndex={lastCountryIndex}
-                                       setCurrentProduct={setCurrentProduct}/>
+                                       sortHandlerMin={sortHandlerMin} sortHandlerMax={sortHandlerMax}/>
                     <Pagination productsPerPage={productsPerPage} totalProducts={products.filter(i => {
                         return i.class === categ ? i :
                             i.category === categ ? i :
