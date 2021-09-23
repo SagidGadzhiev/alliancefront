@@ -35,7 +35,8 @@ const CategoryPage = ({currency, products}) => {
                         i.subcategory === categ ? i : null
             })
         )
-    }, [categ])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [categ]);
 
     // const sortHandlerMin = (price) => {
     //     return setCurrentProduct(

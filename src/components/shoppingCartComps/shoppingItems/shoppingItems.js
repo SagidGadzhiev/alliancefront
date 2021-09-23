@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
 
+    // eslint-disable-next-line no-unused-vars
     const [count, setCount] = useState(0);
 
     const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                                 i.img.length === 0 ?
                                                     <a className='wishesItems__table__tbody__tr__td__googleSearch'
                                                        title='Найти в google'
+                                                       rel='noreferrer'
                                                        target='_blank'
                                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                                         <img className='wishesItems__table__tbody__tr__td__img'

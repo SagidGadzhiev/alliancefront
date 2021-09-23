@@ -14,6 +14,7 @@ const initState = {
     orders: []
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initState, action) => {
     switch (action.type) {
         case actions.GET_PRODUCTS: {
@@ -228,13 +229,13 @@ export const getSalesProducts = () => {
                 dispatch({type: actions.GET_SALES_PRODUCTS, sales: data})
             })
     }
-}
+};
 
 export const clearAllShopping = () => {
     return ({
         type: actions.CLEAR__ALL__SHOPPING
     })
-}
+};
 
 export const getOrdered = (shoppingArray, currentDate, orderNum) => {
     return ({
@@ -245,14 +246,14 @@ export const getOrdered = (shoppingArray, currentDate, orderNum) => {
             orderNum
         }
     })
-}
+};
 
 export const getOrderedLocalStorage = (prod) => {
     return ({
         type: actions.GET_ORDERED_LOCALSTORAGE,
         ordered: prod
     })
-}
+};
 
 export const getAllOrders = () => {
     return (dispatch) => {
@@ -261,4 +262,4 @@ export const getAllOrders = () => {
                 dispatch({type: actions.GET__ALL__ORDERS, orders: data})
             })
     }
-}
+};

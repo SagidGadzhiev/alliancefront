@@ -16,6 +16,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
 
     const date = new Date();
 
+    // eslint-disable-next-line no-unused-vars
     const [tot, setTot] = useState('');
 
     const [person, setPerson] = useState('');

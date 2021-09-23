@@ -50,10 +50,12 @@ const App = () => {
         dispatch(getShoppingLocalStorage(JSON.parse(localStorage.getItem('shopping')) || []));
         dispatch(getSearchingLocalStorage(JSON.parse(localStorage.getItem('searching')) || ''));
         dispatch(getOrderedLocalStorage(JSON.parse(localStorage.getItem('ordered')) || []))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         dispatch(getAllOrders())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shoppingProducts]);
 
     useEffect(() => {

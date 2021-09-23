@@ -4,6 +4,7 @@ import SaleProds from "../components/salePageComps/saleProds";
 
 const SalePage = ({currency, products, selling, setSelling}) => {
 
+    // eslint-disable-next-line no-unused-vars
     const [currentPage, setCurrentPage] = useState(1);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);

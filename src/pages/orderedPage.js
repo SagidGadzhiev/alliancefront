@@ -4,6 +4,7 @@ import OrderedList from "../components/orderedPageComps/orderedList";
 
 const OrderedPage = () => {
 
+    // eslint-disable-next-line no-unused-vars
     const [currentPage, setCurrentPage] = useState(1);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);

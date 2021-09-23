@@ -4,6 +4,7 @@ import OrderByDateProds from "../components/orderByDateComps/orderByDateProds";
 
 const OrderedByDatePage = ({currency}) => {
 
+    // eslint-disable-next-line no-unused-vars
     const [currentPage, setCurrentPage] = useState(1);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);

@@ -58,6 +58,7 @@ const WishesItems = ({currency, wishesProducts}) => {
                                             i.img.length === 0 ?
                                                 <a className='wishesItems__table__tbody__tr__td__googleSearch'
                                                    title='Найти в google'
+                                                   rel='noreferrer'
                                                    target='_blank'
                                                    href={`http://www.google.kg/search?q=${i.product}`}>
                                                     <img className='wishesItems__table__tbody__tr__td__img'

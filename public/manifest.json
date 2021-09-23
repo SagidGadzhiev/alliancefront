@@ -3,22 +3,22 @@
   "name": "AlliancePlus.kg",
   "icons": [
     {
-      "src": "rebel.png",
+      "src": "rebel-brands.svg",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "image/svg+xml"
     },
     {
-      "src": "rebel.png",
-      "type": "image/png",
+      "src": "rebel-brands.svg",
+      "type": "image/svg+xml",
       "sizes": "192x192"
     },
     {
-      "src": "rebel.png",
-      "type": "image/png",
+      "src": "rebel-brands.svg",
+      "type": "image/svg+xml",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://alliancepluskg.herokuapp.com",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

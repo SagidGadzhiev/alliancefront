@@ -4,6 +4,7 @@ import NovaProds from "../components/novaProdsComps/novaProds";
 
 const NovaProductsPage = ({currency, products, nova, setNova}) => {
 
+    // eslint-disable-next-line no-unused-vars
     const [currentPage, setCurrentPage] = useState(1);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);

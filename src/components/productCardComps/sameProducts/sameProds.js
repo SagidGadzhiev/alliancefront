@@ -28,6 +28,7 @@ const SameProds = ({currency, products}) => {
                                 i.img.length === 0 ?
                                     <a className='sameProds__product__googleSearch'
                                        title='Найти в google'
+                                       rel='noreferrer'
                                        target='_blank'
                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                         <img className='sameProds__product__img'

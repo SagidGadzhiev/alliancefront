@@ -28,6 +28,7 @@ const ProdsUndCategs = ({currency, products}) => {
                                 i.img.length === 0 ?
                                     <a className='prodsUndCategs__product__googleSearch'
                                        title='Найти в google'
+                                       rel='noreferrer'
                                        target='_blank'
                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                         <img className='prodsUndCategs__product__img'

@@ -10,6 +10,7 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
 
     const [prods, setProds] = useState([]);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
         await axios('https://allianceplusserver.herokuapp.com/products').then(({data}) => setProds(data))
     }, [inp]);

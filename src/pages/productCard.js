@@ -6,6 +6,7 @@ import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCa
 
 const ProductCard = ({currency, products}) => {
 
+    // eslint-disable-next-line no-unused-vars
     const [currentPage, setCurrentPage] = useState(1);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
