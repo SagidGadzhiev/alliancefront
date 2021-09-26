@@ -3,12 +3,9 @@ import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCa
 import CategPageProducts from "../components/categPageComps/categPageProducts";
 import Pagination from "../components/categPageComps/pagination";
 import {useParams} from "react-router";
-import {useSelector} from "react-redux";
 import {ScrollToTopOnMount} from "../app";
 
 const CategoryPage = ({currency, products}) => {
-
-    const loading = useSelector(s => s.storeItems.loading);
 
     const {categ} = useParams();
 
@@ -58,19 +55,21 @@ const CategoryPage = ({currency, products}) => {
             <div className="container" style={{display: "flex"}}>
                 <ProdCardCategs paginate={paginate}/>
                 <div style={{padding: "15px", width: "100%"}}>
-                    <Pagination productsPerPage={productsPerPage} totalProducts={products.filter(i => {
-                        return i.class === categ ? i :
-                            i.category === categ ? i :
-                                i.subcategory === categ ? i : null
-                    }).length} paginate={paginate}/>
-                    <CategPageProducts currency={currency} currentProduct={currentProduct} loading={loading}
+                    <Pagination productsPerPage={productsPerPage}
+                                totalProducts={products.filter(i => {
+                                    return i.class === categ ? i :
+                                        i.category === categ ? i :
+                                            i.subcategory === categ ? i : null
+                                }).length} paginate={paginate}/>
+                    <CategPageProducts currency={currency} currentProduct={currentProduct}
                                        firstCountryIndex={firstCountryIndex} lastCountryIndex={lastCountryIndex}
                                        sortHandlerMin={sortHandlerMin} sortHandlerMax={sortHandlerMax}/>
-                    <Pagination productsPerPage={productsPerPage} totalProducts={products.filter(i => {
-                        return i.class === categ ? i :
-                            i.category === categ ? i :
-                                i.subcategory === categ ? i : null
-                    }).length} paginate={paginate}/>
+                    <Pagination productsPerPage={productsPerPage}
+                                totalProducts={products.filter(i => {
+                                    return i.class === categ ? i :
+                                        i.category === categ ? i :
+                                            i.subcategory === categ ? i : null
+                                }).length} paginate={paginate}/>
                 </div>
             </div>
         </div>

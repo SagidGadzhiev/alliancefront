@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCateg, getShopping, getWishes} from "../../../redux/reducers/storeItems";
 
-const CategPageProducts = ({currency, currentProduct, loading, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax}) => {
+const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax}) => {
 
     const {categ} = useParams();
 
@@ -38,13 +38,6 @@ const CategPageProducts = ({currency, currentProduct, loading, firstCountryIndex
             return dispatch(getShopping(prod))
         }
     };
-
-    if (loading) {
-        return <div className='loadingBlock'>
-            <div className="lds-dual-ring"></div>
-            <h2 className='loadingBlock__title'>Страница загружается</h2>
-        </div>
-    }
 
     return (
         <div className='categPageProducts'>
