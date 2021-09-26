@@ -134,7 +134,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                     </div>
             }
 
-            <Link onClick={windowTop} style={{display: `${ordered.length === 0 ? 'none' : 'block'}`}}
+            <Link onClick={() => windowTop()} style={{display: `${ordered.length === 0 ? 'none' : 'block'}`}}
                   className='shoppingItems__ordered'
                   to='/ordered'>Список оформленных заказов</Link>
 

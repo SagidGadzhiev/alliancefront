@@ -24,6 +24,13 @@ import BestsellersPage from "./pages/bestsellersPage";
 import OrderedPage from "./pages/orderedPage";
 import OrderedByDatePage from "./pages/orderedByDatePage";
 
+export function ScrollToTopOnMount() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    return null;
+}
+
 const App = () => {
 
     const dispatch = useDispatch();

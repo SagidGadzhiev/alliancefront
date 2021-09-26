@@ -32,15 +32,8 @@ const CategoryPage = ({currency, products}) => {
         )
     }, [products, categ]);
 
-    const pageLink = Array.from(document.getElementsByClassName('page-link'));
-
     const sortHandlerMin = (price) => {
-        if (currentPage === 1) {
-            paginate(2);
-            pageLink[1].classList.add('active')
-        } else {
-            paginate(1)
-        }
+        paginate(1);
         return setCurrentProduct(
             currentProduct.sort((a, b) => {
                 return a[price] > b[price] ? 1 : -1
@@ -48,12 +41,7 @@ const CategoryPage = ({currency, products}) => {
         )
     };
     const sortHandlerMax = (price) => {
-        if (currentPage === 1) {
-            paginate(2);
-            pageLink[1].classList.add('active')
-        } else {
-            paginate(1)
-        }
+        paginate(1);
         return setCurrentProduct(
             currentProduct.sort((a, b) => {
                 return a[price] < b[price] ? 1 : -1

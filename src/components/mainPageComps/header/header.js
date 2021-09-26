@@ -24,14 +24,14 @@ const Header = () => {
     return (
         <nav className='header' id='top'>
             <div className="container">
-                <Link onClick={windowTop} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>
+                <Link onClick={() => {windowTop()}} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>
                 <nav className='header__nav'>
-                    <Link onClick={windowTop} to='/' className="header__nav__link">Главная</Link>
-                    <Link onClick={windowTop} to='/new' className="header__nav__link">Новинки</Link>
-                    <Link onClick={windowTop} to='/bestsellers' className="header__nav__link">Лидеры продаж</Link>
-                    <Link onClick={windowTop} to='/' className="header__nav__link">Доставка</Link>
-                    <Link onClick={windowTop} to='/sale' className="header__nav__link">Акции</Link>
-                    <Link onClick={windowTop} to='/' className="header__nav__link">Контакты</Link>
+                    <Link onClick={() => {windowTop()}} to='/' className="header__nav__link">Главная</Link>
+                    <Link onClick={() => {windowTop()}} to='/new' className="header__nav__link">Новинки</Link>
+                    <Link onClick={() => {windowTop()}} to='/bestsellers' className="header__nav__link">Лидеры продаж</Link>
+                    <Link onClick={() => {windowTop()}} to='/' className="header__nav__link">Доставка</Link>
+                    <Link onClick={() => {windowTop()}} to='/sale' className="header__nav__link">Акции</Link>
+                    <Link onClick={() => {windowTop()}} to='/' className="header__nav__link">Контакты</Link>
                 </nav>
             </div>
 
