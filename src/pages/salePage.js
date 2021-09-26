@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 import SaleProds from "../components/salePageComps/saleProds";
+import {ScrollToTopOnMount} from "../app";
 
 const SalePage = ({currency, products, selling, setSelling}) => {
 
@@ -11,6 +12,9 @@ const SalePage = ({currency, products, selling, setSelling}) => {
 
     return (
         <div className='container' style={{display: "flex"}}>
+
+            <ScrollToTopOnMount/>
+
             <ProdCardCategs paginate={paginate}/>
             <SaleProds currency={currency} products={products} selling={selling} setSelling={setSelling}/>
         </div>

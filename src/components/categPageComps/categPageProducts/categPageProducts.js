@@ -18,7 +18,7 @@ const CategPageProducts = ({currency, currentProduct, loading, firstCountryIndex
     };
 
     const windowTop = () => {
-        return window.scrollTo(0, 0);
+        // return window.scrollTo(0, 0);
     };
 
     const addWishProd = (prod) => {

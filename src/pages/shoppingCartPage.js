@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 import ShoppingItems from "../components/shoppingCartComps/shoppingItems";
 import ShoppingForm from "../components/shoppingCartComps/shoppingForm";
+import {ScrollToTopOnMount} from "../app";
 
 const ShoppingCartPage = ({currency, shoppingProducts}) => {
 
@@ -23,6 +24,9 @@ const ShoppingCartPage = ({currency, shoppingProducts}) => {
 
     return (
         <div className='shoppingCartPage'>
+
+            <ScrollToTopOnMount/>
+
             <div className="container" style={{display: "flex"}}>
                 <ProdCardCategs paginate={paginate}/>
                 <ShoppingItems totalPrice={totalPrice} currency={currency} shoppingProducts={shoppingProducts}/>

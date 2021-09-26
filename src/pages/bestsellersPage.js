@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 import BestsellProds from "../components/bestsellComps/bestsellProds";
+import {ScrollToTopOnMount} from "../app";
 
 const BestsellersPage = ({currency, products}) => {
 
@@ -11,6 +12,9 @@ const BestsellersPage = ({currency, products}) => {
 
     return (
         <div className='container' style={{display: "flex"}}>
+
+            <ScrollToTopOnMount/>
+
             <ProdCardCategs paginate={paginate}/>
             <BestsellProds currency={currency} products={products}/>
         </div>

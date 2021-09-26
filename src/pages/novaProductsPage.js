@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 import NovaProds from "../components/novaProdsComps/novaProds";
+import {ScrollToTopOnMount} from "../app";
 
 const NovaProductsPage = ({currency, products, nova, setNova}) => {
 
@@ -11,6 +12,9 @@ const NovaProductsPage = ({currency, products, nova, setNova}) => {
 
     return (
         <div className='container' style={{display: "flex"}}>
+
+            <ScrollToTopOnMount/>
+
             <ProdCardCategs paginate={paginate}/>
             <NovaProds currency={currency} products={products} nova={nova} setNova={setNova}/>
         </div>

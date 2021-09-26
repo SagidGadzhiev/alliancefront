@@ -14,7 +14,9 @@ const ProductCard = ({currency, products}) => {
 
     return (
         <div className='productCard'>
+
             <ScrollToTopOnMount/>
+
             <div className="container" style={{display: "flex"}}>
                 <ProdCardCategs paginate={paginate}/>
                 <ProdCard products={products} currency={currency}/>

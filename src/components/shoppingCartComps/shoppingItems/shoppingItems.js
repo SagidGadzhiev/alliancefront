@@ -23,7 +23,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
     };
 
     const windowTop = () => {
-        return window.scrollTo(0, 0);
+        // return window.scrollTo(0, 0);
     };
 
     const countPlus = (prodId) => {
