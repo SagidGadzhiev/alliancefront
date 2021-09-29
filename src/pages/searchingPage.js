@@ -3,7 +3,6 @@ import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCa
 import SearchingProducts from "../components/searchPageComps/searchingProducts";
 import {useSelector} from "react-redux";
 import Pagination from "../components/categPageComps/pagination";
-import {ScrollToTopOnMount} from "../app";
 
 const SearchingPage = ({currency, products}) => {
 
@@ -24,9 +23,6 @@ const SearchingPage = ({currency, products}) => {
 
     return (
         <div className='searchingPage'>
-
-            <ScrollToTopOnMount/>
-
             <div className="container" style={{display: "flex"}}>
                 <ProdCardCategs paginate={paginate}/>
                 <div style={{padding: "15px", width: "100%"}}>

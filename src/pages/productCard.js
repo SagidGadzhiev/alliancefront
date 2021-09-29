@@ -3,7 +3,6 @@ import ProdCard from "../components/productCardComps/prodCard";
 import SameProds from "../components/productCardComps/sameProducts";
 import OtherProds from "../components/productCardComps/otherProducts";
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
-import {ScrollToTopOnMount} from "../app";
 
 const ProductCard = ({currency, products}) => {
 
@@ -14,9 +13,6 @@ const ProductCard = ({currency, products}) => {
 
     return (
         <div className='productCard'>
-
-            <ScrollToTopOnMount/>
-
             <div className="container" style={{display: "flex"}}>
                 <ProdCardCategs paginate={paginate}/>
                 <ProdCard products={products} currency={currency}/>

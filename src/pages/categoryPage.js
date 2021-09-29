@@ -3,7 +3,6 @@ import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCa
 import CategPageProducts from "../components/categPageComps/categPageProducts";
 import Pagination from "../components/categPageComps/pagination";
 import {useParams} from "react-router";
-import {ScrollToTopOnMount} from "../app";
 
 const CategoryPage = ({currency, products}) => {
 
@@ -49,9 +48,6 @@ const CategoryPage = ({currency, products}) => {
 
     return (
         <div className='categoryPage'>
-
-            <ScrollToTopOnMount/>
-
             <div className="container" style={{display: "flex"}}>
                 <ProdCardCategs paginate={paginate}/>
                 <div style={{padding: "15px", width: "100%"}}>

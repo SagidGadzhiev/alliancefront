@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCardCategs";
 import OrderedList from "../components/orderedPageComps/orderedList";
-import {ScrollToTopOnMount} from "../app";
 
 const OrderedPage = () => {
 
@@ -12,9 +11,6 @@ const OrderedPage = () => {
 
     return (
         <div className='container' style={{display: "flex"}}>
-
-            <ScrollToTopOnMount/>
-
             <ProdCardCategs paginate={paginate}/>
             <OrderedList/>
         </div>

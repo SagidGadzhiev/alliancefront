@@ -14,7 +14,7 @@ const SearchingProducts = ({currency, products, loading}) => {
     };
 
     const windowTop = () => {
-        // return window.scrollTo(0, 0);
+        return window.scrollTo(0, 0);
     };
 
     const wishes = useSelector(s => s.storeItems.wishes.map(i => i.code));
