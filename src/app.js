@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, useLocation} from 'react-router-dom';
 import MainPage from "./pages/mainPage";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -25,9 +25,13 @@ import OrderedPage from "./pages/orderedPage";
 import OrderedByDatePage from "./pages/orderedByDatePage";
 
 export function ScrollToTopOnMount() {
+
+    const {pathname} = useLocation();
+
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+    }, [pathname]);
+
     return null;
 }
 
