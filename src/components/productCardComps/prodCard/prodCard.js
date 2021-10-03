@@ -67,7 +67,7 @@ const ProdCard = ({currency, products}) => {
                         <div className='prodCard__itemDescription__aboutProduct'>
                             <div className='prodCard__itemDescription__aboutProdBlock'>
                                 <p className='prodCard__itemDescription__aboutProdBlock__name'>{i.product}</p>
-                                <p className='prodCard__itemDescription__aboutProdBlock__available'>Наличие : <span>в наличии</span>
+                                <p className={`${i.available === 'В наличии' ? 'prodCard__itemDescription__aboutProdBlock__available' : 'prodCard__itemDescription__aboutProdBlock__notAvailable'}`}>Наличие : <span>{i.available}</span>
                                 </p>
                                 <p className='prodCard__itemDescription__aboutProdBlock__price'>{i.price}$
                                     - {(i.price * currency).toFixed(0)}сом</p>
@@ -95,7 +95,7 @@ const ProdCard = ({currency, products}) => {
                             <div className='prodCard__itemDescription__aboutProdBlock'>
                                 <p className="prodCard__itemDescription__aboutProdBlock__title">Действия</p>
                                 <div className="prodCard__itemDescription__aboutProdBlock__block">
-                                    <div onClick={() => addShopProd(i)}
+                                    <button type='button' disabled={i.available !== 'В наличии'} onClick={() => addShopProd(i)}
                                          className='prodCard__itemDescription__wishBuy'>
                                         <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                              data-icon="shopping-cart"
@@ -106,8 +106,8 @@ const ProdCard = ({currency, products}) => {
                                         </svg>
                                         <p className='prodCard__itemDescription__wishBuy__text'>Добавить в
                                             корзину</p>
-                                    </div>
-                                    <div onClick={() => addWishProd(i)}
+                                    </button>
+                                    <button type='button' disabled={i.available !== 'В наличии'} onClick={() => addWishProd(i)}
                                          className='prodCard__itemDescription__wishBuy'>
                                         <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                              data-icon="heart"
@@ -119,7 +119,7 @@ const ProdCard = ({currency, products}) => {
                                         </svg>
                                         <p className='prodCard__itemDescription__wishBuy__text'>Добавить в список
                                             желаемых товаров</p>
-                                    </div>
+                                    </button>
                                 </div>
                             </div>
                         </div>

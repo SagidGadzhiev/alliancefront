@@ -84,6 +84,16 @@
     color: #4fdb51;
 }
 
+.prodCard__itemDescription__aboutProdBlock__notAvailable {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.prodCard__itemDescription__aboutProdBlock__notAvailable > span {
+    color: #e33033;
+}
+
 .prodCard__itemDescription__aboutProdBlock__price {
     color: #e74c3c;
     font-size: 22px;

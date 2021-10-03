@@ -89,6 +89,12 @@
     margin-bottom: 5px;
 }
 
+.categPageProducts__product__text__dontExist {
+    font-size: 14px;
+    color: #e33033;
+    margin-bottom: 5px;
+}
+
 .categPageProducts__product__wrapBlock {
     width: 40%;
 }
