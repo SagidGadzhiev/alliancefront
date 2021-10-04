@@ -35,12 +35,11 @@ const ProdCard = ({currency, products}) => {
     };
 
     const windowTop = () => {
-        return window.scrollTo(0, 0);
+        // return window.scrollTo(0, 0);
     };
 
     return (
         <div className='prodCard'>
-            {/*<div className="container">*/}
             {
                 products.filter(i => i.code === productCode).map((i) => (
                     <div className='prodCard__itemDescription' key={i.id}>
@@ -67,7 +66,8 @@ const ProdCard = ({currency, products}) => {
                         <div className='prodCard__itemDescription__aboutProduct'>
                             <div className='prodCard__itemDescription__aboutProdBlock'>
                                 <p className='prodCard__itemDescription__aboutProdBlock__name'>{i.product}</p>
-                                <p className={`${i.available === 'В наличии' ? 'prodCard__itemDescription__aboutProdBlock__available' : 'prodCard__itemDescription__aboutProdBlock__notAvailable'}`}>Наличие : <span>{i.available}</span>
+                                <p className={`${i.available === 'В наличии' ? 'prodCard__itemDescription__aboutProdBlock__available' : 'prodCard__itemDescription__aboutProdBlock__notAvailable'}`}>Наличие
+                                    : <span>{i.available}</span>
                                 </p>
                                 <p className='prodCard__itemDescription__aboutProdBlock__price'>{i.price}$
                                     - {(i.price * currency).toFixed(0)}сом</p>
@@ -95,8 +95,9 @@ const ProdCard = ({currency, products}) => {
                             <div className='prodCard__itemDescription__aboutProdBlock'>
                                 <p className="prodCard__itemDescription__aboutProdBlock__title">Действия</p>
                                 <div className="prodCard__itemDescription__aboutProdBlock__block">
-                                    <button type='button' disabled={i.available !== 'В наличии'} onClick={() => addShopProd(i)}
-                                         className='prodCard__itemDescription__wishBuy'>
+                                    <button type='button' disabled={i.available !== 'В наличии'}
+                                            onClick={() => addShopProd(i)}
+                                            className='prodCard__itemDescription__wishBuy'>
                                         <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                              data-icon="shopping-cart"
                                              className="svg-inline--fa fa-shopping-cart fa-w-18 prodCard__itemDescription__wishBuy__pic"
@@ -107,8 +108,9 @@ const ProdCard = ({currency, products}) => {
                                         <p className='prodCard__itemDescription__wishBuy__text'>Добавить в
                                             корзину</p>
                                     </button>
-                                    <button type='button' disabled={i.available !== 'В наличии'} onClick={() => addWishProd(i)}
-                                         className='prodCard__itemDescription__wishBuy'>
+                                    <button type='button' disabled={i.available !== 'В наличии'}
+                                            onClick={() => addWishProd(i)}
+                                            className='prodCard__itemDescription__wishBuy'>
                                         <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                              data-icon="heart"
                                              className="svg-inline--fa fa-heart fa-w-16 prodCard__itemDescription__wishBuy__pic"
@@ -126,7 +128,6 @@ const ProdCard = ({currency, products}) => {
                     </div>
                 ))
             }
-            {/*</div>*/}
         </div>
     );
 };
