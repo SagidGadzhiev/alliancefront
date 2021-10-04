@@ -11,7 +11,8 @@ const initState = {
     novas: [],
     sales: [],
     ordered: [],
-    orders: []
+    orders: [],
+    currentProducts: []
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -123,6 +124,18 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 orders: action.orders
+            }
+        }
+        case actions.GET_CURRENT_PRODUCTS: {
+            return {
+                ...state,
+                currentProducts: action.currentProducts
+            }
+        }
+        case actions.CLEAR_CURRENT_PRODUCTS: {
+            return {
+                ...state,
+                currentProducts: []
             }
         }
         default:
@@ -262,4 +275,17 @@ export const getAllOrders = () => {
                 dispatch({type: actions.GET__ALL__ORDERS, orders: data})
             })
     }
+};
+
+export const getCurrentProducts = (array) => {
+    return ({
+        type: actions.GET_CURRENT_PRODUCTS,
+        currentProducts: array
+    })
+};
+
+export const clearCurrentProducts = () => {
+    return ({
+        type: actions.CLEAR_CURRENT_PRODUCTS
+    })
 };

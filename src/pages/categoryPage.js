@@ -3,8 +3,13 @@ import ProdCardCategs from "../components/productCardComps/prodCardCategs/prodCa
 import CategPageProducts from "../components/categPageComps/categPageProducts";
 import Pagination from "../components/categPageComps/pagination";
 import {useParams} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrentProducts} from "../redux/reducers/storeItems";
 
 const CategoryPage = ({currency, products}) => {
+
+    const dispatch = useDispatch();
+    const currentProducts = useSelector(s => s.storeItems.currentProducts);
 
     const {categ} = useParams();
 
@@ -15,7 +20,7 @@ const CategoryPage = ({currency, products}) => {
     const firstCountryIndex = lastCountryIndex - productsPerPage;
 
     const paginate = (pageNumber) => {
-        setCurrentPage(pageNumber)
+        return setCurrentPage(pageNumber)
     };
 
     const [currentProduct, setCurrentProduct] = useState([]);
@@ -31,19 +36,19 @@ const CategoryPage = ({currency, products}) => {
 
     const sortHandlerMin = (price) => {
         paginate(1);
-        return setCurrentProduct(
+        return dispatch(getCurrentProducts(
             currentProduct.sort((a, b) => {
                 return a[price] > b[price] ? 1 : -1
             })
-        )
+        ));
     };
     const sortHandlerMax = (price) => {
         paginate(1);
-        return setCurrentProduct(
+        return dispatch(getCurrentProducts(
             currentProduct.sort((a, b) => {
                 return a[price] < b[price] ? 1 : -1
             })
-        )
+        ));
     };
 
     return (
@@ -56,8 +61,9 @@ const CategoryPage = ({currency, products}) => {
                                     return i.class === categ ? i :
                                         i.category === categ ? i :
                                             i.subcategory === categ ? i : null
-                                }).length} paginate={paginate}/>
-                    <CategPageProducts currency={currency} currentProduct={currentProduct}
+                                }).length}
+                                paginate={paginate}/>
+                    <CategPageProducts currency={currency} currentProduct={currentProducts.length === 0 ? currentProduct : currentProducts}
                                        firstCountryIndex={firstCountryIndex} lastCountryIndex={lastCountryIndex}
                                        sortHandlerMin={sortHandlerMin} sortHandlerMax={sortHandlerMax}/>
                     <Pagination productsPerPage={productsPerPage}
@@ -65,7 +71,8 @@ const CategoryPage = ({currency, products}) => {
                                     return i.class === categ ? i :
                                         i.category === categ ? i :
                                             i.subcategory === categ ? i : null
-                                }).length} paginate={paginate}/>
+                                }).length}
+                                paginate={paginate}/>
                 </div>
             </div>
         </div>
