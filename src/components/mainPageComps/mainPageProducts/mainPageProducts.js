@@ -22,11 +22,6 @@ const MainPageProducts = ({currency, products}) => {
             <p className='mainPageProducts__title'><span>Новые товары</span></p>
             <div className='mainPageProducts__productsBlock'>
                 {
-                    // products
-                    //     .filter(i => {
-                    //     return i.class === 'Видеокарты' ? i :
-                    //         i.class === 'Клавиатуры' ? i : i.class === 'Мыши'
-                    // })
                     novas
                         .slice(0, 18).map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
@@ -67,10 +62,6 @@ const MainPageProducts = ({currency, products}) => {
                 {
                     products.filter(i => {
                         return i.class === 'Notebook'
-                        // return i.category === 'Acer' ? i :
-                        //     i.category === 'Dell' ? i :
-                        //         i.category === 'Lenovo' ? i :
-                        //             i.category === 'Аsus' ? i : null;
                     }).slice(0, 18).map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
                             {
@@ -109,12 +100,6 @@ const MainPageProducts = ({currency, products}) => {
                 {
                     products.filter((i) => {
                         return i.class === 'Бытовая техника'
-                        // return i.category === 'Кофеварки' ? i :
-                        //     i.category === 'Кондиционеры и очистители воздуха' ? i :
-                        //         i.category === 'Пылесосы' ? i :
-                        //             i.category === 'Кухонная техника' ? i :
-                        //                 i.category === 'Фены' ? i :
-                        //                     i.category === 'Электрочайники' ? i : null
                     }).slice(0, 30).map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
                             {

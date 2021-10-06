@@ -31,16 +31,16 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
     }
 
     async function addNovaProd(novaValue) {
-        setNova(products.filter(i => i.product === novaValue));
         console.log(nova);
         axios.post('https://allianceplusserver.herokuapp.com/nova', nova).then();
+        setNova([])
         return setNovaProd('')
     }
 
     async function addSaleProd(saleValue) {
-        setSelling(products.filter(i => i.product === saleValue));
         console.log(selling);
         axios.post('https://allianceplusserver.herokuapp.com/sale', selling).then();
+        setSelling([])
         return setSaleProd('')
     }
 
@@ -64,9 +64,65 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
         setPass('')
     }
 
-    if (login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg') {
-        return <div className='authorization'>
+    // if (login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg') {
+    //     return <div className='authorization'>
+    //         <div className="container">
+    //             <h2 style={{
+    //                 display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
+    //                 margin: "20px 0"
+    //             }}>Введите
+    //                 логин и пароль</h2>
+    //             <input
+    //                 style={{
+    //                     display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
+    //                     marginBottom: "10px",
+    //                     width: "40%",
+    //                     height: "30px",
+    //                     paddingLeft: "10px"
+    //                 }}
+    //                 onChange={loginHand} type="email" placeholder='login' value={l}/>
+    //             <input
+    //                 style={{
+    //                     display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
+    //                     marginBottom: "10px",
+    //                     width: "40%",
+    //                     height: "30px",
+    //                     paddingLeft: "10px"
+    //                 }}
+    //                 onChange={passHand} type="password" placeholder='password' value={p}/>
+    //             <button
+    //                 style={{
+    //                     display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
+    //                     width: "100px",
+    //                     height: "30px"
+    //                 }}
+    //                 type="button" onClick={() => signIn(l, p)}>Войти
+    //             </button>
+    //             <button
+    //                 style={{
+    //                     display: `${login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg' ? 'none' : 'block'}`,
+    //                     width: "100px",
+    //                     height: "30px"
+    //                 }}
+    //                 type="button" onClick={output}>Выйти
+    //             </button>
+    //             <p style={{
+    //                 display: `${login === '' && pass === '' ? 'none' :
+    //                     login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg' ? 'block' : 'none'}`,
+    //                 marginTop: "10px",
+    //                 fontWeight: "bold",
+    //                 fontSize: "12px"
+    //             }}>Неверный
+    //                 логин или пароль</p>
+    //         </div>
+    //     </div>
+    // }
+
+    return (
+        <div className='adminPage' style={{margin: "30px 0"}}>
+
             <div className="container">
+
                 <h2 style={{
                     display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
                     margin: "20px 0"
@@ -80,7 +136,7 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                         height: "30px",
                         paddingLeft: "10px"
                     }}
-                    onChange={loginHand} type="text" placeholder='login' value={l}/>
+                    onChange={loginHand} type="email" placeholder='login' value={l}/>
                 <input
                     style={{
                         display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
@@ -89,7 +145,7 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                         height: "30px",
                         paddingLeft: "10px"
                     }}
-                    onChange={passHand} type="text" placeholder='password' value={p}/>
+                    onChange={passHand} type="password" placeholder='password' value={p}/>
                 <button
                     style={{
                         display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
@@ -98,6 +154,7 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                     }}
                     type="button" onClick={() => signIn(l, p)}>Войти
                 </button>
+
                 <button
                     style={{
                         display: `${login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg' ? 'none' : 'block'}`,
@@ -106,6 +163,7 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                     }}
                     type="button" onClick={output}>Выйти
                 </button>
+
                 <p style={{
                     display: `${login === '' && pass === '' ? 'none' :
                         login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg' ? 'block' : 'none'}`,
@@ -114,63 +172,6 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                     fontSize: "12px"
                 }}>Неверный
                     логин или пароль</p>
-            </div>
-        </div>
-    }
-
-    return (
-        <div className='adminPage' style={{margin: "30px 0"}}>
-
-            <div className="container">
-
-                {/*<h2 style={{*/}
-                {/*    display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,*/}
-                {/*    margin: "20px 0"*/}
-                {/*}}>Введите*/}
-                {/*    логин и пароль</h2>*/}
-                {/*<input*/}
-                {/*    style={{*/}
-                {/*        display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,*/}
-                {/*        marginBottom: "10px",*/}
-                {/*        width: "40%",*/}
-                {/*        height: "30px",*/}
-                {/*        paddingLeft: "10px"*/}
-                {/*    }}*/}
-                {/*    onChange={loginHand} type="text" placeholder='login' value={l}/>*/}
-                {/*<input*/}
-                {/*    style={{*/}
-                {/*        display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,*/}
-                {/*        marginBottom: "10px",*/}
-                {/*        width: "40%",*/}
-                {/*        height: "30px",*/}
-                {/*        paddingLeft: "10px"*/}
-                {/*    }}*/}
-                {/*    onChange={passHand} type="text" placeholder='password' value={p}/>*/}
-                {/*<button*/}
-                {/*    style={{*/}
-                {/*        display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,*/}
-                {/*        width: "100px",*/}
-                {/*        height: "30px"*/}
-                {/*    }}*/}
-                {/*    type="button" onClick={() => signIn(l, p)}>Войти*/}
-                {/*</button>*/}
-                <button
-                    style={{
-                        display: `${login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg' ? 'none' : 'block'}`,
-                        width: "100px",
-                        height: "30px"
-                    }}
-                    type="button" onClick={output}>Выйти
-                </button>
-
-                {/*<p style={{*/}
-                {/*    display: `${login === '' && pass === '' ? 'none' :*/}
-                {/*        login !== 'allianceplus.kg@gmail.com' && pass !== 'alliancekg' ? 'block' : 'none'}`,*/}
-                {/*    marginTop: "10px",*/}
-                {/*    fontWeight: "bold",*/}
-                {/*    fontSize: "12px"*/}
-                {/*}}>Неверный*/}
-                {/*    логин или пароль</p>*/}
 
                 <div
                     style={{
@@ -203,34 +204,102 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                     }
                 </div>
 
-                <p style={{marginTop: "30px", fontWeight: "bold"}} className='nullImgCount'>Продуктов без картинок
+                <p style={{
+                    display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'block' : 'none'}`,
+                    marginTop: "30px",
+                    fontWeight: "bold"
+                }} className='nullImgCount'>Продуктов без картинок
                     : {prods.filter(i => i.img === '').length}</p>
 
                 <div style={{
-                    display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'block' : 'none'}`,
+                    // display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'block' : 'none'}`,
                     marginTop: "50px"
                 }}>
                     <h2 style={{marginBottom: "20px"}}>Добавление нового товара</h2>
-                    <input style={{width: "100%", height: "40px"}}
-                           onChange={(e) => setNovaProd(e.target.value)} type="text"
-                           placeholder='Введите название товара' value={novaProd}/>
-                    <button style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
-                            onClick={() => addNovaProd(novaProd)}>Добавить новый товар
+                    <input
+                        style={{width: "100%", height: "40px"}}
+                        onChange={(e) => setNovaProd(e.target.value)} type="text"
+                        placeholder='Введите название товара' value={novaProd}/>
+                    <button
+                        style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
+                        onClick={() => {
+                            setNova(products.filter(i => i.product === novaProd))
+                        }}>Найти товар
+                    </button>
+                    <button
+                        disabled={nova.length === 0}
+                        style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
+                        onClick={() => addNovaProd(novaProd)}>Добавить новый товар
                     </button>
                 </div>
 
+                {
+                    nova.map(i => (
+                        <div key={i.id}>
+                            <img style={{
+                                width: "100px",
+                                height: "100px",
+                                objectFit: "contain",
+                                objectPosition: "center"
+                            }} src={i.img} alt="pic"/>
+                            <p>ID : {i.id}</p>
+                            <p>Код товара : {i.code}</p>
+                            <p>Название : {i.product}</p>
+                            <p>Класс : {i.class}</p>
+                            <p>Категория : {i.category}</p>
+                            <p>Под категория : {i.subcategory}</p>
+                            <p>Цена : {i.price}</p>
+                            <p>Количество : {i.count}</p>
+                            <p>Единица : {i.unit}</p>
+                            <p>Комментарий(гарантия) : {i.comment}</p>
+                        </div>
+                    ))
+                }
+
                 <div style={{
-                    display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'block' : 'none'}`,
+                    // display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'block' : 'none'}`,
                     marginTop: "50px"
                 }}>
                     <h2 style={{marginBottom: "20px"}}>Добавление акционного товара</h2>
-                    <input style={{width: "100%", height: "40px"}}
-                           onChange={(e) => setSaleProd(e.target.value)} type="text"
-                           placeholder='Введите название товара' value={saleProd}/>
-                    <button style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
-                            onClick={() => addSaleProd(saleProd)}>Добавить новый акционный товар
+                    <input
+                        style={{width: "100%", height: "40px"}}
+                        onChange={(e) => setSaleProd(e.target.value)} type="text"
+                        placeholder='Введите название товара' value={saleProd}/>
+                    <button
+                        style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
+                        onClick={() => {
+                            setSelling(products.filter(i => i.product === saleProd))
+                        }}>Найти товар
+                    </button>
+                    <button
+                        disabled={selling.length === 0}
+                        style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
+                        onClick={() => addSaleProd(saleProd)}>Добавить новый акционный товар
                     </button>
                 </div>
+
+                {
+                    selling.map(i => (
+                        <div key={i.id}>
+                            <img style={{
+                                width: "100px",
+                                height: "100px",
+                                objectFit: "contain",
+                                objectPosition: "center"
+                            }} src={i.img} alt="pic"/>
+                            <p>ID : {i.id}</p>
+                            <p>Код товара : {i.code}</p>
+                            <p>Название : {i.product}</p>
+                            <p>Класс : {i.class}</p>
+                            <p>Категория : {i.category}</p>
+                            <p>Под категория : {i.subcategory}</p>
+                            <p>Цена : {i.price}</p>
+                            <p>Количество : {i.count}</p>
+                            <p>Единица : {i.unit}</p>
+                            <p>Комментарий(гарантия) : {i.comment}</p>
+                        </div>
+                    ))
+                }
 
             </div>
 

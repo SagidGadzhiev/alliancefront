@@ -28,8 +28,8 @@ const App = () => {
 
     const dispatch = useDispatch();
 
-    const [nova, setNova] = useState({});
-    const [selling, setSelling] = useState({});
+    const [nova, setNova] = useState([]);
+    const [selling, setSelling] = useState([]);
 
     const products = useSelector(s => s.storeItems.products.map(i => i));
     const wishesProducts = useSelector(s => s.storeItems.wishes);

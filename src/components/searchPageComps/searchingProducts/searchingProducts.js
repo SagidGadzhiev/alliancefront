@@ -38,13 +38,6 @@ const SearchingProducts = ({currency, products, loading}) => {
         }
     };
 
-    if (loading) {
-        return <div className='loadingBlock'>
-            <div className="lds-dual-ring"></div>
-            <h2 className='loadingBlock__title'>Страница загружается</h2>
-        </div>
-    }
-
     return (
         <div className='categPageProducts'>
             {
