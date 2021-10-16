@@ -31,7 +31,11 @@ const App = () => {
     const [nova, setNova] = useState([]);
     const [selling, setSelling] = useState([]);
 
-    const products = useSelector(s => s.storeItems.products.map(i => i));
+    const products = useSelector(s => s.storeItems.products
+        // .map((i) => {
+        //     return {...i, price: i.price <= 100 ? i.price + (i.price * 0.1) : i.price}
+        // })
+    );
     const wishesProducts = useSelector(s => s.storeItems.wishes);
     const shoppingProducts = useSelector(s => s.storeItems.shopping);
 

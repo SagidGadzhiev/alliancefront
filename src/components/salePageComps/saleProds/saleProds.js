@@ -20,6 +20,7 @@ const SaleProds = ({currency}) => {
     return (
         <div style={{margin: "20px 0 20px 0"}}>
             <p className='prodsUndCategs__title'><span>Товары по акции</span></p>
+            <p className='prodsUndCategs__webCameraSale'>Камеры DH-HAC-HDW1000RP всего за $5!!!</p>
             <div className='prodsUndCategs__productsBlock'>
                 {
                     sales.map((i) => (
@@ -63,18 +64,6 @@ const SaleProds = ({currency}) => {
                 width: "100%"
             }}>
                 <tbody>
-                <tr className='sale__tr'>
-                    <td className='sale__tr__td'>AMD E2-3000 // DDR3 2GB // HDD 1TB 5400rmp</td>
-                    <td className='sale__tr__td'>ВСЕГО ЗА <span>$100</span>!!!</td>
-                </tr>
-                <tr className='sale__tr'>
-                    <td className='sale__tr__td'>AMD E2-3000 // DDR3 2GB // SSD 120GB</td>
-                    <td className='sale__tr__td'>ВСЕГО ЗА <span>$105</span>!!!</td>
-                </tr>
-                <tr className='sale__tr'>
-                    <td className='sale__tr__td'>AMD E2-3000 // DDR3 4GB // HDD 1TB 5400rmp</td>
-                    <td className='sale__tr__td'>ВСЕГО ЗА <span>$115</span>!!!</td>
-                </tr>
                 <tr className='sale__tr'>
                     <td className='sale__tr__td'>Celeron G1820 // DDR3 2GB // HDD 1TB 5400rmp</td>
                     <td className='sale__tr__td'>ВСЕГО ЗА <span>$115</span>!!!</td>

@@ -132,3 +132,8 @@
 .prodCard__itemDescription__wishBuy:last-child {
     /*margin-left: 5px;*/
 }
+
+.prodCard__itemDescription__aboutProdBlock__attention {
+    color: #666;
+    font-size: 12px;
+}

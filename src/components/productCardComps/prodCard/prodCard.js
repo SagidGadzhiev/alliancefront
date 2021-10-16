@@ -71,6 +71,8 @@ const ProdCard = ({currency, products}) => {
                                 </p>
                                 <p className='prodCard__itemDescription__aboutProdBlock__price'>{i.price}$
                                     - {(i.price * currency).toFixed(0)}сом</p>
+                                <p className='prodCard__itemDescription__aboutProdBlock__attention'>Убедительная просьба
+                                    уточнять цену товара на момент заказа</p>
                             </div>
                             <div className='prodCard__itemDescription__aboutProdBlock'>
                                 <p className='prodCard__itemDescription__aboutProdBlock__text'>Тип
