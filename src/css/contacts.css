@@ -1,0 +1,19 @@
+.contactsPage__description {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.contactsPage__description__title {
+    letter-spacing: 5px;
+    color: #e33033;
+}
+
+.contactsPage__description__list {
+
+}
+
+.contactsPage__description__list__text {
+    line-height: 20px;
+    margin-bottom: 3px;
+    text-indent: 30px;
+}

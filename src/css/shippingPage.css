@@ -1,0 +1,25 @@
+.shippingPage__description {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.shippingPage__description__title {
+    letter-spacing: 5px;
+    color: #e33033;
+}
+
+.shippingPage__description__text {
+    text-align: justify;
+    text-indent: 30px;
+    line-height: 20px;
+}
+
+.shippingPage__description__list {
+
+}
+
+.shippingPage__description__list__text {
+    line-height: 20px;
+    margin-bottom: 3px;
+    text-indent: 30px;
+}

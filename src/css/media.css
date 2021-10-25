@@ -66,7 +66,9 @@
     }
 
     .burger-menu {
-        margin-top: 10px;
+        display: block !important;
+        /*margin-top: 10px;*/
+        margin-left: 10px;
         height: 40px;
         width: 42px;
         position: relative;
@@ -115,6 +117,11 @@
     }
 
     .categories, .prodCardCategs__categories {
+
+        /*!!!!!!!!!!!!!!!!!!!!*/
+        padding-bottom: 50px;
+        /*!!!!!!!!!!!!!!!!!!!!!!*/
+
         position: fixed;
         top: 0;
         right: -100%;
@@ -188,7 +195,8 @@
     }
 
     .searching__category {
-        width: 28%;
+        /*width: 28%;*/
+        display: none;
     }
 
     .mainPage__content__productsAndCategs {
@@ -241,9 +249,11 @@
     }
 
     .burger-menu {
-        position: absolute;
-        top: 73px;
-        left: 10px;
+        margin-top: 0;
+        margin-left: 5px;
+        /*position: absolute;*/
+        /*top: 73px;*/
+        /*left: 10px;*/
     }
 
     .searching__wishes__wish__pic, .searching__wishes__cart__pic {
@@ -292,7 +302,8 @@
 
     .searching__form {
         width: 50%;
-        margin-left: 100px;
+        /*margin-left: 100px;*/
+        margin-left: 0;
     }
 
     .searching__category {
@@ -320,59 +331,75 @@
         justify-content: space-between;
         align-items: center;
     }
+
     .otherProds__product__code {
         font-size: 10px;
     }
+
     .otherProds__product__comment {
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 10px;
     }
+
     .otherProds__product {
         padding: 10px 10px 40px 10px;
     }
+
     .otherProds__product__price {
         font-size: 12px;
     }
+
     .otherProds__product__name {
         font-size: 13px;
     }
+
     .otherProds__product__img {
         width: 90% !important;
         height: unset;
     }
+
     .sameProds__title:before {
         width: unset;
     }
+
     .sameProds__productsBlock__block {
         display: flex;
     }
+
     .sameProds__productsBlock__price {
         font-size: 14px;
     }
+
     .sameProds__product__img {
         width: 100%;
     }
+
     .sameProds__productsBlock__name {
         font-size: 13px;
         line-height: 1.5;
         max-height: unset;
     }
+
     .sameProds__productsBlock {
         flex-direction: column;
     }
+
     .sameProds__product {
         flex-direction: unset;
         margin-bottom: 20px;
         border-bottom: 1px solid #ddd;
     }
+
     .prodCard__itemDescription__img {
         display: block;
         margin: 0 auto;
     }
+
     .prodCard__itemDescription {
         display: block;
     }
+
     .categPageProducts__product__wishBuy__block {
         /*background: none;*/
         /*border: none;*/
@@ -380,35 +407,44 @@
         padding: unset;
         width: 100%;
     }
+
     .categPageProducts__product__wishBuy__block__pic {
         /*fill: black;*/
     }
+
     .categPageProducts__product__price {
         font-size: 11px;
     }
+
     .categPageProducts__product__text {
         font-size: 11px;
     }
+
     .categPageProducts__product__picPriceBlock {
         padding: 5px;
     }
+
     .categPageProducts__product__code {
         font-size: 10px;
     }
+
     .categPageProducts__product__warranty {
         max-width: 175px;
         max-height: unset;
         font-size: 11px;
     }
+
     .categPageProducts__product__name {
         max-width: 175px;
         max-height: unset;
         font-size: 13px;
     }
+
     .categPageProducts__product__img {
         width: 80px;
         height: 80px;
     }
+
     .shoppingForm__form__label {
         width: unset;
     }
@@ -420,9 +456,15 @@
 
 @media (max-width: 567px) {
     .burger-menu {
-        position: absolute;
-        top: 108px;
-        left: 10px;
+        margin-top: 0;
+        margin-left: 5px;
+        /*position: absolute;*/
+        /*top: 108px;*/
+        /*left: 10px;*/
+    }
+
+    .searching__form {
+        margin-left: 0;
     }
 }
 

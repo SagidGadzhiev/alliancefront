@@ -130,13 +130,13 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                     <p className='shoppingForm__form__warning'>Нажимая кнопку "Подтвердить заказ", вы принимаете
                         "Условия продажи товаров" электронной торговой площадки AlliancePlus.kg.</p>
 
-                    <input style={{display: "none"}} onChange={(e) => setTot(e.target.value)} name='products'
-                           type="text"
-                           value={
-                               shoppingProducts.map(i => {
-                                   return JSON.stringify(i)
-                               })
-                           }/>
+                    <textarea style={{display: "none"}} onChange={(e) => setTot(e.target.value)} name='products'
+                              value={
+                                  shoppingProducts.map(i => {
+                                      return JSON.stringify(i, null, '\t')
+                                  })
+                              }
+                    />
                     <input style={{display: "none"}} type="text" name='totalDoll' value={totalPrice}
                            onChange={(e) => setTot(e.target.value)}/>
                     <input style={{display: "none"}} type="text" name='totalSom' value={totalPrice * currency}

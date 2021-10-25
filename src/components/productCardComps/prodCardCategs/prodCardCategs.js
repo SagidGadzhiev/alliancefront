@@ -36,10 +36,10 @@ const ProdCardCategs = ({paginate}) => {
         return window.scrollTo(0, 0);
     };
 
-    const burgerMenu = () => {
-        document.getElementById('bgMenu').classList.toggle('active');
-        return document.getElementById('navCateg').classList.toggle('active')
-    };
+    // const burgerMenu = () => {
+    //     document.getElementById('bgMenu').classList.toggle('active');
+    //     return document.getElementById('navCateg').classList.toggle('active')
+    // };
 
     const removeActive = () => {
         document.getElementById('bgMenu').classList.remove('active');
@@ -49,9 +49,9 @@ const ProdCardCategs = ({paginate}) => {
     return (
         <div className='prodCardCategs'>
 
-            <div id='bgMenu' className="burger-menu" onClick={burgerMenu}>
-                <span className="burger-menu__line"></span>
-            </div>
+            {/*<div id='bgMenu' className="burger-menu" onClick={burgerMenu}>*/}
+            {/*    <span className="burger-menu__line"></span>*/}
+            {/*</div>*/}
 
             <nav className="prodCardCategs__categories" id='navCateg'>
                 {

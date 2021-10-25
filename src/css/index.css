@@ -17,6 +17,9 @@
 @import "media.css";
 @import "saleProds.css";
 @import "orderedList.css";
+@import "shippingPage.css";
+@import "contacts.css";
+@import "aboutUs.css";
 
 * {
     margin: 0;

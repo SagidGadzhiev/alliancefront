@@ -36,10 +36,10 @@ const Content = () => {
         return window.scrollTo(0, 0);
     };
 
-    const burgerMenu = () => {
-        document.getElementById('bgMenu').classList.toggle('active');
-        return document.getElementById('navCateg').classList.toggle('active')
-    };
+    // const burgerMenu = () => {
+    //     document.getElementById('bgMenu').classList.toggle('active');
+    //     return document.getElementById('navCateg').classList.toggle('active')
+    // };
 
     const removeActive = () => {
         document.getElementById('bgMenu').classList.remove('active');
@@ -49,9 +49,9 @@ const Content = () => {
     return (
         <div className='content'>
 
-            <div id='bgMenu' className="burger-menu" onClick={burgerMenu}>
-                <span className="burger-menu__line"></span>
-            </div>
+            {/*<div id='bgMenu' className="burger-menu" onClick={burgerMenu}>*/}
+            {/*    <span className="burger-menu__line"></span>*/}
+            {/*</div>*/}
 
             <nav className="categories" id='navCateg'>
                 {

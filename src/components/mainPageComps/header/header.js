@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getSearching} from "../../../redux/reducers/storeItems";
+import allianceLogo from "../../../assets/allianceLogos/allianceLogoComputerWhatsappPlus.png"
 
 const Header = () => {
 
@@ -21,21 +22,55 @@ const Header = () => {
         return window.scrollTo(0, 0);
     };
 
+    const burgerMenu = () => {
+        document.getElementById('bgMenu').classList.toggle('active');
+        return document.getElementById('navCateg').classList.toggle('active')
+    };
+
     return (
         <nav className='header' id='top'>
             <div className="container">
-                <Link onClick={() => {windowTop()}} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>
+                <div style={{
+                    display: "flex",
+                    alignItems: "center"
+                }}>
+                    <Link onClick={windowTop} to='/'>
+                        <img style={{width: "150px"}} src={allianceLogo} alt="pic"/>
+                    </Link>
+                    <Link onClick={() => {
+                        windowTop()
+                    }} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>
+                </div>
+
+                {/*<Link onClick={() => {windowTop()}} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>*/}
                 <nav className='header__nav'>
-                    <Link onClick={() => {windowTop()}} to='/' className="header__nav__link">Главная</Link>
-                    <Link onClick={() => {windowTop()}} to='/new' className="header__nav__link">Новинки</Link>
-                    <Link onClick={() => {windowTop()}} to='/bestsellers' className="header__nav__link">Лидеры продаж</Link>
-                    <Link onClick={() => {windowTop()}} to='/' className="header__nav__link">Доставка</Link>
-                    <Link onClick={() => {windowTop()}} to='/sale' className="header__nav__link">Акции</Link>
-                    <Link onClick={() => {windowTop()}} to='/' className="header__nav__link">Контакты</Link>
+                    <Link onClick={() => {
+                        windowTop()
+                    }} to='/' className="header__nav__link">Главная</Link>
+                    <Link onClick={() => {
+                        windowTop()
+                    }} to='/new' className="header__nav__link">Новинки</Link>
+                    <Link onClick={() => {
+                        windowTop()
+                    }} to='/bestsellers' className="header__nav__link">Лидеры продаж</Link>
+                    <Link onClick={() => {
+                        windowTop()
+                    }} to='/shipping' className="header__nav__link">Доставка</Link>
+                    <Link onClick={() => {
+                        windowTop()
+                    }} to='/sale' className="header__nav__link">Акции</Link>
+                    <Link onClick={() => {
+                        windowTop()
+                    }} to='/contacts' className="header__nav__link">Контакты</Link>
                 </nav>
             </div>
 
             <nav className="searching">
+
+                <div id='bgMenu' className="burger-menu" onClick={burgerMenu} style={{display: "none"}}>
+                    <span className="burger-menu__line"></span>
+                </div>
+
                 <nav className="searching__category">
                     <nav className='searching__category__nav'>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th-list"

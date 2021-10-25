@@ -1,0 +1,22 @@
+.aboutUs__description {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.aboutUs__description__title {
+    text-align: center;
+    letter-spacing: 3px;
+    color: #e33033;
+    margin-bottom: 20px;
+}
+
+.aboutUs__description__list {
+
+}
+
+.aboutUs__description__list__text {
+    line-height: 20px;
+    margin-bottom: 3px;
+    text-indent: 30px;
+    text-align: justify;
+}
