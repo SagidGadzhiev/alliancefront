@@ -21,9 +21,14 @@ const OtherProds = ({currency, products}) => {
         <div>
             <p className='sameProds__title'><span>Другие товары</span></p>
             <Carousel className='otherProds' infiniteLoop={true} stopOnHover={true} autoPlay={false} interval={5000}
-                      showArrows={true} showThumbs={false} centerMode={true} centerSlidePercentage={30}>
+                      showArrows={true} showThumbs={false} centerMode={true}>
                 {
-                    products.slice(1100, 1118).map((i) => (
+                    products
+                        .filter(i => {
+                            return i.class === 'Наушники' ? i : null;
+                        })
+                        .slice(0, 10)
+                        .map((i) => (
                         <div className='otherProds__product' key={i.id}>
                             {
                                 i.img.length === 0 ?

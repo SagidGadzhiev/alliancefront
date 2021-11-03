@@ -219,11 +219,11 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                     <input
                         style={{width: "100%", height: "40px"}}
                         onChange={(e) => setNovaProd(e.target.value)} type="text"
-                        placeholder='Введите название товара' value={novaProd}/>
+                        placeholder='Введите код товара' value={novaProd}/>
                     <button
                         style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
                         onClick={() => {
-                            setNova(products.filter(i => i.product === novaProd))
+                            setNova(products.filter(i => i.code === novaProd))
                         }}>Найти товар
                     </button>
                     <button
@@ -264,11 +264,11 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
                     <input
                         style={{width: "100%", height: "40px"}}
                         onChange={(e) => setSaleProd(e.target.value)} type="text"
-                        placeholder='Введите название товара' value={saleProd}/>
+                        placeholder='Введите код товара' value={saleProd}/>
                     <button
                         style={{width: "100%", height: "40px", marginTop: 10, cursor: "pointer"}} type="submit"
                         onClick={() => {
-                            setSelling(products.filter(i => i.product === saleProd))
+                            setSelling(products.filter(i => i.code === saleProd))
                         }}>Найти товар
                     </button>
                     <button

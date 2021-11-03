@@ -159,8 +159,8 @@
     }
 
     .categPageProducts__product__name {
-        max-width: 330px;
-        max-height: 53px;
+        /*max-width: 330px;*/
+        /*max-height: 53px;*/
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -323,6 +323,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
 }
 
@@ -354,10 +355,10 @@
         font-size: 13px;
     }
 
-    .otherProds__product__img {
-        width: 90% !important;
-        height: unset;
-    }
+    /*.otherProds__product__img {*/
+    /*    width: 90% !important;*/
+    /*    height: unset;*/
+    /*}*/
 
     .sameProds__title:before {
         width: unset;

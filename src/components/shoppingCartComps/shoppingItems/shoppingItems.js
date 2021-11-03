@@ -131,6 +131,15 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                 - {(totalPrice * currency).toFixed(0)}сом</p>
                         </div>
 
+                        <div className="total__price">
+                            <p className='total__price__title'>Доставка : </p>
+                            <p className='total__price__text'>
+                                {
+                                    totalPrice * currency < 2000 ? '150 сом' : 'бесплатно'
+                                }
+                            </p>
+                        </div>
+
                     </div>
             }
 

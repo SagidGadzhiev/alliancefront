@@ -3,18 +3,18 @@
   "name": "AlliancePlus.kg",
   "icons": [
     {
-      "src": "rebel-brands.svg",
+      "src": "allianceLogoComputerWhatsappPlus.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg+xml"
+      "type": "image/png"
     },
     {
-      "src": "rebel-brands.svg",
-      "type": "image/svg+xml",
+      "src": "allianceLogoComputerWhatsappPlus.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "rebel-brands.svg",
-      "type": "image/svg+xml",
+      "src": "allianceLogoComputerWhatsappPlus.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],

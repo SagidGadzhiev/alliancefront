@@ -19,6 +19,7 @@ const ShippingPage = () => {
                         в субботу с 09:00 до 17:00,
                         воскресенье - выходной
                     </p>
+                    <br/>
                     <h2 className='shippingPage__description__title'>Доставка</h2>
                     <p className='shippingPage__description__text'>
                         Для более точной контактной информации, пишите, пожалуйста, ваш email в комментариях для заказа
@@ -26,6 +27,7 @@ const ShippingPage = () => {
                         возможно связаться с клиентом (Если мы не свяжемся с вами мы НЕ СМОЖЕМ доставить Вам заказ и
                         обслужить).
                     </p>
+                    <br/>
                     <h2 className='shippingPage__description__title'>Условия доставки</h2>
                     <ul className='shippingPage__description__list'>
                         <li className='shippingPage__description__list__text'>Доставка стоимостью до 2000сом, по
@@ -43,15 +45,15 @@ const ShippingPage = () => {
                             службы доставки для уточнения и подтверждения заказа,
                             уточнения точного времени и места доставки.
                         </li>
-                        <li className='shippingPage__description__list__text'>По договоренности с заказчиком, заказ
-                            может осуществляться
-                            в течение дня с момента заказа, на следующий день,
-                            или в другое время, удобное заказчику.
+                        <li className='shippingPage__description__list__text'>
+                            Развозка товаров осуществляется с 9:00 до 16:00, заказы сделанные после указанного времени
+                            доставляются на следующий день.
                         </li>
                         <li className='shippingPage__description__list__text'>Доставка осуществляется исключительно
                             курьером.
                         </li>
                     </ul>
+                    <br/>
                     <h2 className='shippingPage__description__title'>
                         Информация для корпоративных клиентов.
                         На сайте цены указаны без учета НДС.

@@ -21,7 +21,7 @@ const BestsellProds = ({currency, products}) => {
             <div className='prodsUndCategs__productsBlock'>
                 {
                     products.filter(i => {
-                        return i.category === 'Acer' || i.category === 'Dell' || i.category === 'Lenovo' || i.category === 'Asus' ? i : i.class === 'Клавиатуры' ? i : i.class === 'Мыши' ? i : null
+                        return i.category === 'Lenovo' ? i : null
                     }).map((i) => (
                         <div key={i.id} className='prodsUndCategs__product'>
                             {

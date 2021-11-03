@@ -20,7 +20,7 @@ const SaleProds = ({currency}) => {
     return (
         <div style={{margin: "20px 0 20px 0"}}>
             <p className='prodsUndCategs__title'><span>Товары по акции</span></p>
-            <p className='prodsUndCategs__webCameraSale'>Камеры DH-HAC-HDW1000RP всего за $5!!!</p>
+            <p className='prodsUndCategs__webCameraSale'>Камеры DH-HAC-HDW1000RP всего за $7!!!</p>
             <div className='prodsUndCategs__productsBlock'>
                 {
                     sales.map((i) => (
@@ -49,7 +49,8 @@ const SaleProds = ({currency}) => {
                                 windowTop()
                             }}
                                   className="mainPageProducts__product__name">{i.product}</Link>
-                            <p className="mainPageProducts__product__price">{i.price}$
+                            <p className="mainPageProducts__product__price">
+                                {i.price === undefined ? i.price : (i.price).toFixed(2)}$
                                 - {(i.price * currency).toFixed(0)}сом</p>
                             <p className="mainPageProducts__product__warranty">Комментарий(гарантия) : {i.comment}</p>
                             <p className="mainPageProducts__product__code">Код товара : {i.code}</p>

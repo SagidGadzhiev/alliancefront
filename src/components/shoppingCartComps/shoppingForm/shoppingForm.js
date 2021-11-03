@@ -105,7 +105,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                                 className='shoppingForm__form__label__input' name='payment'>
                             <option value="">Выбрать</option>
                             <option>Наличными</option>
-                            <option>По карте</option>
+                            {/*<option>По карте</option>*/}
                         </select>
                     </label>
                     <label className='shoppingForm__form__label'>
@@ -115,7 +115,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                                     setShipping(e.target.value)
                                 }}>
                             <option value="">Выбрать</option>
-                            <option>Самовывоз</option>
+                            {/*<option>Самовывоз</option>*/}
                             <option>Курьер</option>
                         </select>
                     </label>
