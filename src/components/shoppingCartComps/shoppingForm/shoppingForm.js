@@ -53,8 +53,8 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                 }, (error) => {
                     console.log(error.text);
                 });
-            alert(`Ваш заказ принят в обработку, номер заказа ${orders[orders.length - 1].orderNumber + 1}`);
-            dispatch(getOrdered(shoppingProducts, `${('0' + date.getDate()).slice(-2)}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getFullYear()).slice(-2)}`, orders[orders.length - 1].orderNumber + 1));
+            alert(`Ваш заказ принят в обработку, номер заказа ${orders.length === 0 ? 1 : orders[orders.length - 1].orderNumber + 1}`);
+            dispatch(getOrdered(shoppingProducts, `${('0' + date.getDate()).slice(-2)}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getFullYear()).slice(-2)}`, orders.length === 0 ? 1 : orders[orders.length - 1].orderNumber + 1));
             dispatch(clearAllShopping())
         }
         return e.target.reset()
@@ -144,7 +144,7 @@ const ShoppingForm = ({currency, shoppingProducts, totalPrice}) => {
                     <input style={{display: "none"}} type="text" name='currency' value={currency}
                            onChange={(e) => setTot(e.target.value)}/>
                     <input style={{display: "none"}} type="text" name='numberOrder'
-                           value={orders[orders.length - 1].orderNumber + 1}
+                           value={orders.length === 0 ? 1 : orders[orders.length - 1].orderNumber + 1}
                            onChange={(e) => setTot(e.target.value)}/>
                 </form>
             </div>
