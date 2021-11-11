@@ -70,7 +70,7 @@ const ProdCard = ({currency, products}) => {
                                     : <span>{i.available}</span>
                                 </p>
                                 <p className='prodCard__itemDescription__aboutProdBlock__price'>{i.price}$
-                                    - {(i.price * currency).toFixed(0)}сом</p>
+                                    - {(i.price * currency).toFixed(0)}сом (1USD = {currency}KGS)</p>
                                 <p className='prodCard__itemDescription__aboutProdBlock__attention'>Убедительная просьба
                                     уточнять цену товара на момент заказа</p>
                             </div>
