@@ -49,6 +49,10 @@ const SaleProds = ({currency}) => {
                                 windowTop()
                             }}
                                   className="mainPageProducts__product__name">{i.product}</Link>
+                            <p className='saleProd__product__lineThroughPrice'>
+                                {i.price === undefined ? i.price : (i.price + (i.price * 0.1)).toFixed(2)}$
+                                - {((i.price * currency) + ((i.price * currency) * 0.1)).toFixed(0)}сом
+                            </p>
                             <p className="mainPageProducts__product__price">
                                 {i.price === undefined ? i.price : (i.price).toFixed(2)}$
                                 - {(i.price * currency).toFixed(0)}сом</p>

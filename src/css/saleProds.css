@@ -17,3 +17,7 @@
     font-weight: bold;
     padding-left: 18px;
 }
+
+.saleProd__product__lineThroughPrice {
+    text-decoration: line-through;
+}

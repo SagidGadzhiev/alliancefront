@@ -1,25 +1,25 @@
 import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {Carousel} from 'react-responsive-carousel';
-import electronics from '../../../img/electronics.jpg'
-import sale from '../../../img/sale.jpg'
-import arrive from '../../../img/arrive.jpg'
 import {Link} from "react-router-dom";
+import allianceSlide from '../../../img/allianceSlide.png'
+import allianceSlideNotebooks from '../../../img/allianceSlideNotebooks.png'
+import allianceSlideAccessory from '../../../img/allianceSlideAccessory.png'
 
 const NewsCarousel = () => {
     return (
-        <Carousel style={{maxWidth: "900px"}} infiniteLoop={true} stopOnHover={true} autoPlay={true} interval={5000} showArrows={true}
+        <Carousel className='carousel-wrap' infiniteLoop={true} stopOnHover={true}
+                  autoPlay={true} interval={5000}
+                  showArrows={true}
                   showThumbs={false}>
-            <div>
-                <img className='carousel-img' src={electronics} alt="pic" />
-            </div>
-            <Link to='/new' style={{display: "block"}}>
-                <img className='carousel-img' src={arrive} alt="pic"/>
-                <p className="carousel-text">Перейдите по ссылке и узнайте о недавно поступивших товарах!</p>
+            <Link className='carousel-wrap__block' to='/type/Процессоры'>
+                <img className='carousel-img' src={allianceSlide} alt="pic"/>
             </Link>
-            <Link to='/sale' style={{display: "block"}}>
-                <img className='carousel-img' src={sale} alt="pic"/>
-                <p className="carousel-text">Перейдите по ссылке и успейте приобрести товары по хорошей скидке!</p>
+            <Link className='carousel-wrap__block' to='/type/Notebook'>
+                <img className='carousel-img' src={allianceSlideNotebooks} alt="pic"/>
+            </Link>
+            <Link className='carousel-wrap__block' to='/type/Клавиатуры'>
+                <img className='carousel-img' src={allianceSlideAccessory} alt="pic"/>
             </Link>
         </Carousel>
     );

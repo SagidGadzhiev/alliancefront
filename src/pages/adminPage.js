@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+import ExcelCsVconverter from "../components/adminPageComps/excelCSVconverter";
 
 const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
 
@@ -122,6 +123,9 @@ const AdminPage = ({products, nova, setNova, selling, setSelling}) => {
         <div className='adminPage' style={{margin: "30px 0"}}>
 
             <div className="container">
+
+                {login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? <ExcelCsVconverter/> : ''}
+                <br/>
 
                 <h2 style={{
                     display: `${login === 'allianceplus.kg@gmail.com' && pass === 'alliancekg' ? 'none' : 'block'}`,
