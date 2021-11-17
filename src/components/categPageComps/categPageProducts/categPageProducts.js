@@ -78,7 +78,19 @@ const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCou
                                 <Link to={`/${i.code}`} onClick={() => {
                                     getCategHandler(categ);
                                     windowTop()
-                                }} className="categPageProducts__product__name">{i.product}</Link>
+                                }} className="categPageProducts__product__name">
+                                    {
+                                        i.product.includes('/') && i.product.includes(',') ?
+                                            i.product
+                                                .replace(/,/g, ' ,')
+                                                .replace('/', ' /') :
+                                            i.product.includes('/') ?
+                                                i.product.split('/').join(' /') :
+                                                i.product.includes(',') ?
+                                                    i.product.split(',').join(' ,') :
+                                                    i.product
+                                    }
+                                </Link>
                                 <p className="categPageProducts__product__warranty">Комментарий(гарантия)
                                     : {i.comment}</p>
                                 <p className="categPageProducts__product__code">Код товара : {i.code}</p>

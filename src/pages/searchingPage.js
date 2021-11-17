@@ -7,13 +7,12 @@ import Pagination from "../components/categPageComps/pagination";
 const SearchingPage = ({currency, products}) => {
 
     const searching = useSelector(s => s.storeItems.searching);
-
-    const loading = useSelector(s => s.storeItems.loading);
+    const currentPageNumber = useSelector(s => s.storeItems.currentPageNumber);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(20);
 
-    const lastCountryIndex = currentPage * productsPerPage;
+    const lastCountryIndex = currentPageNumber * productsPerPage;
     const firstCountryIndex = lastCountryIndex - productsPerPage;
     const currentProduct = products.filter(i => {
         return i.product.toLowerCase().includes(searching.toLowerCase())
@@ -29,7 +28,7 @@ const SearchingPage = ({currency, products}) => {
                     <Pagination productsPerPage={productsPerPage} totalProducts={products.filter(i => {
                         return i.product.toLowerCase().includes(searching.toLowerCase())
                     }).length} paginate={paginate}/>
-                    <SearchingProducts currency={currency} products={currentProduct} loading={loading}/>
+                    <SearchingProducts currency={currency} products={currentProduct}/>
                     <Pagination productsPerPage={productsPerPage} totalProducts={products.filter(i => {
                         return i.product.toLowerCase().includes(searching.toLowerCase())
                     }).length} paginate={paginate}/>

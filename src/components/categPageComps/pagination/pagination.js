@@ -1,6 +1,10 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
+import {getCurrentPage} from "../../../redux/reducers/storeItems";
 
 const Pagination = ({productsPerPage, totalProducts, paginate}) => {
+
+    const dispatch = useDispatch();
 
     const pageNumbers = [];
 
@@ -18,6 +22,7 @@ const Pagination = ({productsPerPage, totalProducts, paginate}) => {
                 pageNumbers.map((i) => (
                     <a href={`#page=${i}`} key={i} className='page-link'
                        onClick={() => {
+                           dispatch(getCurrentPage(i));
                            paginate(i);
                            windowTop();
                        }}>{i}</a>

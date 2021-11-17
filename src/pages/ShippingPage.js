@@ -31,7 +31,7 @@ const ShippingPage = () => {
                     <h2 className='shippingPage__description__title'>Условия доставки</h2>
                     <ul className='shippingPage__description__list'>
                         <li className='shippingPage__description__list__text'>Доставка стоимостью до 2000сом, по
-                            г.Бишкек - 150сом.
+                            г.Бишкек - 200сом.
                         </li>
                         <li className='shippingPage__description__list__text'>Доставка стоимостью 2000сом и более, по
                             г.Бишкек - бесплатно.

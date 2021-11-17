@@ -65,11 +65,24 @@ const ProdCard = ({currency, products}) => {
                         }
                         <div className='prodCard__itemDescription__aboutProduct'>
                             <div className='prodCard__itemDescription__aboutProdBlock'>
-                                <p className='prodCard__itemDescription__aboutProdBlock__name'>{i.product}</p>
+                                <p className='prodCard__itemDescription__aboutProdBlock__name'>
+                                    {
+                                        i.product.includes('/') && i.product.includes(',') ?
+                                            i.product
+                                                .replace(/,/g, ' ,')
+                                                .replace('/', ' /') :
+                                            i.product.includes('/') ?
+                                                i.product.split('/').join(' /') :
+                                                i.product.includes(',') ?
+                                                    i.product.split(',').join(' ,') :
+                                                    i.product
+                                    }
+                                </p>
                                 <p className={`${i.available === 'В наличии' ? 'prodCard__itemDescription__aboutProdBlock__available' : 'prodCard__itemDescription__aboutProdBlock__notAvailable'}`}>Наличие
                                     : <span>{i.available}</span>
                                 </p>
-                                <p className='prodCard__itemDescription__aboutProdBlock__price'>{i.price}$
+                                <p className='prodCard__itemDescription__aboutProdBlock__price'>
+                                    {i.price === undefined ? i.price : (i.price).toFixed(2)}$
                                     - {(i.price * currency).toFixed(0)}сом (1USD = {currency}KGS)</p>
                                 <p className='prodCard__itemDescription__aboutProdBlock__attention'>Убедительная просьба
                                     уточнять цену товара на момент заказа</p>

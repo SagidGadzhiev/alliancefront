@@ -12,7 +12,8 @@ const initState = {
     sales: [],
     ordered: [],
     orders: [],
-    currentProducts: []
+    currentProducts: [],
+    currentPageNumber: 1
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -136,6 +137,18 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 currentProducts: []
+            }
+        }
+        case actions.GET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPageNumber: action.currentPageNumber
+            }
+        }
+        case actions.REMOVE_SEARCHING: {
+            return {
+                ...state,
+                searching: ''
             }
         }
         default:
@@ -287,5 +300,18 @@ export const getCurrentProducts = (array) => {
 export const clearCurrentProducts = () => {
     return ({
         type: actions.CLEAR_CURRENT_PRODUCTS
+    })
+};
+
+export const getCurrentPage = (pageNumber) => {
+    return ({
+        type: actions.GET_CURRENT_PAGE,
+        currentPageNumber: pageNumber
+    })
+};
+
+export const removeSearching = () => {
+    return ({
+        type: actions.REMOVE_SEARCHING
     })
 };

@@ -53,6 +53,11 @@
 .prodCard__itemDescription__wishBuy {
     display: flex;
     align-items: center;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    background: #999;
+    color: white;
 }
 
 .prodCard__itemDescription__wishBuy:hover {
@@ -61,8 +66,8 @@
 }
 
 .prodCard__itemDescription__wishBuy__pic {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     fill: white;
     margin-right: 5px;
 }
@@ -121,12 +126,6 @@
     font-weight: bold;
     margin: 10px 0;
     color: #666666;
-}
-
-.prodCard__itemDescription__wishBuy {
-    padding: 10px;
-    background: #999;
-    color: white;
 }
 
 .prodCard__itemDescription__wishBuy:last-child {

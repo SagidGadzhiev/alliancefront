@@ -10,13 +10,14 @@ const CategoryPage = ({currency, products}) => {
 
     const dispatch = useDispatch();
     const currentProducts = useSelector(s => s.storeItems.currentProducts);
+    const currentPageNumber = useSelector(s => s.storeItems.currentPageNumber);
 
     const {categ} = useParams();
 
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(20);
 
-    const lastCountryIndex = currentPage * productsPerPage;
+    const lastCountryIndex = currentPageNumber * productsPerPage;
     const firstCountryIndex = lastCountryIndex - productsPerPage;
 
     const paginate = (pageNumber) => {

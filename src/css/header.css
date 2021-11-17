@@ -98,7 +98,9 @@
 }
 
 .searching__form__label__btn {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 25px;
     height: 25px;
     background: none;
@@ -182,4 +184,14 @@
     fill: black;
     width: 20px;
     height: 20px;
+}
+
+.searching__form__label__deleteBtn {
+    border: none;
+    background: none;
+    margin-right: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    color: #e33033;
 }

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {clearCurrentProducts} from "../../../redux/reducers/storeItems";
+import {clearCurrentProducts, getCurrentPage} from "../../../redux/reducers/storeItems";
 
 const ProdCardCategs = ({paginate}) => {
 
@@ -61,6 +61,7 @@ const ProdCardCategs = ({paginate}) => {
                                 <Link onClick={() => {
                                     dispatch(clearCurrentProducts());
                                     windowTop();
+                                    dispatch(getCurrentPage(1));
                                     paginate(1);
                                     removeActive()
                                 }} className='categories__link'

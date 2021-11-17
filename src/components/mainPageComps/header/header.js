@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getSearching} from "../../../redux/reducers/storeItems";
+import {getCurrentPage, getSearching, removeSearching} from "../../../redux/reducers/storeItems";
 import allianceLogo from "../../../assets/allianceLogos/allianceLogoComputerWhatsappPlus.png"
 
 const Header = () => {
@@ -11,6 +11,7 @@ const Header = () => {
     const searching = useSelector(s => s.storeItems.searching);
 
     const setSearchingHandler = (e) => {
+        dispatch(getCurrentPage(1));
         dispatch(getSearching(e.target.value))
     };
 
@@ -87,7 +88,10 @@ const Header = () => {
                     <label className='searching__form__label'>
                         <input className='searching__form__label__input' type="text" placeholder='Искать...'
                                onChange={setSearchingHandler} value={searching} title='Поиск товаров'/>
-                        <Link to={`/search=${searching}`} className='searching__form__label__btn' type="submit">
+                        <button onClick={() => dispatch(removeSearching())} style={{
+                            display: `${searching.length === 0 ? 'none' : 'block'}`
+                        }} className='searching__form__label__deleteBtn' type="button">&#10006;</button>
+                        <Link onClick={() => dispatch(getCurrentPage(1))} to={`/search=${searching}`} className='searching__form__label__btn' type="submit">
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
                                  className="svg-inline--fa fa-search fa-w-16 searching__form__label__btn__pic"
                                  role="img"
