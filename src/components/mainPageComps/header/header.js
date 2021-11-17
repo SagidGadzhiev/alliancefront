@@ -88,7 +88,10 @@ const Header = () => {
                     <label className='searching__form__label'>
                         <input className='searching__form__label__input' type="text" placeholder='Искать...'
                                onChange={setSearchingHandler} value={searching} title='Поиск товаров'/>
-                        <button onClick={() => dispatch(removeSearching())} style={{
+                        <button onClick={() => {
+                            dispatch(removeSearching());
+                            dispatch(getCurrentPage(1))
+                        }} style={{
                             display: `${searching.length === 0 ? 'none' : 'block'}`
                         }} className='searching__form__label__deleteBtn' type="button">&#10006;</button>
                         <Link onClick={() => dispatch(getCurrentPage(1))} to={`/search=${searching}`} className='searching__form__label__btn' type="submit">
