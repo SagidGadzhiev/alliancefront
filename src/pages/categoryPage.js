@@ -4,7 +4,7 @@ import CategPageProducts from "../components/categPageComps/categPageProducts";
 import Pagination from "../components/categPageComps/pagination";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {getCurrentProducts} from "../redux/reducers/storeItems";
+import {getCurrentPage, getCurrentProducts} from "../redux/reducers/storeItems";
 
 const CategoryPage = ({currency, products}) => {
 
@@ -36,6 +36,7 @@ const CategoryPage = ({currency, products}) => {
     }, [products, categ]);
 
     const sortHandlerMin = (price) => {
+        dispatch(getCurrentPage(1));
         paginate(1);
         return dispatch(getCurrentProducts(
             currentProduct.sort((a, b) => {
@@ -44,6 +45,7 @@ const CategoryPage = ({currency, products}) => {
         ));
     };
     const sortHandlerMax = (price) => {
+        dispatch(getCurrentPage(1));
         paginate(1);
         return dispatch(getCurrentProducts(
             currentProduct.sort((a, b) => {
