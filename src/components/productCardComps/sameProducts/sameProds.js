@@ -49,7 +49,8 @@ const SameProds = ({currency, products}) => {
                                     windowTop()
                                 }}
                                       className="sameProds__productsBlock__name">{i.product}</Link>
-                                <p className="sameProds__productsBlock__price">{i.price}$
+                                <p className="sameProds__productsBlock__price">
+                                    {i.price === undefined ? i.price : (i.price).toFixed(2)}$
                                     - {(i.price * currency).toFixed(0)}сом</p>
                                 <p className="sameProds__productsBlock__code">Код : {i.code}</p>
                             </div>

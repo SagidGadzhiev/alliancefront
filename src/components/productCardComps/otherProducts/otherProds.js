@@ -53,7 +53,8 @@ const OtherProds = ({currency, products}) => {
                                 getCategHandler(i.class);
                                 windowTop()
                             }} className="otherProds__product__name">{i.product}</Link>
-                            <p className="otherProds__product__price">{i.price}$
+                            <p className="otherProds__product__price">
+                                {i.price === undefined ? i.price : (i.price).toFixed(2)}$
                                 - {(i.price * currency).toFixed(0)}сом</p>
                             <p className="otherProds__product__comment">Комментарий(гарантия) : {i.comment}</p>
                             <p className="otherProds__product__code">Код товара : {i.code}</p>

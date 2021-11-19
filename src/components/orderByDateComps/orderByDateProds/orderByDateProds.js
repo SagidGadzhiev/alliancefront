@@ -64,7 +64,8 @@ const OrderByDateProds = ({currency}) => {
                                                 windowTop()
                                             }}
                                                   className="mainPageProducts__product__name">{i.product}</Link>
-                                            <p className="mainPageProducts__product__price">{i.price}$
+                                            <p className="mainPageProducts__product__price">
+                                                {i.price === undefined ? i.price : (i.price).toFixed(2)}$
                                                 - {(i.price * currency).toFixed(0)}сом</p>
                                             <p className="mainPageProducts__product__warranty">Комментарий(гарантия)
                                                 : {i.comment}</p>

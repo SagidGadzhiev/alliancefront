@@ -89,7 +89,8 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                                       windowTop()
                                                   }}>{i.product}</Link>
                                         </td>
-                                        <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>{i.price}$
+                                        <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
+                                            {i.price === undefined ? i.price : (i.price).toFixed(2)}$
                                             - {(i.price * currency).toFixed(0)}сом
                                         </td>
                                         <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
