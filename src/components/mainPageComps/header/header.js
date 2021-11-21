@@ -33,14 +33,16 @@ const Header = () => {
             <div className="container">
                 <div style={{
                     display: "flex",
-                    alignItems: "center"
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexWrap: "wrap"
                 }}>
                     <Link onClick={windowTop} to='/'>
                         <img style={{width: "150px"}} src={allianceLogo} alt="pic"/>
                     </Link>
                     <Link onClick={() => {
                         windowTop()
-                    }} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>
+                    }} to='/' className='logotype'>Alliance<span className='logotype__text'>Computers</span></Link>
                 </div>
 
                 {/*<Link onClick={() => {windowTop()}} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>*/}
@@ -88,13 +90,15 @@ const Header = () => {
                     <label className='searching__form__label'>
                         <input className='searching__form__label__input' type="text" placeholder='Искать...'
                                onChange={setSearchingHandler} value={searching} title='Поиск товаров'/>
-                        <button onClick={() => {
-                            dispatch(removeSearching());
-                            dispatch(getCurrentPage(1))
-                        }} style={{
-                            display: `${searching.length === 0 ? 'none' : 'block'}`
-                        }} className='searching__form__label__deleteBtn' type="button">&#10006;</button>
-                        <Link onClick={() => dispatch(getCurrentPage(1))} to={`/search=${searching}`} className='searching__form__label__btn' type="submit">
+                        {/*<button onClick={() => {*/}
+                        {/*    dispatch(removeSearching());*/}
+                        {/*    dispatch(getCurrentPage(1))*/}
+                        {/*}} style={{*/}
+                        {/*    display: `${searching.length === 0 ? 'none' : 'block'}`*/}
+                        {/*}} className='searching__form__label__deleteBtn' type="button">&#10006;</button>*/}
+                        <Link
+                            // onClick={() => dispatch(getCurrentPage(1))}
+                            to={`/search=${searching}`} className='searching__form__label__btn' type="submit">
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
                                  className="svg-inline--fa fa-search fa-w-16 searching__form__label__btn__pic"
                                  role="img"
