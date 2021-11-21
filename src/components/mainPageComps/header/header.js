@@ -45,7 +45,6 @@ const Header = () => {
                     }} to='/' className='logotype'>Alliance<span className='logotype__text'>Computers</span></Link>
                 </div>
 
-                {/*<Link onClick={() => {windowTop()}} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link>*/}
                 <nav className='header__nav'>
                     <Link onClick={() => {
                         windowTop()
