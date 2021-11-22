@@ -47,12 +47,9 @@ const Footer = () => {
                             <Link onClick={() => {
                                 windowTop()
                             }} to='/shipping' className='footer__block__list__link'>Оформление заказа, доставка</Link>
-                            {/*<Link onClick={windowTop} to='/' className='footer__block__list__link'>Доставка и самовывоз</Link>*/}
-                            {/*<Link onClick={windowTop} to='/' className='footer__block__list__link'>Гарантия</Link>*/}
-                            <Link onClick={() => {
-                                windowTop()
-                            }} to='/' className='footer__block__list__link'>Гарантия, обмен, возврат</Link>
-                            {/*<Link onClick={() => {windowTop()}} to='/' className='footer__block__list__link'>Условия продажи товаров</Link>*/}
+                            {/*<Link onClick={() => {*/}
+                            {/*    windowTop()*/}
+                            {/*}} to='/' className='footer__block__list__link'>Гарантия, обмен, возврат</Link>*/}
                         </div>
                     </div>
                     <div className="footer__block__other footer__block__footerNews">
