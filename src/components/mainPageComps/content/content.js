@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {clearCurrentProducts} from "../../../redux/reducers/storeItems";
+import {clearCurrentProducts, getCurrentPage} from "../../../redux/reducers/storeItems";
 
 const Content = () => {
 
@@ -9,6 +9,8 @@ const Content = () => {
 
     const [show, setShow] = useState(false);
     const [newCateg, setNewCateg] = useState([]);
+
+    const loading = useSelector(s => s.storeItems.loading);
 
     const classes = useSelector((s) => {
         return s.storeItems.products.map((i) => {
@@ -46,6 +48,13 @@ const Content = () => {
         return document.getElementById('navCateg').classList.remove('active')
     };
 
+    if (loading) {
+        return <div className='loadingBlock'>
+            <div className="lds-dual-ring"></div>
+            {/*<h2 className='loadingBlock__title'>Страница загружается</h2>*/}
+        </div>
+    }
+
     return (
         <div className='content'>
 
@@ -60,6 +69,7 @@ const Content = () => {
                             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                                 <Link onClick={() => {
                                     dispatch(clearCurrentProducts());
+                                    dispatch(getCurrentPage(1));
                                     windowTop();
                                     removeActive()
                                 }} className='categories__link'
@@ -87,23 +97,7 @@ const Content = () => {
                                                 }} type="submit">-
                                                 </button> : null
                                         })
-                                    // !show ?
-                                    //     <button className='categBlockWrapBtn' onClick={() => {
-                                    //         setShow(!show);
-                                    //         setNewCateg(categs.filter(q => q.class === i && q.category !== ''))
-                                    //     }} type="submit">+
-                                    //     </button> :
-                                    //     <button className='categBlockWrapBtn' onClick={() => {
-                                    //         setShow(!show);
-                                    //         setNewCateg([])
-                                    //     }} type="submit">-
-                                    //     </button>
                                 }
-                                {/*<button className='categBlockWrapBtn' onClick={() => {*/}
-                                {/*    setShow(!show);*/}
-                                {/*    setNewCateg(categs.filter(q => q.class === i && q.category !== ''))*/}
-                                {/*}} type="submit">+*/}
-                                {/*</button>*/}
                             </div>
                             {
                                 newCateg
@@ -119,6 +113,7 @@ const Content = () => {
                                             <Link className='categBlock__link'
                                                   onClick={() => {
                                                       dispatch(clearCurrentProducts());
+                                                      dispatch(getCurrentPage(1));
                                                       windowTop();
                                                       removeActive()
                                                   }}
@@ -133,6 +128,7 @@ const Content = () => {
                                                     .map((cat, idxx) => (
                                                         <Link className='subcateg__link' onClick={() => {
                                                             dispatch(clearCurrentProducts());
+                                                            dispatch(getCurrentPage(1));
                                                             windowTop();
                                                             removeActive()
                                                         }}

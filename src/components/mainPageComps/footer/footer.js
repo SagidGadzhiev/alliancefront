@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import allianceLogo from "../../../assets/allianceLogos/allianceLogoComputerWhatsappPlus.png";
+import allianceLogo from "../../../assets/allianceLogos/allianceComputers.png";
 
 const Footer = () => {
 

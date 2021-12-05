@@ -53,7 +53,7 @@ const App = () => {
                                                                 : i.price <= 250 ? i.price + (i.price * 0.04)
                                                                     : i.price <= 300 ? i.price + (i.price * 0.04)
                                                                         : i.price <= 400 ? i.price + (i.price * 0.04)
-                                                                            : i.price <= 450 ? i.price + (i.price * 0.04)
+                                                                            : i.price <= 450 ? i.price + (i.price * 0.035)
                                                                                 : i.price <= 500 ? i.price + (i.price * 0.03)
                                                                                     : i.price <= 600 ? i.price + (i.price * 0.03)
                                                                                         : i.price <= 700 ? i.price + (i.price * 0.04)
@@ -102,14 +102,14 @@ const App = () => {
         localStorage.setItem('ordered', JSON.stringify(ordered))
     }, [wishes, shopping, searching, ordered]);
 
-    const currency = 86;
+    const currency = 85;
 
-    if (loading) {
-        return <div className='loadingBlock'>
-            <div className="lds-dual-ring"></div>
-            <h2 className='loadingBlock__title'>Страница загружается</h2>
-        </div>
-    }
+    // if (loading) {
+    //     return <div className='loadingBlock'>
+    //         <div className="lds-dual-ring"></div>
+    //         <h2 className='loadingBlock__title'>Страница загружается</h2>
+    //     </div>
+    // }
 
     return (
         <div className='app'>

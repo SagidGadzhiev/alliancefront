@@ -10,6 +10,8 @@ const ProdCardCategs = ({paginate}) => {
     const [show, setShow] = useState(false);
     const [newCateg, setNewCateg] = useState([]);
 
+    const loading = useSelector(s => s.storeItems.loading);
+
     const classes = useSelector((s) => {
         return s.storeItems.products.map((i) => {
             return i.class
@@ -45,6 +47,13 @@ const ProdCardCategs = ({paginate}) => {
         document.getElementById('bgMenu').classList.remove('active');
         return document.getElementById('navCateg').classList.remove('active')
     };
+
+    if (loading) {
+        return <div className='loadingBlock'>
+            <div className="lds-dual-ring"></div>
+            {/*<h2 className='loadingBlock__title'>Страница загружается</h2>*/}
+        </div>
+    }
 
     return (
         <div className='prodCardCategs'>
@@ -121,6 +130,7 @@ const ProdCardCategs = ({paginate}) => {
                                             <Link className='categBlock__link'
                                                   onClick={() => {
                                                       dispatch(clearCurrentProducts());
+                                                      dispatch(getCurrentPage(1));
                                                       windowTop();
                                                       paginate(1);
                                                       removeActive()
@@ -136,6 +146,7 @@ const ProdCardCategs = ({paginate}) => {
                                                     .map((cat, idxx) => (
                                                         <Link className='subcateg__link' onClick={() => {
                                                             dispatch(clearCurrentProducts());
+                                                            dispatch(getCurrentPage(1));
                                                             windowTop();
                                                             paginate(1);
                                                             removeActive()

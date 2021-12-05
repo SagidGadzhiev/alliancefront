@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentPage, getSearching, removeSearching} from "../../../redux/reducers/storeItems";
-import allianceLogo from "../../../assets/allianceLogos/allianceLogoComputerWhatsappPlus.png"
+import allianceLogo from "../../../assets/allianceLogos/allianceComputers.png"
 
 const Header = () => {
 
