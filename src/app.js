@@ -113,6 +113,13 @@ const App = () => {
 
     return (
         <div className='app'>
+
+            <div
+                className='preloader'
+                style={{
+                    width: `${loading ? '80%' : '100%'}`
+                }}></div>
+
             <Header/>
             <Switch>
                 <Route exact path='/' component={() => <MainPage products={products} currency={currency}/>}/>

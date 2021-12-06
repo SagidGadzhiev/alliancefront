@@ -37,3 +37,28 @@
         transform: rotate(360deg);
     }
 }
+
+.preloader {
+    height: 5px;
+    background: red;
+    border-radius: 5px;
+    animation: preloader-width 1.2s linear;
+}
+
+@keyframes preloader-width {
+    0% {
+        width: 10%;
+    }
+    30% {
+        width: 30%;
+    }
+    60% {
+        width: 50%;
+    }
+    90% {
+        width: 65%;
+    }
+    100% {
+        width: 80%;
+    }
+}
