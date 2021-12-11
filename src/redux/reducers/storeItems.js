@@ -158,7 +158,8 @@ export default (state = initState, action) => {
 
 export const getProducts = () => {
     return (dispatch) => {
-        axios('https://allianceplusserver.herokuapp.com/products')
+        axios('http://62.113.96.161:8080/products')
+            // axios('https://allianceplusserver.herokuapp.com/products')
             .then(({data}) => {
                 dispatch({type: actions.GET_PRODUCTS, products: data});
                 return dispatch({type: actions.CHANGE_LOADING, loading: false})
@@ -238,7 +239,8 @@ export const getSearchingLocalStorage = (val) => {
 
 export const getNovasProducts = () => {
     return (dispatch) => {
-        axios('https://allianceplusserver.herokuapp.com/nova')
+        axios('http://62.113.96.161:8080/nova')
+            // axios('https://allianceplusserver.herokuapp.com/nova')
             .then(({data}) => {
                 dispatch({
                     type: actions.GET_NOVAS_PRODUCTS,
@@ -250,7 +252,8 @@ export const getNovasProducts = () => {
 
 export const getSalesProducts = () => {
     return (dispatch) => {
-        axios('https://allianceplusserver.herokuapp.com/sale')
+        axios('http://62.113.96.161:8080/sale')
+            // axios('https://allianceplusserver.herokuapp.com/sale')
             .then(({data}) => {
                 dispatch({type: actions.GET_SALES_PRODUCTS, sales: data})
             })
@@ -283,7 +286,8 @@ export const getOrderedLocalStorage = (prod) => {
 
 export const getAllOrders = () => {
     return (dispatch) => {
-        axios('https://allianceplusserver.herokuapp.com/orders')
+        axios('http://62.113.96.161:8080/orders')
+            // axios('https://allianceplusserver.herokuapp.com/orders')
             .then(({data}) => {
                 dispatch({type: actions.GET__ALL__ORDERS, orders: data})
             })
