@@ -1,18 +1,33 @@
-import React from 'react';
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {getCurrentPage, getSearching, removeSearching} from "../../../redux/reducers/storeItems";
-import allianceLogo from "../../../assets/allianceLogos/allianceComputers.png"
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentPage, getSearching, removeSearching } from '../../../redux/reducers/storeItems';
+import allianceLogo from '../../../assets/allianceLogos/allianceComputers.png';
+
+import useDebounce from '../../../hooks/useDebounce';
+
 
 const Header = () => {
 
+    const debouncedSearch = useDebounce(setSearchingHandler, 500);
     const dispatch = useDispatch();
-
     const searching = useSelector(s => s.storeItems.searching);
+    const [searchState, setSearchState] = useState('');
 
-    const setSearchingHandler = (e) => {
-        dispatch(getCurrentPage(1));
-        dispatch(getSearching(e.target.value))
+    function setSearchingHandler(e) {
+        dispatch(getSearching(e.target.value));
+        return searching.length === 0 ? dispatch(getCurrentPage(1)) : null;
+    }
+
+    const onChangeHandler = e => {
+        setSearchState(e.target.value);
+        return debouncedSearch(e);
+    };
+
+    const removeSearchHandler = () => {
+        setSearchState('');
+        dispatch(removeSearching());
+        return dispatch(getCurrentPage(1));
     };
 
     const formHandler = (e) => {
@@ -25,51 +40,52 @@ const Header = () => {
 
     const burgerMenu = () => {
         document.getElementById('bgMenu').classList.toggle('active');
-        return document.getElementById('navCateg').classList.toggle('active')
+        document.getElementById('navCateg').classList.toggle('active');
+        return document.getElementById('contentCateg').classList.toggle('active');
     };
 
     return (
         <nav className='header' id='top'>
             <div className="container">
                 <div style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexWrap: "wrap"
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexWrap: 'wrap'
                 }}>
                     <Link onClick={windowTop} to='/'>
-                        <img style={{width: "150px"}} src={allianceLogo} alt="pic"/>
+                        <img style={{ width: '150px' }} src={allianceLogo} alt="pic" />
                     </Link>
                     <Link onClick={() => {
-                        windowTop()
+                        windowTop();
                     }} to='/' className='logotype'>Alliance<span className='logotype__text'>Computers</span></Link>
                 </div>
 
                 <nav className='header__nav'>
                     <Link onClick={() => {
-                        windowTop()
+                        windowTop();
                     }} to='/' className="header__nav__link">Главная</Link>
                     <Link onClick={() => {
-                        windowTop()
+                        windowTop();
                     }} to='/new' className="header__nav__link">Новинки</Link>
                     <Link onClick={() => {
-                        windowTop()
+                        windowTop();
                     }} to='/bestsellers' className="header__nav__link">Лидеры продаж</Link>
                     <Link onClick={() => {
-                        windowTop()
+                        windowTop();
                     }} to='/shipping' className="header__nav__link">Доставка</Link>
                     <Link onClick={() => {
-                        windowTop()
+                        windowTop();
                     }} to='/sale' className="header__nav__link">Акции</Link>
                     <Link onClick={() => {
-                        windowTop()
+                        windowTop();
                     }} to='/contacts' className="header__nav__link">Контакты</Link>
                 </nav>
             </div>
 
             <nav className="searching">
 
-                <div id='bgMenu' className="burger-menu" onClick={burgerMenu} style={{display: "none"}}>
+                <div id='bgMenu' className="burger-menu" onClick={burgerMenu} style={{ display: 'none' }}>
                     <span className="burger-menu__line"></span>
                 </div>
 
@@ -87,14 +103,19 @@ const Header = () => {
                 </nav>
                 <form onSubmit={formHandler} className='searching__form'>
                     <label className='searching__form__label'>
-                        <input className='searching__form__label__input' type="text" placeholder='Искать...'
-                               onChange={setSearchingHandler} value={searching} title='Поиск товаров'/>
-                        <button onClick={() => {
-                            dispatch(removeSearching());
-                            dispatch(getCurrentPage(1))
-                        }} style={{
-                            display: `${searching.length === 0 ? 'none' : 'block'}`
-                        }} className='searching__form__label__deleteBtn' type="button">&#10006;</button>
+                        <input
+                            className='searching__form__label__input'
+                            type="text" placeholder='Искать...'
+                            onChange={onChangeHandler}
+                            value={searchState}
+                            title='Поиск товаров'
+                        />
+                        <button
+                            onClick={removeSearchHandler}
+                            style={{ display: `${searching.length === 0 ? 'none' : 'block'}` }}
+                            className='searching__form__label__deleteBtn' type="button">
+                            &#10006;
+                        </button>
                         <Link onClick={() => dispatch(getCurrentPage(1))} to={`/search=${searching}`}
                               className='searching__form__label__btn' type="submit">
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"

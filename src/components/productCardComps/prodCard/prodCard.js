@@ -2,6 +2,7 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {getCateg, getShopping, getWishes} from "../../../redux/reducers/storeItems";
+import noPhoto from '../../../img/noPhoto.png'
 
 const ProdCard = ({currency, products}) => {
 
@@ -38,6 +39,10 @@ const ProdCard = ({currency, products}) => {
         // return window.scrollTo(0, 0);
     };
 
+    const getImgStatus = (e) => {
+        // return e.target.src = noPhoto
+    };
+
     return (
         <div className='prodCard'>
             {
@@ -51,16 +56,15 @@ const ProdCard = ({currency, products}) => {
                                    target='_blank'
                                    href={`http://www.google.kg/search?q=${i.product}`}>
                                     <img className='prodCard__itemDescription__img'
-                                         src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                         src='https://enter.kg/images/yandex.png' alt=""/>
                                 </a> :
                                 <div onClick={() => {
                                     getCategHandler(i.class);
                                     windowTop()
-                                }} className='prodCard__itemDescription__googleSearch'
-                                    // to={`/${i.code}`}
-                                >
-                                    <img className='prodCard__itemDescription__img' src={i.img}
-                                         alt="pic"/>
+                                }} className='prodCard__itemDescription__googleSearch'>
+                                    <img onError={(e) => getImgStatus(e)} className='prodCard__itemDescription__img'
+                                         src={i.img}
+                                         alt=""/>
                                 </div>
                         }
                         <div className='prodCard__itemDescription__aboutProduct'>

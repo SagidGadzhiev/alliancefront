@@ -2,12 +2,14 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCateg, getShopping, getWishes} from "../../../redux/reducers/storeItems";
+import noPhoto from '../../../img/noPhoto.png'
 
 const SearchingProducts = ({currency, products}) => {
 
     const dispatch = useDispatch();
 
     const searching = useSelector(s => s.storeItems.searching);
+    const currentPage = useSelector(s => s.storeItems.currentPageNumber);
 
     const getCategHandler = (prodCateg) => {
         return dispatch(getCateg(prodCateg));
@@ -38,8 +40,13 @@ const SearchingProducts = ({currency, products}) => {
         }
     };
 
+    const getImgStatus = (e) => {
+        // return e.target.src = noPhoto
+    };
+
     return (
         <div className='categPageProducts'>
+            <h3 style={{textAlign: 'right'}} className='categPageProducts__currentPage'>Страница: {currentPage}</h3>
             {
                 products
                     .filter(i => {
@@ -54,15 +61,15 @@ const SearchingProducts = ({currency, products}) => {
                                    target='_blank'
                                    href={`http://www.google.kg/search?q=${i.product}`}>
                                     <img className='categPageProducts__product__img'
-                                         src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                         src='https://enter.kg/images/yandex.png' alt=""/>
                                 </a> :
                                 <Link onClick={() => {
                                     getCategHandler(i.class);
                                     windowTop()
                                 }} className='categPageProducts__product__googleSearch'
                                       to={`/${i.code}`}>
-                                    <img className='categPageProducts__product__img' src={i.img}
-                                         alt="pic"/>
+                                    <img onError={(e) => getImgStatus(e)} className='categPageProducts__product__img' src={i.img}
+                                         alt=""/>
                                 </Link>
                         }
                         <div style={{width: "100%"}}>

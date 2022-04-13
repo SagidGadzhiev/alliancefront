@@ -1,17 +1,20 @@
 import React from 'react';
-import {useParams} from "react-router";
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {getCateg, getShopping, getWishes} from "../../../redux/reducers/storeItems";
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCateg, getShopping, getWishes } from '../../../redux/reducers/storeItems';
+import noPhoto from '../../../img/noPhoto.png';
 
-const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax}) => {
 
-    const {categ} = useParams();
+const CategPageProducts = ({ currency, currentProduct, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax }) => {
+
+    const { categ } = useParams();
 
     const dispatch = useDispatch();
 
     const wishes = useSelector(s => s.storeItems.wishes.map(i => i.code));
     const shopping = useSelector(s => s.storeItems.shopping.map(i => i.code));
+    const currentPage = useSelector(s => s.storeItems.currentPageNumber);
 
     const getCategHandler = (prodCateg) => {
         return dispatch(getCateg(prodCateg));
@@ -21,12 +24,16 @@ const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCou
         // return window.scrollTo(0, 0);
     };
 
+    const getImgStatus = (e) => {
+        // return e.target.src = noPhoto
+    };
+
     const addWishProd = (prod) => {
         if (wishes.includes(prod.code)) {
             return alert('Товар уже находится в списке желаний.');
         } else {
             alert(`Товар добавлен в список желаний.`);
-            return dispatch(getWishes(prod))
+            return dispatch(getWishes(prod));
         }
     };
 
@@ -35,21 +42,26 @@ const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCou
             return alert('Товар уже находится в корзине.');
         } else {
             alert(`Товар добавлен в корзину.`);
-            return dispatch(getShopping(prod))
+            return dispatch(getShopping(prod));
         }
     };
 
     return (
         <div className='categPageProducts'>
 
-            <button className='categPageProducts__sortBtn' type="submit" onClick={() => {
-                sortHandlerMin('price')
-            }}>Цена +
-            </button>
-            <button className='categPageProducts__sortBtn' type="submit" onClick={() => {
-                sortHandlerMax('price')
-            }}>Цена -
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                    <button className='categPageProducts__sortBtn' type="submit" onClick={() => {
+                        sortHandlerMin('price');
+                    }}>Цена +
+                    </button>
+                    <button className='categPageProducts__sortBtn' type="submit" onClick={() => {
+                        sortHandlerMax('price');
+                    }}>Цена -
+                    </button>
+                </div>
+                <h3 className='categPageProducts__currentPage'>Страница: {currentPage}</h3>
+            </div>
 
             {
                 currentProduct
@@ -63,21 +75,22 @@ const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCou
                                        target='_blank'
                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                         <img className='categPageProducts__product__img'
-                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                             src='https://enter.kg/images/yandex.png' alt="" />
                                     </a> :
                                     <Link onClick={() => {
                                         getCategHandler(i.class);
-                                        windowTop()
+                                        windowTop();
                                     }} className='categPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
-                                        <img className='categPageProducts__product__img' src={i.img}
-                                             alt="pic"/>
+                                        <img onError={(e) => getImgStatus(e)}
+                                             className='categPageProducts__product__img' src={i.img}
+                                             alt="" />
                                     </Link>
                             }
                             <div className='categPageProducts__product__wrapBlock'>
                                 <Link to={`/${i.code}`} onClick={() => {
                                     getCategHandler(categ);
-                                    windowTop()
+                                    windowTop();
                                 }} className="categPageProducts__product__name">
                                     {
                                         i.product.includes('/') && i.product.includes(',') ?
@@ -111,9 +124,9 @@ const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCou
                                             shopping.includes(i.code) ?
                                                 <svg
                                                     style={{
-                                                        fill: "#ea3a3c",
-                                                        width: "15px",
-                                                        height: "15px"
+                                                        fill: '#ea3a3c',
+                                                        width: '15px',
+                                                        height: '15px'
                                                     }}
                                                     aria-hidden="true" focusable="false" data-prefix="fas"
                                                     data-icon="check-circle"
@@ -133,7 +146,6 @@ const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCou
                                         }
                                     </button>
                                     <button type='button'
-                                        // disabled={i.available !== 'В наличии'}
                                             disabled={wishes.includes(i.code)}
                                             onClick={() => addWishProd(i)}
                                             className='categPageProducts__product__wishBuy__block'>
@@ -141,9 +153,9 @@ const CategPageProducts = ({currency, currentProduct, firstCountryIndex, lastCou
                                             wishes.includes(i.code) ?
                                                 <svg
                                                     style={{
-                                                        fill: "#ea3a3c",
-                                                        width: "15px",
-                                                        height: "15px"
+                                                        fill: '#ea3a3c',
+                                                        width: '15px',
+                                                        height: '15px'
                                                     }}
                                                     aria-hidden="true" focusable="false" data-prefix="fas"
                                                     data-icon="check-circle"

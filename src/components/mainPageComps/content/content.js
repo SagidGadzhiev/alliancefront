@@ -38,31 +38,23 @@ const Content = () => {
         return window.scrollTo(0, 0);
     };
 
-    // const burgerMenu = () => {
-    //     document.getElementById('bgMenu').classList.toggle('active');
-    //     return document.getElementById('navCateg').classList.toggle('active')
-    // };
-
     const removeActive = () => {
         document.getElementById('bgMenu').classList.remove('active');
-        return document.getElementById('navCateg').classList.remove('active')
+        document.getElementById('navCateg').classList.remove('active');
+        return document.getElementById('contentCateg').classList.remove('active');
     };
 
     if (loading) {
         return <div className='loadingBlock'>
             <div className="lds-dual-ring"></div>
-            {/*<h2 className='loadingBlock__title'>Страница загружается</h2>*/}
+            <h2 style={{color: '#fff', marginTop: '10px'}}>Идет загрузка...</h2>
         </div>
     }
 
     return (
         <div className='content'>
-
-            {/*<div id='bgMenu' className="burger-menu" onClick={burgerMenu}>*/}
-            {/*    <span className="burger-menu__line"></span>*/}
-            {/*</div>*/}
-
             <nav className="categories" id='navCateg'>
+                <div className='contentBack' id='contentCateg' onClick={removeActive}></div>
                 {
                     classes.map((i, idx) => (
                         <div key={idx} className='categBlockWrap'>
@@ -87,12 +79,23 @@ const Content = () => {
                                         .map((el, index1) => {
                                             return el === i ? !show ?
                                                 <button key={index1} className='categBlockWrapBtn' onClick={() => {
-                                                    setShow(!show);
+                                                    // setShow(!show);
                                                     setNewCateg(categs.filter(q => q.class === i && q.category !== ''))
-                                                }} type="submit">+
+                                                }} type="submit">
+                                                    <svg style={{
+                                                        display: 'block',
+                                                        margin: 'auto',
+                                                        fill: '#fff',
+                                                        width: '20px',
+                                                        height: '20px'
+                                                    }} xmlns="http://www.w3.org/2000/svg"
+                                                         viewBox="0 0 448 512">
+                                                        <path
+                                                            d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/>
+                                                    </svg>
                                                 </button> :
                                                 <button key={index1} className='categBlockWrapBtn' onClick={() => {
-                                                    setShow(!show);
+                                                    // setShow(!show);
                                                     setNewCateg([])
                                                 }} type="submit">-
                                                 </button> : null
@@ -108,38 +111,39 @@ const Content = () => {
                                     .filter((a, idx, arr) => {
                                         return !idx || a !== arr[idx - 1]
                                     })
-                                    .map((el, iidx) => (
-                                        <div key={iidx + 1} className='categBlock'>
-                                            <Link className='categBlock__link'
-                                                  onClick={() => {
-                                                      dispatch(clearCurrentProducts());
-                                                      dispatch(getCurrentPage(1));
-                                                      windowTop();
-                                                      removeActive()
-                                                  }}
-                                                  to={`/category/${el}`}>{el}</Link>
-                                            {
-                                                subcategs
-                                                    .map((sub) => sub.category === el ? sub.subcategory : '')
-                                                    .sort()
-                                                    .filter((a, idx, arr) => {
-                                                        return !idx || a !== arr[idx - 1]
-                                                    })
-                                                    .map((cat, idxx) => (
-                                                        <Link className='subcateg__link' onClick={() => {
-                                                            dispatch(clearCurrentProducts());
-                                                            dispatch(getCurrentPage(1));
-                                                            windowTop();
-                                                            removeActive()
-                                                        }}
-                                                              key={idxx + 2} style={{
-                                                            color: "#fff",
-                                                        }}
-                                                              to={`/subcategory/${cat}`}>{cat}</Link>
-                                                    ))
-                                            }
-                                        </div>
-                                    ))
+                                    .map((el, iidx) => {
+                                        return el.length === 0 ? null :
+                                            <div key={iidx + 1} className='categBlock'>
+                                                <Link className='categBlock__link'
+                                                      onClick={() => {
+                                                          dispatch(clearCurrentProducts());
+                                                          dispatch(getCurrentPage(1));
+                                                          windowTop();
+                                                          removeActive()
+                                                      }}
+                                                      to={`/category/${el}`}>{el}</Link>
+                                                {
+                                                    subcategs
+                                                        .map((sub) => sub.category === el ? sub.subcategory : '')
+                                                        .sort()
+                                                        .filter((a, idx, arr) => {
+                                                            return !idx || a !== arr[idx - 1]
+                                                        })
+                                                        .map((cat, idxx) => (
+                                                            <Link className='subcateg__link' onClick={() => {
+                                                                dispatch(clearCurrentProducts());
+                                                                dispatch(getCurrentPage(1));
+                                                                windowTop();
+                                                                removeActive()
+                                                            }}
+                                                                  key={idxx + 2} style={{
+                                                                color: "#fff",
+                                                            }}
+                                                                  to={`/subcategory/${cat}`}>{cat}</Link>
+                                                        ))
+                                                }
+                                            </div>
+                                    })
                             }
                         </div>
                     ))

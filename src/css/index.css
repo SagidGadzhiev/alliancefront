@@ -20,6 +20,7 @@
 @import "shippingPage.css";
 @import "contacts.css";
 @import "aboutUs.css";
+@import "admin.css";
 
 * {
     margin: 0;

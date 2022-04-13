@@ -119,44 +119,6 @@ const ExcelCsVconverter = () => {
                     }
                     return obj;
                 });
-            // .concat(products)
-            // .sort((a, b) => {
-            //     return a.code > b.code ? 1 : -1
-            // })
-            // .map((el, idx, arr) => {
-            //     if (idx !== arr.length - 1) {
-            //         if (el.code === arr[idx + 1].code) {
-            //             el.available = 'В наличии';
-            //             arr[idx + 1].available = 'В наличии'
-            //             return el
-            //         }
-            //     }
-            //     el.available = 'Уточняйте наличие'
-            //     return el
-            // })
-            // .filter((el, idx, arr) => {
-            //     if (idx !== arr.length - 1) {
-            //         if (el.code === arr[idx + 1].code) {
-            //             return arr.splice(idx, 1)
-            //         }
-            //     }
-            //     return el
-            // })
-            // .map(obj => {
-            //     return obj.available === undefined ? {...obj, available: 'Нет в наличии'} : obj;
-            // })
-            // .map((it, index) => ({
-            //     ...it,
-            //     id: index + 1
-            // }))
-            // .map((it) => {
-            //     if (it._id === undefined) {
-            //         return it
-            //     } else {
-            //         delete it['_id'];
-            //         return it
-            //     }
-            // });
             let fileNameWithoutExtension = file.name.substring(0, file.name.lastIndexOf('.'));
             let new_worksheet = XLSX.utils.json_to_sheet(json);
             let new_workbook = XLSX.utils.book_new();

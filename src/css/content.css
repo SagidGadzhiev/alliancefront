@@ -4,6 +4,7 @@
 }
 
 .categories__link {
+    height: 32px;
     padding: 5px 0 5px 15px;
     color: white;
     font-size: 14px;

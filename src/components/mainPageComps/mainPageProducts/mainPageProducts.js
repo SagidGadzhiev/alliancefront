@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCateg} from "../../../redux/reducers/storeItems";
+import noPhoto from '../../../img/noPhoto.png'
 
 const MainPageProducts = ({currency, products}) => {
 
@@ -15,6 +16,10 @@ const MainPageProducts = ({currency, products}) => {
 
     const windowTop = () => {
         return window.scrollTo(0, 0);
+    };
+
+    const getImgStatus = (e) => {
+        // return e.target.src = noPhoto
     };
 
     return (
@@ -33,15 +38,15 @@ const MainPageProducts = ({currency, products}) => {
                                        target='_blank'
                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                         <img className='mainPageProducts__product__img'
-                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                             src='https://enter.kg/images/yandex.png' alt=""/>
                                     </a> :
                                     <Link onClick={() => {
                                         getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
-                                        <img className='mainPageProducts__product__img' src={i.img}
-                                             alt="pic"/>
+                                        <img onError={(e) => getImgStatus(e)} className='mainPageProducts__product__img' src={i.img}
+                                             alt=""/>
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
@@ -62,7 +67,7 @@ const MainPageProducts = ({currency, products}) => {
             <div className='mainPageProducts__productsBlock'>
                 {
                     products.filter(i => {
-                        return i.class === 'Notebook'
+                        return i.class === 'Notebook';
                     }).slice(0, 18).map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
                             {
@@ -73,15 +78,15 @@ const MainPageProducts = ({currency, products}) => {
                                        target='_blank'
                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                         <img className='mainPageProducts__product__img'
-                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                             src='https://enter.kg/images/yandex.png' alt=""/>
                                     </a> :
                                     <Link onClick={() => {
                                         getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
-                                        <img className='mainPageProducts__product__img' src={i.img}
-                                             alt="pic"/>
+                                        <img onError={(e) => getImgStatus(e)} className='mainPageProducts__product__img' src={i.img}
+                                             alt=""/>
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {
@@ -112,15 +117,15 @@ const MainPageProducts = ({currency, products}) => {
                                        target='_blank'
                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                         <img className='mainPageProducts__product__img'
-                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                             src='https://enter.kg/images/yandex.png' alt=""/>
                                     </a> :
                                     <Link onClick={() => {
                                         getCategHandler(i.class);
                                         windowTop()
                                     }} className='mainPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
-                                        <img className='mainPageProducts__product__img' src={i.img}
-                                             alt="pic"/>
+                                        <img onError={(e) => getImgStatus(e)} className='mainPageProducts__product__img' src={i.img}
+                                             alt=""/>
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {

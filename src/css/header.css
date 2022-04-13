@@ -98,7 +98,10 @@
 }
 
 .searching__form__label__btn {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*display: inline-block;*/
     width: 25px;
     height: 25px;
     background: none;
@@ -172,6 +175,7 @@
 
 .upBtn {
     position: fixed;
+    z-index: 9998;
     bottom: 10px;
     right: 10px;
     width: 20px;

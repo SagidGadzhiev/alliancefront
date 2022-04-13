@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 import {getCateg} from "../../../redux/reducers/storeItems";
 import {Link} from "react-router-dom";
+import noPhoto from '../../../img/noPhoto.png'
 
 const BestsellProds = ({currency, products}) => {
 
@@ -13,6 +14,10 @@ const BestsellProds = ({currency, products}) => {
 
     const windowTop = () => {
         // return window.scrollTo(0, 0);
+    };
+
+    const getImgStatus = (e) => {
+        // return e.target.src = noPhoto
     };
 
     return (
@@ -32,15 +37,15 @@ const BestsellProds = ({currency, products}) => {
                                        target='_blank'
                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                         <img className='prodsUndCategs__product__img'
-                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                             src='https://enter.kg/images/yandex.png' alt=""/>
                                     </a> :
                                     <Link onClick={() => {
                                         getCategHandler(i.class);
                                         windowTop()
                                     }} className='prodsUndCategs__product__googleSearch'
                                           to={`/${i.code}`}>
-                                        <img className='prodsUndCategs__product__img' src={i.img}
-                                             alt="pic"/>
+                                        <img onError={(e) => getImgStatus(e)} className='prodsUndCategs__product__img' src={i.img}
+                                             alt=""/>
                                     </Link>
                             }
                             <Link to={`/${i.code}`} onClick={() => {

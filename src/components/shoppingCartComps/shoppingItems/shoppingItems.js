@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {getCateg, removeShopping, updateCount} from "../../../redux/reducers/storeItems";
 import {useDispatch, useSelector} from "react-redux";
+import noPhoto from '../../../img/noPhoto.png'
 
 const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
 
-    // eslint-disable-next-line no-unused-vars
-    const [count, setCount] = useState(0);
+    const [, setCount] = useState(0);
 
     const dispatch = useDispatch();
 
@@ -36,6 +36,10 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
         return shoppingProducts.map(i => {
             return prodId === i.id ? {...i, count: i.count - 1} : i
         })
+    };
+
+    const getImgStatus = (e) => {
+        // return e.target.src = noPhoto
     };
 
     return (
@@ -69,16 +73,16 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                                        target='_blank'
                                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                                         <img className='wishesItems__table__tbody__tr__td__img'
-                                                             src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                                             src='https://enter.kg/images/yandex.png' alt=""/>
                                                     </a> :
                                                     <Link onClick={() => {
                                                         getCategHandler(i.class);
                                                         windowTop()
                                                     }} className='wishesItems__table__tbody__tr__td__googleSearch'
                                                           to={`/${i.code}`}>
-                                                        <img className='wishesItems__table__tbody__tr__td__img'
+                                                        <img onError={(e) => getImgStatus(e)} className='wishesItems__table__tbody__tr__td__img'
                                                              src={i.img}
-                                                             alt="pic"/>
+                                                             alt=""/>
                                                     </Link>
                                             }
                                         </td>

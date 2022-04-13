@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getCateg, getShopping, removeWish} from "../../../redux/reducers/storeItems";
 import {Link} from "react-router-dom";
+import noPhoto from '../../../img/noPhoto.png'
 
 const WishesItems = ({currency, wishesProducts}) => {
 
@@ -30,6 +31,10 @@ const WishesItems = ({currency, wishesProducts}) => {
             alert(`Товар добавлен в корзину.`);
             return dispatch(getShopping(prod))
         }
+    };
+
+    const getImgStatus = (e) => {
+        // return e.target.src = noPhoto
     };
 
     return (
@@ -62,15 +67,15 @@ const WishesItems = ({currency, wishesProducts}) => {
                                                    target='_blank'
                                                    href={`http://www.google.kg/search?q=${i.product}`}>
                                                     <img className='wishesItems__table__tbody__tr__td__img'
-                                                         src='https://enter.kg/images/yandex.png' alt="pic"/>
+                                                         src='https://enter.kg/images/yandex.png' alt=""/>
                                                 </a> :
                                                 <Link onClick={() => {
                                                     getCategHandler(i.class);
                                                     windowTop()
                                                 }} className='wishesItems__table__tbody__tr__td__googleSearch'
                                                       to={`/${i.code}`}>
-                                                    <img className='wishesItems__table__tbody__tr__td__img' src={i.img}
-                                                         alt="pic"/>
+                                                    <img onError={(e) => getImgStatus(e)} className='wishesItems__table__tbody__tr__td__img' src={i.img}
+                                                         alt=""/>
                                                 </Link>
                                         }
                                     </td>
