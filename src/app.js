@@ -24,8 +24,6 @@ const App = () => {
     const products = useSelector(s => s.storeItems.products);
     const wishesProducts = useSelector(s => s.storeItems.wishes);
     const shoppingProducts = useSelector(s => s.storeItems.shopping);
-    const wishes = useSelector(s => s.storeItems.wishes);
-    const shopping = useSelector(s => s.storeItems.shopping);
     const ordered = useSelector(s => s.storeItems.ordered);
 
     useEffect(() => {
@@ -43,10 +41,10 @@ const App = () => {
     }, [shoppingProducts]);
 
     useEffect(() => {
-        localStorage.setItem('wishes', JSON.stringify(wishes));
-        localStorage.setItem('shopping', JSON.stringify(shopping));
+        localStorage.setItem('wishes', JSON.stringify(wishesProducts));
+        localStorage.setItem('shopping', JSON.stringify(shoppingProducts));
         localStorage.setItem('ordered', JSON.stringify(ordered));
-    }, [wishes, shopping, ordered]);
+    }, [wishesProducts, shoppingProducts, ordered]);
 
     const currency = 91;
 

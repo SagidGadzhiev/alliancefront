@@ -4,6 +4,7 @@ import NewsCarousel from "../components/mainPageComps/carousel";
 import MainPageProducts from "../components/mainPageComps/mainPageProducts";
 import ProdsUndCategs from "../components/mainPageComps/productsUnderCategs";
 
+
 const MainPage = ({currency, products}) => {
     return (
         <div className='mainPage'>

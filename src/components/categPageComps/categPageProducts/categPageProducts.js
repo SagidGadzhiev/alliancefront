@@ -3,52 +3,54 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCateg, getShopping, getWishes } from '../../../redux/reducers/storeItems';
-import noPhoto from '../../../img/noPhoto.png';
+import useDebounce from '../../../hooks/useDebounce';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 const CategPageProducts = ({ currency, currentProduct, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax }) => {
-
     const { categ } = useParams();
-
     const dispatch = useDispatch();
-
     const wishes = useSelector(s => s.storeItems.wishes.map(i => i.code));
     const shopping = useSelector(s => s.storeItems.shopping.map(i => i.code));
     const currentPage = useSelector(s => s.storeItems.currentPageNumber);
+    const addWishProd = (prod) => {
+        return dispatch(getWishes(prod));
+    };
+    const addShopProd = (prod) => {
+        return dispatch(getShopping(prod));
+    };
+    const debouncedWish = useDebounce(addWishProd, 2500);
+    const debouncedShop = useDebounce(addShopProd, 2500);
+    const wishHandler = (prod) => {
+        if (wishes.includes(prod.code)) {
+            return toast.error('Товар уже находится в списке желаний!', {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        toast.success(`Товар ${prod.product} добавлен в список желаемого!`, {
+            position: toast.POSITION.TOP_CENTER
+        });
+        return debouncedWish(prod);
+    };
+    const shopHandler = (prod) => {
+        if (shopping.includes(prod.code)) {
+            return toast.error('Товар уже находится в корзине!', {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        toast.success(`Товар ${prod.product} добавлен в корзину!`, {
+            position: toast.POSITION.TOP_CENTER
+        });
+        return debouncedShop(prod);
+    };
 
     const getCategHandler = (prodCateg) => {
         return dispatch(getCateg(prodCateg));
     };
 
-    const windowTop = () => {
-        // return window.scrollTo(0, 0);
-    };
-
-    const getImgStatus = (e) => {
-        // return e.target.src = noPhoto
-    };
-
-    const addWishProd = (prod) => {
-        if (wishes.includes(prod.code)) {
-            return alert('Товар уже находится в списке желаний.');
-        } else {
-            alert(`Товар добавлен в список желаний.`);
-            return dispatch(getWishes(prod));
-        }
-    };
-
-    const addShopProd = (prod) => {
-        if (shopping.includes(prod.code)) {
-            return alert('Товар уже находится в корзине.');
-        } else {
-            alert(`Товар добавлен в корзину.`);
-            return dispatch(getShopping(prod));
-        }
-    };
-
     return (
         <div className='categPageProducts'>
-
+            <ToastContainer autoClose={1000} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
                     <button className='categPageProducts__sortBtn' type="submit" onClick={() => {
@@ -79,18 +81,14 @@ const CategPageProducts = ({ currency, currentProduct, firstCountryIndex, lastCo
                                     </a> :
                                     <Link onClick={() => {
                                         getCategHandler(i.class);
-                                        windowTop();
                                     }} className='categPageProducts__product__googleSearch'
                                           to={`/${i.code}`}>
-                                        <img onError={(e) => getImgStatus(e)}
-                                             className='categPageProducts__product__img' src={i.img}
-                                             alt="" />
+                                        <img className='categPageProducts__product__img' src={i.img} alt="" />
                                     </Link>
                             }
                             <div className='categPageProducts__product__wrapBlock'>
                                 <Link to={`/${i.code}`} onClick={() => {
                                     getCategHandler(categ);
-                                    windowTop();
                                 }} className="categPageProducts__product__name">
                                     {
                                         i.product.includes('/') && i.product.includes(',') ?
@@ -116,9 +114,7 @@ const CategPageProducts = ({ currency, currentProduct, firstCountryIndex, lastCo
                                 <p className={`${i.available === 'В наличии' ? 'categPageProducts__product__text' : 'categPageProducts__product__text__dontExist'}`}>{i.available}</p>
                                 <div className='categPageProducts__product__wishBuy'>
                                     <button type='button'
-                                        // disabled={i.available !== 'В наличии'}
-                                            disabled={shopping.includes(i.code)}
-                                            onClick={() => addShopProd(i)}
+                                            onClick={() => shopHandler(i)}
                                             className='categPageProducts__product__wishBuy__block'>
                                         {
                                             shopping.includes(i.code) ?
@@ -146,8 +142,7 @@ const CategPageProducts = ({ currency, currentProduct, firstCountryIndex, lastCo
                                         }
                                     </button>
                                     <button type='button'
-                                            disabled={wishes.includes(i.code)}
-                                            onClick={() => addWishProd(i)}
+                                            onClick={() => wishHandler(i)}
                                             className='categPageProducts__product__wishBuy__block'>
                                         {
                                             wishes.includes(i.code) ?
