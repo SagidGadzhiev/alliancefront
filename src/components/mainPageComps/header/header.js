@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPage, getSearching, removeSearching } from '../../../redux/reducers/storeItems';
 import allianceLogo from '../../../assets/allianceLogos/allianceComputers.png';
@@ -8,36 +8,32 @@ import useDebounce from '../../../hooks/useDebounce';
 
 
 const Header = () => {
-
+    const history = useHistory();
     const debouncedSearch = useDebounce(setSearchingHandler, 500);
     const dispatch = useDispatch();
     const searching = useSelector(s => s.storeItems.searching);
     const [searchState, setSearchState] = useState('');
-
     function setSearchingHandler(e) {
         dispatch(getSearching(e.target.value));
         return searching.length === 0 ? dispatch(getCurrentPage(1)) : null;
     }
-
     const onChangeHandler = e => {
         setSearchState(e.target.value);
         return debouncedSearch(e);
     };
-
     const removeSearchHandler = () => {
         setSearchState('');
         dispatch(removeSearching());
         return dispatch(getCurrentPage(1));
     };
-
     const formHandler = (e) => {
         e.preventDefault();
+        dispatch(getCurrentPage(1));
+        return history.push(`/search=${searching}`);
     };
-
     const windowTop = () => {
         return window.scrollTo(0, 0);
     };
-
     const burgerMenu = () => {
         document.getElementById('bgMenu').classList.toggle('active');
         document.getElementById('navCateg').classList.toggle('active');

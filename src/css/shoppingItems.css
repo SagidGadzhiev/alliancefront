@@ -44,3 +44,15 @@ input[type="number"]::-webkit-inner-spin-button {
     color: #2d5a91;
     text-decoration: underline;
 }
+
+.shoppingItems__cleanBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.shoppingItems__cleanBtn:hover {
+    color: #e33033;
+}

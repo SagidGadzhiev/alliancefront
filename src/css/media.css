@@ -9,6 +9,10 @@
 }
 
 @media (max-width: 1024px) {
+    .shoppingForm__form__label {
+        width: 65%;
+    }
+
     .prodCard__itemDescription__img {
         min-width: 350px;
         min-height: 350px;
@@ -190,7 +194,7 @@
     }
 
     .searching__form {
-        width: 36%;
+        width: 60%;
     }
 
     .searching__category {
@@ -224,9 +228,18 @@
     .searching__wishes__wish__title, .searching__wishes__cart__title {
         font-size: 13px;
     }
+
+    .shoppingForm__form__label {
+        width: 80%;
+    }
 }
 
 @media (max-width: 768px) {
+
+    .shoppingForm__form__label {
+        width: unset;
+    }
+
     .wishesItems {
         margin: 0;
     }
@@ -310,8 +323,7 @@
     }
 
     .searching__form {
-        width: 50%;
-        /*margin-left: 100px;*/
+        width: 80%;
         margin-left: 0;
     }
 

@@ -17,6 +17,18 @@ table {
     color: #666666;
 }
 
+.wishesItems__cleanBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.wishesItems__cleanBtn:hover {
+    color: #e33033;
+}
+
 .noWishes {
     font-size: 20px;
     font-weight: bold;
@@ -92,4 +104,8 @@ table {
 
 .wishesItems__table__tbody__tr__td__name:hover {
     color: #e33033;
+}
+
+.wishesItems__table__tbody__tr__td__btn {
+    margin: 0 5px;
 }

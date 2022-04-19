@@ -1,45 +1,58 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getCateg, getShopping, removeWish} from "../../../redux/reducers/storeItems";
+import { clearAllWishes, getCateg, getShopping, removeWish } from '../../../redux/reducers/storeItems';
 import {Link} from "react-router-dom";
-import noPhoto from '../../../img/noPhoto.png'
+import useDebounce from '../../../hooks/useDebounce';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 const WishesItems = ({currency, wishesProducts}) => {
-
     const dispatch = useDispatch();
-
     const shopping = useSelector(s => s.storeItems.shopping.map(i => i.code));
-
+    const addShopProd = (prod) => {
+        return dispatch(getShopping(prod));
+    };
+    const debouncedShop = useDebounce(addShopProd, 2500);
+    const shopHandler = (prod) => {
+        if (shopping.includes(prod.code)) {
+            return toast.error('Товар уже находится в корзине!', {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        toast.success(`Товар ${prod.product} добавлен в корзину!`, {
+            position: toast.POSITION.TOP_CENTER
+        });
+        return debouncedShop(prod);
+    };
     const removeWishes = (wishProdId) => {
         return wishesProducts.filter((i) => {
             return i.id !== wishProdId
         })
     };
-
     const getCategHandler = (prodCateg) => {
         return dispatch(getCateg(prodCateg));
     };
-
     const windowTop = () => {
         return window.scrollTo(0, 0);
     };
-
-    const addShopProd = (prod) => {
-        if (shopping.includes(prod.code)) {
-            return alert('Товар уже находится в корзине.');
-        } else {
-            alert(`Товар добавлен в корзину.`);
-            return dispatch(getShopping(prod))
-        }
-    };
-
-    const getImgStatus = (e) => {
-        // return e.target.src = noPhoto
+    const cleanWishesHandler = () => {
+        return dispatch(clearAllWishes());
     };
 
     return (
         <div className='wishesItems'>
-            <p className="wishesItems__title">Мой список желаемого</p>
+            <ToastContainer autoClose={1000} />
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <p className="wishesItems__title">Мой список желаемого</p>
+                <button
+                    style={{ display: `${wishesProducts.length === 0 ? 'none' : 'block'}` }}
+                    className='wishesItems__cleanBtn'
+                    onClick={cleanWishesHandler}
+                    type="button"
+                >
+                    очистить список
+                </button>
+            </div>
             {
                 wishesProducts.length === 0 ? <p className='noWishes'>Список желаемых товаров пуст</p> :
                     <table className='wishesItems__table'>
@@ -74,8 +87,7 @@ const WishesItems = ({currency, wishesProducts}) => {
                                                     windowTop()
                                                 }} className='wishesItems__table__tbody__tr__td__googleSearch'
                                                       to={`/${i.code}`}>
-                                                    <img onError={(e) => getImgStatus(e)} className='wishesItems__table__tbody__tr__td__img' src={i.img}
-                                                         alt=""/>
+                                                    <img className='wishesItems__table__tbody__tr__td__img' src={i.img} alt=""/>
                                                 </Link>
                                         }
                                     </td>
@@ -102,7 +114,7 @@ const WishesItems = ({currency, wishesProducts}) => {
                                                   d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
                                         </svg>
                                     </td>
-                                    <td onClick={() => addShopProd(i)}
+                                    <td onClick={() => shopHandler(i)}
                                         className='wishesItems__table__tbody__tr__td wishesItems__table__tbody__tr__td_card'
                                         rowSpan={1}>
                                         {

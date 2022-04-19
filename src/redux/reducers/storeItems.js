@@ -110,6 +110,12 @@ export default (state = initState, action) => {
                 shopping: []
             }
         }
+        case actions.CLEAR__ALL__WISHES: {
+            return {
+                ...state,
+                wishes: []
+            }
+        }
         case actions.GET_ORDERED: {
             return {
                 ...state,
@@ -273,6 +279,12 @@ export const getSalesProducts = () => {
 export const clearAllShopping = () => {
     return ({
         type: actions.CLEAR__ALL__SHOPPING
+    })
+};
+
+export const clearAllWishes = () => {
+    return ({
+        type: actions.CLEAR__ALL__WISHES
     })
 };
 

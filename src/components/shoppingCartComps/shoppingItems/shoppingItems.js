@@ -1,50 +1,56 @@
-import React, {useState} from 'react';
-import {Link} from "react-router-dom";
-import {getCateg, removeShopping, updateCount} from "../../../redux/reducers/storeItems";
-import {useDispatch, useSelector} from "react-redux";
-import noPhoto from '../../../img/noPhoto.png'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import {
+    clearAllShopping,
+    getCateg,
+    removeShopping,
+    updateCount
+} from '../../../redux/reducers/storeItems';
+import { useDispatch, useSelector } from 'react-redux';
 
-const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
 
+const ShoppingItems = ({ totalPrice, currency, shoppingProducts }) => {
     const [, setCount] = useState(0);
-
     const dispatch = useDispatch();
-
     const ordered = useSelector(s => s.storeItems.ordered);
-
     const removeShopProd = (wishProdId) => {
         return shoppingProducts.filter((i) => {
-            return i.id !== wishProdId
-        })
+            return i.id !== wishProdId;
+        });
     };
-
     const getCategHandler = (prodCateg) => {
         return dispatch(getCateg(prodCateg));
     };
-
     const windowTop = () => {
         return window.scrollTo(0, 0);
     };
-
     const countPlus = (prodId) => {
         return shoppingProducts.map(i => {
-            return prodId === i.id ? {...i, count: i.count + 1} : i
-        })
+            return prodId === i.id ? { ...i, count: i.count + 1 } : i;
+        });
     };
-
     const countMinus = (prodId) => {
         return shoppingProducts.map(i => {
-            return prodId === i.id ? {...i, count: i.count - 1} : i
-        })
+            return prodId === i.id ? { ...i, count: i.count - 1 } : i;
+        });
     };
-
-    const getImgStatus = (e) => {
-        // return e.target.src = noPhoto
+    const cleanShoppingHandler = () => {
+        return dispatch(clearAllShopping());
     };
 
     return (
         <div className='shoppingItems wishesItems'>
-            <p className="wishesItems__title">Товары на оформление</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <p className="wishesItems__title">Товары на оформление</p>
+                <button
+                    style={{ display: `${shoppingProducts.length === 0 ? 'none' : 'block'}` }}
+                    className='shoppingItems__cleanBtn'
+                    onClick={cleanShoppingHandler}
+                    type="button"
+                >
+                    очистить список
+                </button>
+            </div>
             {
                 shoppingProducts.length === 0 ? <p className='noWishes'>Корзина пустая</p> :
                     <div>
@@ -73,16 +79,15 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                                        target='_blank'
                                                        href={`http://www.google.kg/search?q=${i.product}`}>
                                                         <img className='wishesItems__table__tbody__tr__td__img'
-                                                             src='https://enter.kg/images/yandex.png' alt=""/>
+                                                             src='https://enter.kg/images/yandex.png' alt="" />
                                                     </a> :
                                                     <Link onClick={() => {
                                                         getCategHandler(i.class);
-                                                        windowTop()
+                                                        windowTop();
                                                     }} className='wishesItems__table__tbody__tr__td__googleSearch'
                                                           to={`/${i.code}`}>
-                                                        <img onError={(e) => getImgStatus(e)} className='wishesItems__table__tbody__tr__td__img'
-                                                             src={i.img}
-                                                             alt=""/>
+                                                        <img className='wishesItems__table__tbody__tr__td__img'
+                                                             src={i.img} alt="" />
                                                     </Link>
                                             }
                                         </td>
@@ -90,7 +95,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                             <Link className='wishesItems__table__tbody__tr__td__name' to={`/${i.code}`}
                                                   onClick={() => {
                                                       getCategHandler(i.class);
-                                                      windowTop()
+                                                      windowTop();
                                                   }}>{i.product}</Link>
                                         </td>
                                         <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
@@ -98,15 +103,20 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                                             - {(i.price * currency).toFixed(0)}сом
                                         </td>
                                         <td className='wishesItems__table__tbody__tr__td' rowSpan={1}>
-                                            <input className='wishesItems__table__tbody__tr__td__input' type="number"
-                                                   onChange={(e) => setCount(e.target.value)} value={i.count}/>
-                                            <button onClick={() => dispatch(updateCount(countPlus(i.id)))}
-                                                    className='wishesItems__table__tbody__tr__td__btn' type="button">+
-                                            </button>
-                                            <button disabled={i.count <= 1}
-                                                    onClick={() => dispatch(updateCount(countMinus(i.id)))}
-                                                    className='wishesItems__table__tbody__tr__td__btn' type="button">-
-                                            </button>
+                                            <p style={{textAlign: 'center', marginBottom: '5px'}}>Кол: {i.count}</p>
+                                            <div style={{width: 60}}>
+                                                <button onClick={() => dispatch(updateCount(countPlus(i.id)))}
+                                                        className='wishesItems__table__tbody__tr__td__btn'
+                                                        type="button">
+                                                    +
+                                                </button>
+                                                <button disabled={i.count <= 1}
+                                                        onClick={() => dispatch(updateCount(countMinus(i.id)))}
+                                                        className='wishesItems__table__tbody__tr__td__btn'
+                                                        type="button">
+                                                    -
+                                                </button>
+                                            </div>
                                         </td>
                                         <td onClick={() => dispatch(removeShopping(removeShopProd(i.id)))}
                                             className='wishesItems__table__tbody__tr__td wishesItems__table__tbody__tr__td_cross'
@@ -148,7 +158,7 @@ const ShoppingItems = ({totalPrice, currency, shoppingProducts}) => {
                     </div>
             }
 
-            <Link onClick={() => windowTop()} style={{display: `${ordered.length === 0 ? 'none' : 'block'}`}}
+            <Link onClick={() => windowTop()} style={{ display: `${ordered.length === 0 ? 'none' : 'block'}` }}
                   className='shoppingItems__ordered'
                   to='/ordered'>Список оформленных заказов</Link>
 
