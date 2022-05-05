@@ -165,6 +165,7 @@ function Header() {
               &#10006;
             </button>
             <Link
+              style={{ display: `${searching.length === 0 ? 'none' : 'block'}` }}
               onClick={() => dispatch(getCurrentPage(1))}
               to={`/search=${searching}`}
               className='searching__form__label__btn'

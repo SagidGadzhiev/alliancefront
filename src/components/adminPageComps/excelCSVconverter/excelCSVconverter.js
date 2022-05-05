@@ -106,7 +106,7 @@ function ExcelCsVconverter() {
   };
 
   return (
-    <div className='App'>
+    <div className='excel-converter'>
       <input type='file' id='file-selector' />
       <button onClick={ConvertToCSV}>Convert</button>
     </div>

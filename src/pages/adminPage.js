@@ -22,6 +22,7 @@ function AdminPage({
       return axios('https://allianceplusserver.herokuapp.com/products')
         .then(({ data }) => setProductsArray(data));
     }
+
     fetchData().then((res) => res);
   }, []);
 
@@ -71,142 +72,104 @@ function AdminPage({
     setPassword('');
   }
 
+  if (login !== 'allianceplus.kg@gmail.com' || password !== 'alliancekg') {
+    return (
+      <div className='adminPage'>
+        <h1 className='adminPage__title'>Админ панель</h1>
+        <Link className='adminPage__toHome' to='/'>На главную</Link>
+        <div className='container'>
+          <h2
+            className='adminPage__login-form--input-data'
+          >
+            Введите логин и пароль
+          </h2>
+          <input
+            className='adminPage__login-form--login-field'
+            style={{ display: 'block' }}
+            onChange={loginHand}
+            type='email'
+            placeholder='login'
+            value={pushLogin}
+          />
+          <input
+            className='adminPage__login-form--password-field'
+            style={{ display: 'block' }}
+            onChange={passHand}
+            type='password'
+            placeholder='password'
+            value={pushPassword}
+          />
+          <button
+            className='login-btn'
+            type='button'
+            onClick={() => signIn(pushLogin, pushPassword)}
+          >
+            Войти
+          </button>
+          {
+            login === '' && password === '' ? null
+                :
+                login !== 'allianceplus.kg@gmail.com' || password !== 'alliancekg'
+                ? (<p className='incorrect-data'>Неверный логин или пароль</p>)
+                : null
+          }
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className='adminPage'>
       <h1 className='adminPage__title'>Админ панель</h1>
       <Link className='adminPage__toHome' to='/'>На главную</Link>
       <div className='container'>
-        {login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? <ExcelCsVconverter /> : null}
-        <br />
-        <h2
-          className='adminPage__login-form--input-data'
-          style={{
-            display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'none' : 'block'}`,
-          }}
-        >
-          Введите
-          логин и пароль
-        </h2>
-        <input
-          className='adminPage__login-form--login-field'
-          style={{
-            display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'none' : 'block'}`,
-          }}
-          onChange={loginHand}
-          type='email'
-          placeholder='login'
-          value={pushLogin}
-        />
-        <input
-          className='adminPage__login-form--password-field'
-          style={{
-            display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'none' : 'block'}`,
-          }}
-          onChange={passHand}
-          type='password'
-          placeholder='password'
-          value={pushPassword}
-        />
-        <button
-          className='login-btn'
-          style={{
-            display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'none' : 'block'}`,
-          }}
-          type='button'
-          onClick={() => signIn(pushLogin, pushPassword)}
-        >
-          Войти
-        </button>
+        <ExcelCsVconverter />
         <button
           className='logout-btn'
-          style={{
-            display: `${login !== 'allianceplus.kg@gmail.com' || password !== 'alliancekg' ? 'none' : 'block'}`,
-          }}
           type='button'
           onClick={output}
         >
           Выйти
         </button>
-        <p
-          className='incorrect-data'
-          style={{
-            display: `${login === '' && password === '' ? 'none' : login !== 'allianceplus.kg@gmail.com' || password !== 'alliancekg' ? 'block' : 'none'}`,
-          }}
-        >
-          Неверный логин или пароль
-        </p>
-        <div
-          className='empty-images-container'
-          style={{
-            display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'block' : 'none'}`,
-          }}
-        >
+        <div className='empty-images-container'>
           {
-                        productsArray.filter((i) => i.img === '').map((i) => (
-                          <div className='empty-images-container__block' key={i.id}>
-                            <p className='empty-images-container__block--text'>
-                              id-товара :
-                              {i.id}
-                            </p>
-                            <p className='empty-images-container__block--text'>
-                              Код-товара :
-                              {i.code}
-                            </p>
-                            <p className='empty-images-container__block--text'>
-                              Название товара :
-                              <br />
-                              {' '}
-                              {i.product}
-                            </p>
-                            <p className='empty-images-container__block--text'>
-                              Класс :
-                              {i.class}
-                            </p>
-                            <p className='empty-images-container__block--text'>
-                              Категория :
-                              {i.category}
-                            </p>
-                            <p className='empty-images-container__block--text'>
-                              Подкатегория :
-                              {i.subcategory}
-                            </p>
-                            <p className='empty-images-container__block--text'>
-                              URL-картинки :
-                              {i.img}
-                            </p>
-                            <input
-                              placeholder='Input image url to this field'
-                              style={{ width: '100%', height: '40px' }}
-                              onChange={inputHandler}
-                              type='text'
-                            />
-                            <button
-                              style={{ width: '100%', height: '40px', cursor: 'pointer' }}
-                              type='submit'
-                              onClick={() => addImg(i, i.id, input)}
-                            >
-                              Добавить картинку
-                            </button>
-                          </div>
-                        ))
-                    }
+            productsArray.filter((i) => i.img === '').map((i) => (
+                <div className='empty-images-container__block' key={i.id}>
+                  <p className='empty-images-container__block--text'>id-товара :{i.id}</p>
+                  <p className='empty-images-container__block--text'>Код-товара :{i.code}</p>
+                  <p className='empty-images-container__block--text'>Название товара :<br />{' '}{i.product}</p>
+                  <p className='empty-images-container__block--text'>Класс :{i.class}</p>
+                  <p className='empty-images-container__block--text'>Категория :{i.category}</p>
+                  <p className='empty-images-container__block--text'>Подкатегория :{i.subcategory}</p>
+                  <p className='empty-images-container__block--text'>URL-картинки :{i.img}</p>
+                  <input
+                      placeholder='Input image url to this field'
+                      style={{ width: '100%', height: '40px' }}
+                      onChange={inputHandler}
+                      type='text'
+                  />
+                  <button
+                      style={{ width: '100%', height: '40px', cursor: 'pointer' }}
+                      type='submit'
+                      onClick={() => addImg(i, i.id, input)}
+                  >
+                    Добавить картинку
+                  </button>
+                </div>
+            ))
+          }
         </div>
         <p
           style={{
-            display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'block' : 'none'}`,
             marginTop: '30px',
             fontWeight: 'bold',
           }}
           className='nullImgCount'
         >
-          Продуктов без картинок
-          :
-          {productsArray.filter((i) => i.img === '').length}
+          Продуктов без картинок :{productsArray.filter((i) => i.img === '').length}
         </p>
-        <div style={{
-          display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'block' : 'none'}`,
-          marginTop: '50px',
-        }}
+        <div
+            style={{ marginTop: '50px', }}
         >
           <h2 style={{ marginBottom: '20px' }}>Добавление нового товара</h2>
           <input
@@ -217,9 +180,7 @@ function AdminPage({
             value={novaProd}
           />
           <button
-            style={{
-              width: '100%', height: '40px', marginTop: 10, cursor: 'pointer',
-            }}
+            style={{ width: '100%', height: '40px', marginTop: 10, cursor: 'pointer', }}
             type='submit'
             onClick={() => {
               setNova(products.filter((i) => i.code === novaProd));
@@ -229,9 +190,7 @@ function AdminPage({
           </button>
           <button
             disabled={nova.length === 0}
-            style={{
-              width: '100%', height: '40px', marginTop: 10, cursor: 'pointer',
-            }}
+            style={{ width: '100%', height: '40px', marginTop: 10, cursor: 'pointer', }}
             type='submit'
             onClick={() => addNovaProd(novaProd)}
           >
@@ -239,65 +198,33 @@ function AdminPage({
           </button>
         </div>
         {
-                    nova.map((i) => (
-                      <div key={i.id}>
-                        <img
-                          style={{
-                            width: '100px',
-                            height: '100px',
-                            objectFit: 'contain',
-                            objectPosition: 'center',
-                          }}
-                          src={i.img}
-                          alt='pic'
-                        />
-                        <p>
-                          ID :
-                          {i.id}
-                        </p>
-                        <p>
-                          Код товара :
-                          {i.code}
-                        </p>
-                        <p>
-                          Название :
-                          {i.product}
-                        </p>
-                        <p>
-                          Класс :
-                          {i.class}
-                        </p>
-                        <p>
-                          Категория :
-                          {i.category}
-                        </p>
-                        <p>
-                          Под категория :
-                          {i.subcategory}
-                        </p>
-                        <p>
-                          Цена :
-                          {i.price}
-                        </p>
-                        <p>
-                          Количество :
-                          {i.count}
-                        </p>
-                        <p>
-                          Единица :
-                          {i.unit}
-                        </p>
-                        <p>
-                          Комментарий(гарантия) :
-                          {i.comment}
-                        </p>
-                      </div>
-                    ))
-                }
-        <div style={{
-          display: `${login === 'allianceplus.kg@gmail.com' && password === 'alliancekg' ? 'block' : 'none'}`,
-          marginTop: '50px',
-        }}
+          nova.map((i) => (
+              <div key={i.id}>
+                <img
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      objectFit: 'contain',
+                      objectPosition: 'center',
+                    }}
+                    src={i.img}
+                    alt=''
+                />
+                <p>ID :{i.id}</p>
+                <p>Код товара :{i.code}</p>
+                <p>Название :{i.product}</p>
+                <p>Класс :{i.class}</p>
+                <p>Категория :{i.category}</p>
+                <p>Под категория :{i.subcategory}</p>
+                <p>Цена :{i.price}</p>
+                <p>Количество :{i.count}</p>
+                <p>Единица :{i.unit}</p>
+                <p>Комментарий(гарантия) :{i.comment}</p>
+              </div>
+          ))
+        }
+        <div
+            style={{ marginTop: '50px', }}
         >
           <h2 style={{ marginBottom: '20px' }}>Добавление акционного товара</h2>
           <input
@@ -308,21 +235,15 @@ function AdminPage({
             value={saleProd}
           />
           <button
-            style={{
-              width: '100%', height: '40px', marginTop: 10, cursor: 'pointer',
-            }}
+            style={{ width: '100%', height: '40px', marginTop: 10, cursor: 'pointer', }}
             type='submit'
-            onClick={() => {
-              setSelling(products.filter((i) => i.code === saleProd));
-            }}
+            onClick={() => {setSelling(products.filter((i) => i.code === saleProd));}}
           >
             Найти товар
           </button>
           <button
             disabled={selling.length === 0}
-            style={{
-              width: '100%', height: '40px', marginTop: 10, cursor: 'pointer',
-            }}
+            style={{ width: '100%', height: '40px', marginTop: 10, cursor: 'pointer', }}
             type='submit'
             onClick={() => addSaleProd(saleProd)}
           >
@@ -330,9 +251,13 @@ function AdminPage({
           </button>
         </div>
         {
-                    selling.map((i) => (
-                      <div key={i.id}>
-                        <img
+          selling.map((i) => (
+              <div key={i.id}>
+                {
+                  i.img === '' ?
+                      null
+                      :
+                      <img
                           style={{
                             width: '100px',
                             height: '100px',
@@ -340,51 +265,21 @@ function AdminPage({
                             objectPosition: 'center',
                           }}
                           src={i.img}
-                          alt='pic'
-                        />
-                        <p>
-                          ID :
-                          {i.id}
-                        </p>
-                        <p>
-                          Код товара :
-                          {i.code}
-                        </p>
-                        <p>
-                          Название :
-                          {i.product}
-                        </p>
-                        <p>
-                          Класс :
-                          {i.class}
-                        </p>
-                        <p>
-                          Категория :
-                          {i.category}
-                        </p>
-                        <p>
-                          Под категория :
-                          {i.subcategory}
-                        </p>
-                        <p>
-                          Цена :
-                          {i.price}
-                        </p>
-                        <p>
-                          Количество :
-                          {i.count}
-                        </p>
-                        <p>
-                          Единица :
-                          {i.unit}
-                        </p>
-                        <p>
-                          Комментарий(гарантия) :
-                          {i.comment}
-                        </p>
-                      </div>
-                    ))
+                          alt=''
+                      />
                 }
+                <p>ID :{i.id}</p>
+                <p>Код товара :{i.code}</p>
+                <p>Название :{i.product}</p>
+                <p>Класс :{i.class}</p>
+                <p>Категория :{i.category}</p><p>Под категория :{i.subcategory}</p>
+                <p>Цена :{i.price}</p>
+                <p>Количество :{i.count}</p>
+                <p>Единица :{i.unit}</p>
+                <p>Комментарий(гарантия) :{i.comment}</p>
+              </div>
+          ))
+        }
       </div>
     </div>
   );

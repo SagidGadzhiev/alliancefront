@@ -30,6 +30,10 @@
     height: 30px;
 }
 
+.logout-btn {
+    margin-top: 10px;
+}
+
 .incorrect-data {
     margin-top: 10px;
     font-weight: bold;
