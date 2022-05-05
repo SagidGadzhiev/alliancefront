@@ -1,2 +1,3 @@
-import OtherProds from "./otherProds";
-export default OtherProds
+import OtherProds from './otherProds';
+
+export default OtherProds;

@@ -1,2 +1,3 @@
-import SearchingProducts from "./searchingProducts";
-export default SearchingProducts
+import SearchingProducts from './searchingProducts';
+
+export default SearchingProducts;

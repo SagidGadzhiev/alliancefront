@@ -1,2 +1,3 @@
-import Content from "./content";
-export default Content
+import Content from './content';
+
+export default Content;

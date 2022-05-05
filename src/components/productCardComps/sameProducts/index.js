@@ -1,2 +1,3 @@
-import SameProds from "./sameProds";
-export default SameProds
+import SameProds from './sameProds';
+
+export default SameProds;

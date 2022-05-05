@@ -1,2 +1,3 @@
-import NewsCarousel from "./NewsCarousel";
-export default NewsCarousel
+import NewsCarousel from './NewsCarousel';
+
+export default NewsCarousel;

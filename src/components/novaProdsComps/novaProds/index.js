@@ -1,2 +1,3 @@
-import NovaProds from "./novaProds";
-export default NovaProds
+import NovaProds from './novaProds';
+
+export default NovaProds;

@@ -1,2 +1,3 @@
-import MainPageProducts from "./mainPageProducts";
-export default MainPageProducts
+import MainPageProducts from './mainPageProducts';
+
+export default MainPageProducts;

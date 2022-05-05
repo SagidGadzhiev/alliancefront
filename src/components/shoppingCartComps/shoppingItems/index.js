@@ -1,2 +1,3 @@
-import ShoppingItems from "./shoppingItems";
-export default ShoppingItems
+import ShoppingItems from './shoppingItems';
+
+export default ShoppingItems;

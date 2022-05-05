@@ -1,2 +1,3 @@
-import WishesItems from "./wishesItems";
-export default WishesItems
+import WishesItems from './wishesItems';
+
+export default WishesItems;

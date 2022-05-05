@@ -1,68 +1,87 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {getCateg} from "../../../redux/reducers/storeItems";
-import noPhoto from '../../../img/noPhoto.png'
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getCateg } from '../../../redux/reducers/storeItems';
 
-const ProdsUndCategs = ({currency, products}) => {
+function ProdsUndCategs({ currency, products }) {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const getCategHandler = (prodCateg) => dispatch(getCateg(prodCateg));
 
-    const getCategHandler = (prodCateg) => {
-        return dispatch(getCateg(prodCateg));
-    };
+  const windowTop = () => window.scrollTo(0, 0);
 
-    const windowTop = () => {
-        return window.scrollTo(0, 0);
-    };
-
-    const getImgStatus = (e) => {
-        // return e.target.src = noPhoto
-    };
-
-    return (
-        <div className='prodsUndCategs'>
-            <p className='prodsUndCategs__title'><span>Лидеры продаж</span></p>
-            <div className='prodsUndCategs__productsBlock'>
-                {
-                    products.filter(i => {
-                        return i.category === 'Acer' ? i : i.class === 'Клавиатуры' ? i : i.class === 'Мыши' ? i : null
-                    }).slice(0, 20).map((i) => (
-                        <div key={i.id} className='prodsUndCategs__product'>
-                            {
-                                i.img.length === 0 ?
-                                    <a className='prodsUndCategs__product__googleSearch'
-                                       title='Найти в google'
-                                       rel='noreferrer'
-                                       target='_blank'
-                                       href={`http://www.google.kg/search?q=${i.product}`}>
-                                        <img className='prodsUndCategs__product__img'
-                                             src='https://enter.kg/images/yandex.png' alt=""/>
-                                    </a> :
-                                    <Link onClick={() => {
+  return (
+    <div className='prodsUndCategs'>
+      <p className='prodsUndCategs__title'><span>Лидеры продаж</span></p>
+      <div className='prodsUndCategs__productsBlock'>
+        {
+                    products.filter((i) => (i.category === 'Acer' ? i : i.class === 'Клавиатуры' ? i : i.class === 'Мыши' ? i : null)).slice(0, 20).map((i) => (
+                      <div key={i.id} className='prodsUndCategs__product'>
+                        {
+                                i.img.length === 0
+                                  ? (
+                                    <a
+                                      className='prodsUndCategs__product__googleSearch'
+                                      title='Найти в google'
+                                      rel='noreferrer'
+                                      target='_blank'
+                                      href={`http://www.google.kg/search?q=${i.product}`}
+                                    >
+                                      <img
+                                        className='prodsUndCategs__product__img'
+                                        src='https://enter.kg/images/yandex.png'
+                                        alt=''
+                                      />
+                                    </a>
+                                  )
+                                  : (
+                                    <Link
+                                      onClick={() => {
                                         getCategHandler(i.class);
-                                        windowTop()
-                                    }} className='prodsUndCategs__product__googleSearch'
-                                          to={`/${i.code}`}>
-                                        <img onError={(e) => getImgStatus(e)} className='prodsUndCategs__product__img' src={i.img}
-                                             alt=""/>
+                                        windowTop();
+                                      }}
+                                      className='prodsUndCategs__product__googleSearch'
+                                      to={`/${i.code}`}
+                                    >
+                                      <img
+                                        className='prodsUndCategs__product__img'
+                                        src={i.img}
+                                        alt=''
+                                      />
                                     </Link>
+                                  )
                             }
-                            <Link to={`/${i.code}`} onClick={() => {
-                                getCategHandler(i.class);
-                                windowTop()
-                            }} className="prodsUndCategs__product__name">{i.product}</Link>
-                            <p className="prodsUndCategs__product__price">
-                                {i.price === undefined ? i.price : (i.price).toFixed(2)}$
-                                - {(i.price * currency).toFixed(0)}сом</p>
-                            <p className="prodsUndCategs__product__warranty">Комментарий(гарантия) : {i.comment}</p>
-                            <p className="prodsUndCategs__product__code">Код товара : {i.code}</p>
-                        </div>
+                        <Link
+                          to={`/${i.code}`}
+                          onClick={() => {
+                            getCategHandler(i.class);
+                            windowTop();
+                          }}
+                          className='prodsUndCategs__product__name'
+                        >
+                          {i.product}
+                        </Link>
+                        <p className='prodsUndCategs__product__price'>
+                          {i.price === undefined ? i.price : (i.price).toFixed(2)}
+                          $
+                          -
+                          {(i.price * currency).toFixed(0)}
+                          сом
+                        </p>
+                        <p className='prodsUndCategs__product__warranty'>
+                          Комментарий(гарантия) :
+                          {i.comment}
+                        </p>
+                        <p className='prodsUndCategs__product__code'>
+                          Код товара :
+                          {i.code}
+                        </p>
+                      </div>
                     ))
                 }
-            </div>
-        </div>
-    );
-};
+      </div>
+    </div>
+  );
+}
 
 export default ProdsUndCategs;

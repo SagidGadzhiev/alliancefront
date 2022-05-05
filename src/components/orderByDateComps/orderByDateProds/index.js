@@ -1,2 +1,3 @@
-import OrderByDateProds from "./orderByDateProds";
-export default OrderByDateProds
+import OrderByDateProds from './orderByDateProds';
+
+export default OrderByDateProds;

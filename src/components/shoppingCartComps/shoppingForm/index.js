@@ -1,2 +1,3 @@
-import ShoppingForm from "./shoppingForm";
-export default ShoppingForm
+import ShoppingForm from './shoppingForm';
+
+export default ShoppingForm;

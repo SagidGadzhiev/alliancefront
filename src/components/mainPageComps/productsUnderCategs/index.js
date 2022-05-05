@@ -1,2 +1,3 @@
-import ProdsUndCategs from "./prodsUndCategs";
-export default ProdsUndCategs
+import ProdsUndCategs from './prodsUndCategs';
+
+export default ProdsUndCategs;

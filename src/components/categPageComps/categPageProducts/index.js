@@ -1,2 +1,3 @@
-import CategPageProducts from "./categPageProducts";
-export default CategPageProducts
+import CategPageProducts from './categPageProducts';
+
+export default CategPageProducts;

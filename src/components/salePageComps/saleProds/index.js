@@ -1,2 +1,3 @@
-import SaleProds from "./saleProds";
-export default SaleProds
+import SaleProds from './saleProds';
+
+export default SaleProds;

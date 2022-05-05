@@ -1,2 +1,3 @@
-import BestsellProds from "./bestsellProds";
-export default BestsellProds
+import BestsellProds from './bestsellProds';
+
+export default BestsellProds;

@@ -1,2 +1,3 @@
-import ProdCard from "./prodCard";
-export default ProdCard
+import ProdCard from './prodCard';
+
+export default ProdCard;

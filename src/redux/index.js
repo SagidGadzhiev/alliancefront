@@ -1,7 +1,7 @@
-import {createStore, compose, applyMiddleware} from "redux";
-import rootReducer from "./reducers";
-import {composeWithDevTools} from 'redux-devtools-extension';
-import thunk from "redux-thunk";
+import { createStore, compose, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
 
 const initState = {};
 const composeFunction = process.env.NODE_ENV === 'development' ? composeWithDevTools : compose();
