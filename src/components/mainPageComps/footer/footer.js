@@ -26,7 +26,7 @@ function Footer() {
 
             {/* <Link onClick={() => {windowTop()}} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link> */}
             <p className='footer__block__aboutShop'>
-              AlliancePlus.kg - интернет-магазин по продаже
+              AllianceComputers.kg - интернет-магазин по продаже
               компьютерной техники.
             </p>
           </div>

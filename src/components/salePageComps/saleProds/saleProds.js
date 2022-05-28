@@ -15,7 +15,6 @@ function SaleProds({ currency }) {
   return (
     <div style={{ margin: '20px 0 20px 0' }}>
       <p className='prodsUndCategs__title'><span>Товары по акции</span></p>
-      <p className='prodsUndCategs__webCameraSale'>Камеры DH-HAC-HDW1000RP всего за $7!!!</p>
       <div className='prodsUndCategs__productsBlock'>
         {
                     sales.map((i) => (
@@ -91,44 +90,6 @@ function SaleProds({ currency }) {
                     ))
                 }
       </div>
-
-      {/* <p className='prodsUndCategs__title'><span style={{fontSize: "13px"}}>Системные блоки в сборке по супер-цене!</span> */}
-      {/* </p> */}
-      {/* <table style={{ */}
-      {/*    width: "100%" */}
-      {/* }}> */}
-      {/*    <tbody> */}
-      {/*    <tr className='sale__tr'> */}
-      {/*        <td className='sale__tr__td'>Celeron G1820 // DDR3 2GB // HDD 1TB 5400rmp</td> */}
-      {/*        <td className='sale__tr__td'>ВСЕГО ЗА <span>$115</span>!!!</td> */}
-      {/*    </tr> */}
-      {/*    <tr className='sale__tr'> */}
-      {/*        <td className='sale__tr__td'>Celeron G1820 // DDR3 2GB // SSD 120GB</td> */}
-      {/*        <td className='sale__tr__td'>ВСЕГО ЗА <span>$120</span>!!!</td> */}
-      {/*    </tr> */}
-      {/*    <tr className='sale__tr'> */}
-      {/*        <td className='sale__tr__td'>Celeron G1820 // DDR3 4GB // HDD 1TB 5400rmp</td> */}
-      {/*        <td className='sale__tr__td'>ВСЕГО ЗА <span>$125</span>!!!</td> */}
-      {/*    </tr> */}
-      {/*    <tr className='sale__tr'> */}
-      {/*        <td className='sale__tr__td'>Pentium G3220 // DDR3 2GB // HDD 1TB 5400rmp</td> */}
-      {/*        <td className='sale__tr__td'>ВСЕГО ЗА <span>$120</span>!!!</td> */}
-      {/*    </tr> */}
-      {/*    <tr className='sale__tr'> */}
-      {/*        <td className='sale__tr__td'>Pentium G3220 // DDR3 4GB // HDD 1TB 5400rmp</td> */}
-      {/*        <td className='sale__tr__td'>ВСЕГО ЗА <span>$130</span>!!!</td> */}
-      {/*    </tr> */}
-      {/*    <tr className='sale__tr'> */}
-      {/*        <td className='sale__tr__td'>i5-4590 // DDR3 8GB // SSD 240GB</td> */}
-      {/*        <td className='sale__tr__td'>ВСЕГО ЗА <span>$200</span>!!!</td> */}
-      {/*    </tr> */}
-      {/*    <tr className='sale__tr'> */}
-      {/*        <td className='sale__tr__td'>i7-4790 // DDR3 8GB // SSD 240GB</td> */}
-      {/*        <td className='sale__tr__td'>ВСЕГО ЗА <span>$250</span>!!!</td> */}
-      {/*    </tr> */}
-      {/*    </tbody> */}
-      {/* </table> */}
-
     </div>
   );
 }

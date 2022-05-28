@@ -15,7 +15,7 @@ function ProdsUndCategs({ currency, products }) {
       <p className='prodsUndCategs__title'><span>Лидеры продаж</span></p>
       <div className='prodsUndCategs__productsBlock'>
         {
-                    products.filter((i) => (i.category === 'Acer' ? i : i.class === 'Клавиатуры' ? i : i.class === 'Мыши' ? i : null)).slice(0, 20).map((i) => (
+                    products.filter((i) => (i.category === 'Acer' ? i : i.class === 'Клавиатуры' ? i : i.class === 'Мыши' ? i : null)).slice(0, 10).map((i) => (
                       <div key={i.id} className='prodsUndCategs__product'>
                         {
                                 i.img.length === 0

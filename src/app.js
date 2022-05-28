@@ -44,7 +44,7 @@ function App() {
     localStorage.setItem('ordered', JSON.stringify(ordered));
   }, [wishesProducts, shoppingProducts, ordered]);
 
-  const currency = 91;
+  const currency = 85;
 
   return (
     <div className='app'>

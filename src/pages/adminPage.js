@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ExcelCsVconverter from '../components/adminPageComps/excelCSVconverter';
+import ExcelCSVconverter from '../components/adminPageComps/excelCSVconverter';
 import useDebounce from '../hooks/useDebounce';
 
 function AdminPage({
@@ -41,13 +41,13 @@ function AdminPage({
   }
 
   async function addNovaProd() {
-    axios.post('https://allianceplusserver.herokuapp.com/nova', nova).then();
+    await axios.post('https://allianceplusserver.herokuapp.com/nova', nova).then();
     setNova([]);
     return setNovaProd('');
   }
 
   async function addSaleProd() {
-    axios.post('https://allianceplusserver.herokuapp.com/sale', selling).then();
+    await axios.post('https://allianceplusserver.herokuapp.com/sale', selling).then();
     setSelling([]);
     return setSaleProd('');
   }
@@ -123,7 +123,7 @@ function AdminPage({
       <h1 className='adminPage__title'>Админ панель</h1>
       <Link className='adminPage__toHome' to='/'>На главную</Link>
       <div className='container'>
-        <ExcelCsVconverter />
+        <ExcelCSVconverter />
         <button
           className='logout-btn'
           type='button'
@@ -160,16 +160,13 @@ function AdminPage({
           }
         </div>
         <p
-          style={{
-            marginTop: '30px',
-            fontWeight: 'bold',
-          }}
-          className='nullImgCount'
+            style={{ marginTop: '30px', fontWeight: 'bold' }}
+            className='nullImgCount'
         >
           Продуктов без картинок :{productsArray.filter((i) => i.img === '').length}
         </p>
         <div
-            style={{ marginTop: '50px', }}
+            style={{ marginTop: '50px' }}
         >
           <h2 style={{ marginBottom: '20px' }}>Добавление нового товара</h2>
           <input
@@ -224,7 +221,7 @@ function AdminPage({
           ))
         }
         <div
-            style={{ marginTop: '50px', }}
+            style={{ marginTop: '50px' }}
         >
           <h2 style={{ marginBottom: '20px' }}>Добавление акционного товара</h2>
           <input
@@ -258,12 +255,7 @@ function AdminPage({
                       null
                       :
                       <img
-                          style={{
-                            width: '100px',
-                            height: '100px',
-                            objectFit: 'contain',
-                            objectPosition: 'center',
-                          }}
+                          style={{ width: '100px', height: '100px', objectFit: 'contain', objectPosition: 'center' }}
                           src={i.img}
                           alt=''
                       />
