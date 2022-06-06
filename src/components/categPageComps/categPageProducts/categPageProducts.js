@@ -138,7 +138,13 @@ function CategPageProducts({
                       </div>
                       <div className='categPageProducts__product__picPriceBlock'>
                         <p className='categPageProducts__product__price'>
-                          {i.price === undefined ? i.price : (i.price).toFixed(2)}
+                          {
+                            i.price === undefined ?
+                                i.price
+                                :
+                                (i.price)
+                                    // .toFixed(2)
+                          }
                           $
                           -
                           {(i.price * currency).toFixed(0)}
@@ -248,6 +254,10 @@ function CategPageProducts({
                   ))
                   .slice(firstCountryIndex, lastCountryIndex)
             }
+      <h3 className='categPageProducts__currentPage' style={{textAlign: 'right', marginTop: 20}}>
+        Страница:
+        {currentPage}
+      </h3>
     </div>
   );
 }

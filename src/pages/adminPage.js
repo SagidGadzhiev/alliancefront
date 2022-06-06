@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ExcelCSVconverter from '../components/adminPageComps/excelCSVconverter';
+import ExcelToCSV from '../components/adminPageComps/excelCSVconverter';
 import useDebounce from '../hooks/useDebounce';
 
 function AdminPage({
@@ -123,7 +123,7 @@ function AdminPage({
       <h1 className='adminPage__title'>Админ панель</h1>
       <Link className='adminPage__toHome' to='/'>На главную</Link>
       <div className='container'>
-        <ExcelCSVconverter />
+        <ExcelToCSV />
         <button
           className='logout-btn'
           type='button'
