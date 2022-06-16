@@ -118,7 +118,11 @@ function ExcelToCSV() {
               }
             }
             return obj;
-          });
+          })
+          .map(el => ({
+            ...el,
+            price: el.price ?? 0
+          }))
       // .concat(products)
       // .sort((a, b) => {
       //     return a.code > b.code ? 1 : -1
@@ -167,6 +171,7 @@ function ExcelToCSV() {
       setNewProducts(json)
     })
   };
+
 
   return (
       <div className="App">

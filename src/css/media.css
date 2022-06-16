@@ -474,6 +474,10 @@
     .shoppingForm__form__label__input {
         width: 50%;
     }
+
+    .searching__form {
+        width: 65%;
+    }
 }
 
 @media (max-width: 567px) {

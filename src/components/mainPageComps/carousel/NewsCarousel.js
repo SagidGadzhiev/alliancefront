@@ -14,6 +14,7 @@ function NewsCarousel() {
   return (
     <Carousel
       className='carousel-wrap'
+      autoPlay={5000}
       infiniteLoop
       stopOnHover
       showArrows

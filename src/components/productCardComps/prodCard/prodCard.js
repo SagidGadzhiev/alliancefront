@@ -93,19 +93,17 @@ function ProdCard({ currency, products }) {
                                               : i.product
                                     }
                         </p>
-                        <p className={`${i.available === 'В наличии' ? 'prodCard__itemDescription__aboutProdBlock__available' : 'prodCard__itemDescription__aboutProdBlock__notAvailable'}`}>
-                          Наличие
-                          :
-                          <span>{i.available}</span>
+                        <p
+                            // className={`${i.available === 'В наличии' ? 'prodCard__itemDescription__aboutProdBlock__available' : 'prodCard__itemDescription__aboutProdBlock__notAvailable'}`}
+                            className={`${i.price !== 0 ? 'prodCard__itemDescription__aboutProdBlock__available' : 'prodCard__itemDescription__aboutProdBlock__notAvailable'}`}
+                        >
+                          Наличие: <span>{i.price === 0 ? 'Нет в наличии' : 'В наличии'}</span>
+                          {/*Наличие: <span>{i.available}</span>*/}
                         </p>
                         <p className='prodCard__itemDescription__aboutProdBlock__price'>
-                          {i.price === undefined ? i.price : (i.price).toFixed(2)}
+                          {i.price === undefined || i.price === null ? i.price : (i.price).toFixed(2)}
                           $
-                          -
-                          {(i.price * currency).toFixed(0)}
-                          сом (1USD =
-                          {currency}
-                          KGS)
+                          - {(i.price * currency).toFixed(0)}сом (1USD = {currency}KGS)
                         </p>
                         <p className='prodCard__itemDescription__aboutProdBlock__attention'>
                           Убедительная просьба

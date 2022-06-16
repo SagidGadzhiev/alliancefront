@@ -43,6 +43,7 @@ function CategPageProducts({
 
   const getCategHandler = (prodCateg) => dispatch(getCateg(prodCateg));
 
+
   return (
     <div className='categPageProducts'>
       <ToastContainer autoClose={1000} />
@@ -139,18 +140,18 @@ function CategPageProducts({
                       <div className='categPageProducts__product__picPriceBlock'>
                         <p className='categPageProducts__product__price'>
                           {
-                            i.price === undefined ?
-                                i.price
-                                :
-                                (i.price)
-                                    // .toFixed(2)
+                            i.price === undefined || i.price === null ? i.price : (i.price).toFixed(2)
                           }
-                          $
-                          -
-                          {(i.price * currency).toFixed(0)}
+                          $ - {(i.price * currency).toFixed(0)}
                           сом
                         </p>
-                        <p className={`${i.available === 'В наличии' ? 'categPageProducts__product__text' : 'categPageProducts__product__text__dontExist'}`}>{i.available}</p>
+                        <p
+                            // className={`${i.available === 'В наличии' ? 'categPageProducts__product__text' : 'categPageProducts__product__text__dontExist'}`}
+                            className={`${i.price !== 0 ? 'categPageProducts__product__text' : 'categPageProducts__product__text__dontExist'}`}
+                        >
+                          {i.price === 0 ? 'Нет в наличии' : 'В наличии'}
+                          {/*{i.available}*/}
+                        </p>
                         <div className='categPageProducts__product__wishBuy'>
                           <button
                             type='button'

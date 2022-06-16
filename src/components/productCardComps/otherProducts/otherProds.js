@@ -76,11 +76,9 @@ function OtherProds({ currency, products }) {
                             {i.product}
                           </Link>
                           <p className='otherProds__product__price'>
-                            {i.price === undefined ? i.price : (i.price).toFixed(2)}
+                            {i.price === undefined || i.price === null ? i.price : (i.price).toFixed(2)}
                             $
-                            -
-                            {(i.price * currency).toFixed(0)}
-                            сом
+                            - {(i.price * currency).toFixed(0)}сом
                           </p>
                           <p className='otherProds__product__comment'>
                             Комментарий(гарантия) :

@@ -67,9 +67,7 @@ function MainPageProducts({ currency, products }) {
                           <p className='mainPageProducts__product__price'>
                             {i.price === undefined ? i.price : (i.price).toFixed(2)}
                             $
-                            -
-                            {(i.price * currency).toFixed(0)}
-                            сом
+                            - {(i.price * currency).toFixed(0)}сом
                           </p>
                           <p className='mainPageProducts__product__warranty'>
                             Комментарий(гарантия) :
@@ -135,8 +133,7 @@ function MainPageProducts({ currency, products }) {
                         <p className='mainPageProducts__product__price'>
                           {i.price === undefined ? i.price : (i.price).toFixed(2)}
                           $
-                          -
-                          {(i.price * currency).toFixed(0)}
+                          - {(i.price * currency).toFixed(0)}
                           сом
                         </p>
                         <p className='mainPageProducts__product__warranty'>
@@ -203,8 +200,7 @@ function MainPageProducts({ currency, products }) {
                         <p className='mainPageProducts__product__price'>
                           {i.price === undefined ? i.price : (i.price).toFixed(2)}
                           $
-                          -
-                          {(i.price * currency).toFixed(0)}
+                          - {(i.price * currency).toFixed(0)}
                           сом
                         </p>
                         <p className='mainPageProducts__product__warranty'>
