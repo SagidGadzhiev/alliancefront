@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ExcelToCSV from '../components/adminPageComps/excelCSVconverter';
 import useDebounce from '../hooks/useDebounce';
+import { useSelector } from 'react-redux';
 
 function AdminPage({
   products, nova, setNova, selling, setSelling,
 }) {
+
+  const currency = useSelector(s => s.storeItems.currency);
+
   const debouncedInput = useDebounce(getAllProducts, 500);
   const [novaProd, setNovaProd] = useState('');
   const [saleProd, setSaleProd] = useState('');
@@ -16,6 +20,7 @@ function AdminPage({
   const [password, setPassword] = useState('');
   const [pushLogin, setPushLogin] = useState('');
   const [pushPassword, setPushPassword] = useState('');
+  const [newCurrencyValue, setNewCurrencyValue] = useState('');
 
   useEffect(() => {
     function fetchData() {
@@ -124,6 +129,23 @@ function AdminPage({
       <Link className='adminPage__toHome' to='/'>На главную</Link>
       <div className='container'>
         <ExcelToCSV />
+        <form style={{margin: '10px 0'}} onSubmit={async (e) => {
+          e.preventDefault();
+          await axios.put('https://allianceplusserver.herokuapp.com/currency', { currency: newCurrencyValue });
+          setNewCurrencyValue('');
+        }}>
+          <label>
+            Текущий курс на сайте 1USD = {currency}KGS
+            <br/>
+            <input value={newCurrencyValue} onChange={(e) => setNewCurrencyValue(e.target.value)} type="number"
+                   placeholder='Введите новый курс...' />
+          </label>
+          <button onClick={async () => {
+            await axios.put('https://allianceplusserver.herokuapp.com/currency', { currency: newCurrencyValue });
+            setNewCurrencyValue('');
+          }} type="submit">Изменить курс
+          </button>
+        </form>
         <button
           className='logout-btn'
           type='button'

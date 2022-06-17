@@ -16,6 +16,7 @@ const initState = {
   currentPageNumber: 1,
   startPage: 0,
   endPage: 5,
+  currency: 0
 };
 
 export default (state = initState, action) => {
@@ -170,6 +171,12 @@ export default (state = initState, action) => {
         endPage: action.endPage,
       };
     }
+    case actions.GET_CURRENCY: {
+      return {
+        ...state,
+        currency: action.currency,
+      }
+    }
     default:
       return state;
   }
@@ -306,3 +313,10 @@ export const setEndPage = (page) => ({
   type: actions.SET_END_PAGE,
   endPage: page,
 });
+
+export const getCurrency = () => (dispatch) => {
+  axios('https://allianceplusserver.herokuapp.com/currency')
+      .then(({data}) => {
+        dispatch({type: actions.GET_CURRENCY, currency: data[0].currency})
+      })
+};

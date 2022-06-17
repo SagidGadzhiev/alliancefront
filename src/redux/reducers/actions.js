@@ -24,6 +24,7 @@ const actions = {
   REMOVE_SEARCHING: 'REMOVE_SEARCHING',
   SET_START_PAGE: 'SET_START_PAGE',
   SET_END_PAGE: 'SET_END_PAGE',
+  GET_CURRENCY: 'GET_CURRENCY'
 };
 
 export default actions;

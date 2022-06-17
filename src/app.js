@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getAllOrders,
+  getAllOrders, getCurrency,
   getNovasProducts,
   getOrderedLocalStorage,
   getProducts,
@@ -12,6 +12,7 @@ import {
 } from './redux/reducers/storeItems';
 import AdminPage from './pages/adminPage';
 import PageWrapper from './page-wrapper';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
   const wishesProducts = useSelector((s) => s.storeItems.wishes);
   const shoppingProducts = useSelector((s) => s.storeItems.shopping);
   const ordered = useSelector((s) => s.storeItems.ordered);
+  const currency = useSelector((s) => s.storeItems.currency);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -32,6 +34,7 @@ function App() {
     dispatch(getWishesLocalStorage(JSON.parse(localStorage.getItem('wishes')) || []));
     dispatch(getShoppingLocalStorage(JSON.parse(localStorage.getItem('shopping')) || []));
     dispatch(getOrderedLocalStorage(JSON.parse(localStorage.getItem('ordered')) || []));
+    dispatch(getCurrency());
   }, []);
 
   useEffect(() => {
@@ -44,7 +47,6 @@ function App() {
     localStorage.setItem('ordered', JSON.stringify(ordered));
   }, [wishesProducts, shoppingProducts, ordered]);
 
-  const currency = 85;
 
   return (
     <div className='app'>
