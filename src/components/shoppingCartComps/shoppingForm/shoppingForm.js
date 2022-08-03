@@ -15,8 +15,7 @@ function ShoppingForm({ currency, shoppingProducts, totalPrice }) {
 
   const date = new Date();
 
-  // eslint-disable-next-line no-unused-vars
-  const [tot, setTot] = useState('');
+  const [, setTot] = useState('');
 
   const [person, setPerson] = useState('');
   const [phone, setPhone] = useState('');
@@ -45,7 +44,7 @@ function ShoppingForm({ currency, shoppingProducts, totalPrice }) {
 
       dispatch(getAllOrders());
 
-      emailjs.sendForm('service_eubd3tq', 'template_pec0hbo', e.target, 'user_cQzLXAo3QHVA8ClatUpuP')
+      emailjs.sendForm('service_25avcin', 'template_pec0hbo', e.target, 'user_cQzLXAo3QHVA8ClatUpuP')
         .then((result) => {}, (error) => {});
       alert(`Ваш заказ принят в обработку, номер заказа ${orders.length === 0 ? 1 : orders[orders.length - 1].orderNumber + 1}`);
       dispatch(getOrdered(shoppingProducts, `${(`0${date.getDate()}`).slice(-2)}-${(`0${date.getMonth() + 1}`).slice(-2)}-${(`0${date.getFullYear()}`).slice(-2)}`, orders.length === 0 ? 1 : orders[orders.length - 1].orderNumber + 1));
@@ -139,7 +138,7 @@ function ShoppingForm({ currency, shoppingProducts, totalPrice }) {
               }}
             >
               <option value=''>Выбрать</option>
-              {/* <option>Самовывоз</option> */}
+              <option>Самовывоз</option>
               <option>Курьер</option>
             </select>
           </label>

@@ -149,6 +149,10 @@ function SearchingProducts({ currency, products }) {
                     </div>
                   ))
             }
+      <h3 style={{ textAlign: 'right', margin: '10px 0 0 0' }} className='categPageProducts__currentPage'>
+        Страница:
+        {currentPage}
+      </h3>
     </div>
   );
 }
