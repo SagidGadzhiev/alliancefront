@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCateg } from '../../../redux/reducers/storeItems';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function SaleProds({ currency }) {
   const sales = useSelector((s) => s.storeItems.sales);
@@ -22,19 +24,17 @@ function SaleProds({ currency }) {
                         {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='mainPageProducts__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
-                                    >
-                                      <img
-                                        className='mainPageProducts__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
+                                        <Link
+                                            onClick={() => {
+                                                getCategHandler(i.class);
+                                            }}
+                                            className='mainPageProducts__product__googleSearch'
+                                            to={`/${i.code}`}
+                                        >
+                                            <EmptyPhoto
+                                                className='mainPageProducts__product__img'
+                                            />
+                                        </Link>
                                   )
                                   : (
                                     <Link

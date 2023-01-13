@@ -21,8 +21,8 @@ function ContactsPage() {
           <h2 className='contactsPage__description__title'>Покупателям и клиентам:</h2>
           <ul className='contactsPage__description__list'>
             <li className='contactsPage__description__list__text'>0(999) 49-33-33 - WhatsApp Мегаком</li>
-            <li className='contactsPage__description__list__text'>0(508) 49-33-33 - О!</li>
-            <li className='contactsPage__description__list__text'>Почта: allianceplus.kg@gmail.com</li>
+            <li className='contactsPage__description__list__text'>0(709) 49-33-33 - О!</li>
+            <li className='contactsPage__description__list__text'>Почта: allianceplus20.00@mail.ru</li>
           </ul>
         </div>
       </div>

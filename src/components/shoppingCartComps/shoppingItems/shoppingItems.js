@@ -7,6 +7,8 @@ import {
   removeShopping,
   updateCount,
 } from '../../../redux/reducers/storeItems';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function ShoppingItems({ totalPrice, currency, shoppingProducts }) {
   const [, setCount] = useState(0);
@@ -56,19 +58,17 @@ function ShoppingItems({ totalPrice, currency, shoppingProducts }) {
                                               {
                                                         i.img.length === 0
                                                           ? (
-                                                            <a
-                                                              className='wishesItems__table__tbody__tr__td__googleSearch'
-                                                              title='Найти в google'
-                                                              rel='noreferrer'
-                                                              target='_blank'
-                                                              href={`http://www.google.kg/search?q=${i.product}`}
-                                                            >
-                                                              <img
-                                                                className='wishesItems__table__tbody__tr__td__img'
-                                                                src='https://enter.kg/images/yandex.png'
-                                                                alt=''
-                                                              />
-                                                            </a>
+                                                                <Link
+                                                                    onClick={() => {
+                                                                      getCategHandler(i.class);
+                                                                    }}
+                                                                    className='wishesItems__table__tbody__tr__td__googleSearch'
+                                                                    to={`/${i.code}`}
+                                                                >
+                                                                  <EmptyPhoto
+                                                                      className='wishesItems__table__tbody__tr__td__img'
+                                                                  />
+                                                                </Link>
                                                           )
                                                           : (
                                                             <Link
@@ -182,9 +182,10 @@ function ShoppingItems({ totalPrice, currency, shoppingProducts }) {
                       <div className='total__price'>
                         <p className='total__price__title'>Доставка : </p>
                         <p className='total__price__text'>
-                          {
-                                        totalPrice * currency < 2000 ? '150 сом' : 'бесплатно'
-                                    }
+                          NaN
+                          {/*{*/}
+                          {/*              totalPrice * currency < 2000 ? '150 сом' : 'бесплатно'*/}
+                          {/*          }*/}
                         </p>
                       </div>
 

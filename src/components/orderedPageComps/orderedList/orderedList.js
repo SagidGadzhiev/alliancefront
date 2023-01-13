@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import emptyImg from '../../../assets/camera-solid.svg';
+
 
 function OrderedList() {
   const ordered = useSelector((s) => s.storeItems.ordered);
@@ -12,14 +14,13 @@ function OrderedList() {
                   <div key={idx} className='orderedBlock'>
                     <img
                       className='orderedBlock__img'
-                      src={i.shopping[0].img.length === 0 ? 'https://enter.kg/images/yandex.png' : i.shopping[0].img}
+                      src={i.shopping[0].img.length === 0 ? emptyImg : i.shopping[0].img}
                       alt=''
                     />
                     <div>
                       <Link className='orderedBlock__date' to={`/order/${i.orderNum}`}>
                         Заказ
-                        на
-                        <span>{i.orderDate}</span>
+                        на <span>{i.orderDate}</span>
                       </Link>
                       <Link
                         style={{
@@ -35,7 +36,7 @@ function OrderedList() {
                       </Link>
                     </div>
                   </div>
-                ))
+                )).sort((a, b) => -1)
             }
     </div>
   );

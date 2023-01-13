@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCateg } from '../../../redux/reducers/storeItems';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function SameProds({ currency, products }) {
   const categs = useSelector((s) => s.storeItems.categ);
@@ -22,19 +24,18 @@ function SameProds({ currency, products }) {
                         {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='sameProds__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
-                                    >
-                                      <img
-                                        className='sameProds__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
+                                        <Link
+                                            onClick={() => {
+                                                getCategHandler(i.class);
+                                                windowTop();
+                                            }}
+                                            className='sameProds__product__googleSearch'
+                                            to={`/${i.code}`}
+                                        >
+                                            <EmptyPhoto
+                                                className='sameProds__product__img'
+                                            />
+                                        </Link>
                                   )
                                   : (
                                     <Link

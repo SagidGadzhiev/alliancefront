@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCateg } from '../../../redux/reducers/storeItems';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function BestsellProds({ currency, products }) {
   const dispatch = useDispatch();
@@ -18,19 +20,17 @@ function BestsellProds({ currency, products }) {
                         {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='prodsUndCategs__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
-                                    >
-                                      <img
-                                        className='prodsUndCategs__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
+                                        <Link
+                                            onClick={() => {
+                                                getCategHandler(i.class);
+                                            }}
+                                            className='prodsUndCategs__product__googleSearch'
+                                            to={`/${i.code}`}
+                                        >
+                                            <EmptyPhoto
+                                                className='prodsUndCategs__product__img'
+                                            />
+                                        </Link>
                                   )
                                   : (
                                     <Link
@@ -60,8 +60,7 @@ function BestsellProds({ currency, products }) {
                         <p className='prodsUndCategs__product__price'>
                           {i.price === undefined ? i.price : (i.price).toFixed(2)}
                           $
-                          -
-                          {(i.price * currency).toFixed(0)}
+                          - {(i.price * currency).toFixed(0)}
                           сом
                         </p>
                         <p className='prodsUndCategs__product__warranty'>

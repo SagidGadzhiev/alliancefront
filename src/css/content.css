@@ -1,6 +1,8 @@
 .categories {
     background: #2b262b;
     width: 265px;
+    max-height: 500px;
+    overflow: auto;
 }
 
 .categories__link {

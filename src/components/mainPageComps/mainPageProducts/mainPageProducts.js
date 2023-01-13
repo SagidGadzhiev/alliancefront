@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCateg } from '../../../redux/reducers/storeItems';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function MainPageProducts({ currency, products }) {
   const dispatch = useDispatch();
@@ -14,29 +16,30 @@ function MainPageProducts({ currency, products }) {
 
   return (
     <div className='mainPageProducts'>
-      <p className='mainPageProducts__title'><span>Новые товары</span></p>
+      <p className='mainPageProducts__title'><span>Компьютерные корпусы</span></p>
       <div className='mainPageProducts__productsBlock'>
         {
-                    novas
-                      .slice(0, 18).map((i) => (
+                    // novas
+            products
+                .filter(i => i.subcategory === 'DEEPCOOL')
+                .slice(0, 21)
+                .map((i) => (
                         <div key={i.id} className='mainPageProducts__product'>
                           {
                                     i.img.length === 0
                                       ? (
-                                        <a
-                                          className='mainPageProducts__product__googleSearch'
-                                          title='Найти в google'
-                                          rel='noreferrer'
-                                          target='_blank'
-                                          href={`http://www.google.kg/search?q=${i.product}`}
-                                        >
-                                          <img
-                                            className='mainPageProducts__product__img'
-                                            src='https://enter.kg/images/yandex.png'
-                                            alt=''
-                                          />
-                                        </a>
-                                      )
+                                            <Link
+                                                onClick={() => {
+                                                    getCategHandler(i.class);
+                                                }}
+                                                className='mainPageProducts__product__googleSearch'
+                                                to={`/${i.code}`}
+                                            >
+                                                <EmptyPhoto
+                                                    className='mainPageProducts__product__img'
+                                                />
+                                            </Link>
+                                        )
                                       : (
                                         <Link
                                           onClick={() => {
@@ -84,24 +87,23 @@ function MainPageProducts({ currency, products }) {
       <p className='mainPageProducts__title'><span>Ноутбуки</span></p>
       <div className='mainPageProducts__productsBlock'>
         {
-                    products.filter((i) => i.class === 'Notebook').slice(0, 18).map((i) => (
+                    products.filter((i) => i.class === 'Notebook').slice(0, 21).map((i) => (
                       <div key={i.id} className='mainPageProducts__product'>
                         {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='mainPageProducts__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
+                                    <Link
+                                        onClick={() => {
+                                            getCategHandler(i.class);
+                                            windowTop();
+                                        }}
+                                        className='mainPageProducts__product__googleSearch'
+                                        to={`/${i.code}`}
                                     >
-                                      <img
-                                        className='mainPageProducts__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
+                                        <EmptyPhoto
+                                            className='mainPageProducts__product__img'
+                                        />
+                                    </Link>
                                   )
                                   : (
                                     <Link
@@ -148,28 +150,29 @@ function MainPageProducts({ currency, products }) {
                     ))
                 }
       </div>
-      <p className='mainPageProducts__title'><span>Бытовая техника</span></p>
+      <p className='mainPageProducts__title'><span>Видеонаблюдение</span></p>
       <div className='mainPageProducts__productsBlock'>
         {
-                    products.filter((i) => i.class === 'Бытовая техника').slice(0, 30).map((i) => (
+                    products
+                        .filter((i) => !i.product.includes('DAHUA') ? i.category === 'Видеокамеры' : null)
+                        .slice(0, 21)
+                        .map((i) => (
                       <div key={i.id} className='mainPageProducts__product'>
                         {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='mainPageProducts__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
-                                    >
-                                      <img
-                                        className='mainPageProducts__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
-                                  )
+                                        <Link
+                                            onClick={() => {
+                                                getCategHandler(i.class);
+                                            }}
+                                            className='mainPageProducts__product__googleSearch'
+                                            to={`/${i.code}`}
+                                        >
+                                            <EmptyPhoto
+                                                className='mainPageProducts__product__img'
+                                            />
+                                        </Link>
+                                    )
                                   : (
                                     <Link
                                       onClick={() => {

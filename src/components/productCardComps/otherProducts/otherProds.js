@@ -4,6 +4,8 @@ import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getCateg } from '../../../redux/reducers/storeItems';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function OtherProds({ currency, products }) {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ function OtherProds({ currency, products }) {
       <p className='sameProds__title'><span>Другие товары</span></p>
       <Carousel
         className='otherProds'
-        infiniteLoop
+        infiniteLoop={false}
         stopOnHover
         autoPlay={false}
         interval={5000}
@@ -27,27 +29,26 @@ function OtherProds({ currency, products }) {
       >
         {
                     products
-                      .filter((i) => (i.class === 'Наушники' ? i : null))
-                      .slice(0, 10)
+                      .filter(i => !i.product.includes('DAHUA') ? i.category === 'Видеорегистраторы' : null)
+                      .slice(30, 40)
                       .map((i) => (
                         <div className='otherProds__product' key={i.id}>
                           {
                                     i.img.length === 0
                                       ? (
-                                        <a
-                                          className='otherProds__product__googleSearch'
-                                          title='Найти в google'
-                                          rel='noreferrer'
-                                          target='_blank'
-                                          href={`http://www.google.kg/search?q=${i.product}`}
-                                        >
-                                          <img
-                                            className='otherProds__product__img'
-                                            src='https://enter.kg/images/yandex.png'
-                                            alt=''
-                                          />
-                                        </a>
-                                      )
+                                            <Link
+                                                onClick={() => {
+                                                    getCategHandler(i.class);
+                                                    windowTop();
+                                                }}
+                                                className='otherProds__product__googleSearch'
+                                                to={`/${i.code}`}
+                                            >
+                                                <EmptyPhoto
+                                                    className='otherProds__product__img'
+                                                />
+                                            </Link>
+                                        )
                                       : (
                                         <Link
                                           onClick={() => {

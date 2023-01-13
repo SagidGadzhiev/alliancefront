@@ -1,6 +1,10 @@
 import axios from 'axios';
 import actions from './actions';
 
+
+const api = process.env.REACT_APP_LOCAL_API;
+const localAPI = process.env.REACT_APP_LOCAL_API;
+
 const initState = {
   products: [],
   wishes: [],
@@ -183,9 +187,9 @@ export default (state = initState, action) => {
 };
 
 export const getProducts = () => (dispatch) => {
-  axios('https://allianceplusserver.herokuapp.com/products')
-    .then(({ data }) => {
-      dispatch({ type: actions.GET_PRODUCTS, products: data });
+  axios(`${localAPI}/products`)
+    .then( async ({ data }) => {
+      await dispatch({ type: actions.GET_PRODUCTS, products: data });
       return dispatch({ type: actions.CHANGE_LOADING, loading: false });
     });
 };
@@ -241,7 +245,7 @@ export const getSearchingLocalStorage = (val) => ({
 });
 
 export const getNovasProducts = () => (dispatch) => {
-  axios('https://allianceplusserver.herokuapp.com/nova')
+  axios(`${localAPI}/nova`)
     .then(({ data }) => {
       dispatch({
         type: actions.GET_NOVAS_PRODUCTS,
@@ -251,7 +255,7 @@ export const getNovasProducts = () => (dispatch) => {
 };
 
 export const getSalesProducts = () => (dispatch) => {
-  axios('https://allianceplusserver.herokuapp.com/sale')
+  axios(`${localAPI}/sale`)
     .then(({ data }) => {
       dispatch({ type: actions.GET_SALES_PRODUCTS, sales: data });
     });
@@ -280,7 +284,7 @@ export const getOrderedLocalStorage = (prod) => ({
 });
 
 export const getAllOrders = () => (dispatch) => {
-  axios('https://allianceplusserver.herokuapp.com/orders')
+  axios(`${localAPI}/orders`)
     .then(({ data }) => {
       dispatch({ type: actions.GET__ALL__ORDERS, orders: data });
     });
@@ -315,7 +319,7 @@ export const setEndPage = (page) => ({
 });
 
 export const getCurrency = () => (dispatch) => {
-  axios('https://allianceplusserver.herokuapp.com/currency')
+  axios(`${localAPI}/currency`)
       .then(({data}) => {
         dispatch({type: actions.GET_CURRENCY, currency: data[0].currency})
       })

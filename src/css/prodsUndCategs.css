@@ -80,11 +80,13 @@
 }
 
 .prodsUndCategs__product__img {
+    display: block;
+    margin: 0 auto 10px auto;
     width: 100px;
     height: 100px;
     object-fit: contain;
     object-position: center;
-    margin-bottom: 10px;
+    fill: gray;
 }
 
 .prodsUndCategs__product__price {

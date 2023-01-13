@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import ProdCardCategs from '../components/productCardComps/prodCardCategs/prodCardCategs';
 
 function ShippingPage() {
-  // eslint-disable-next-line no-unused-vars
-  const [currentPage, setCurrentPage] = useState(1);
+  const [, setCurrentPage] = useState(1);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -30,11 +29,11 @@ function ShippingPage() {
           <h2 className='shippingPage__description__title'>Условия доставки</h2>
           <ul className='shippingPage__description__list'>
             <li className='shippingPage__description__list__text'>
-              Доставка стоимостью до 2000сом, по
-              г.Бишкек - 200сом.
+              Доставка стоимостью до NaNсом по
+              г.Бишкек - NaNсом.
             </li>
             <li className='shippingPage__description__list__text'>
-              Доставка стоимостью 2000сом и более, по
+              Доставка стоимостью NaNсом и более по
               г.Бишкек - бесплатно.
             </li>
             <li className='shippingPage__description__list__text'>
@@ -58,11 +57,7 @@ function ShippingPage() {
             </li>
           </ul>
           <br />
-          <h2 className='shippingPage__description__title'>
-            Информация для корпоративных клиентов.
-            На сайте цены указаны без учета НДС.
-            Если Вам необходимо провести закупку со строгой отчетностью обратитесь к нашим менеджерам.
-          </h2>
+          <h2 className='shippingPage__description__title'></h2>
         </div>
       </div>
     </div>

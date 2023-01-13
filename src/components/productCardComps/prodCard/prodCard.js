@@ -1,10 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { getCateg, getShopping, getWishes } from '../../../redux/reducers/storeItems';
-
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
 import useDebounce from '../../../hooks/useDebounce';
+
 
 function ProdCard({ currency, products }) {
   const { productCode } = useParams();
@@ -21,7 +22,7 @@ function ProdCard({ currency, products }) {
         position: toast.POSITION.TOP_CENTER,
       });
     }
-    toast.success(`Товар ${prod.product} добавлен в список желаемого!`, {
+    toast.success(`Товар добавлен в список желаемого!`, {
       position: toast.POSITION.TOP_CENTER,
     });
     return debouncedWish(prod);
@@ -32,7 +33,7 @@ function ProdCard({ currency, products }) {
         position: toast.POSITION.TOP_CENTER,
       });
     }
-    toast.success(`Товар ${prod.product} добавлен в корзину!`, {
+    toast.success(`Товар добавлен в корзину!`, {
       position: toast.POSITION.TOP_CENTER,
     });
     return debouncedShop(prod);
@@ -42,27 +43,25 @@ function ProdCard({ currency, products }) {
 
   return (
     <div className='prodCard'>
-      <ToastContainer autoClose={1000} />
+      <ToastContainer autoClose={1000} closeButton={false} />
       {
                 products.filter((i) => i.code === productCode).map((i) => (
                   <div className='prodCard__itemDescription' key={i.id}>
                     {
                             i.img.length === 0
                               ? (
-                                <a
-                                  className='prodCard__itemDescription__googleSearch'
-                                  title='Найти в google'
-                                  rel='noreferrer'
-                                  target='_blank'
-                                  href={`http://www.google.kg/search?q=${i.product}`}
-                                >
-                                  <img
-                                    className='prodCard__itemDescription__img'
-                                    src='https://enter.kg/images/yandex.png'
-                                    alt=''
-                                  />
-                                </a>
-                              )
+                                    <Link
+                                        onClick={() => {
+                                          getCategHandler(i.class);
+                                        }}
+                                        className='prodCard__itemDescription__googleSearch'
+                                        to={`/${i.code}`}
+                                    >
+                                      <EmptyPhoto
+                                          className='prodCard__itemDescription__img'
+                                      />
+                                    </Link>
+                                )
                               : (
                                 <div
                                   onClick={() => {
@@ -101,13 +100,14 @@ function ProdCard({ currency, products }) {
                           {/*Наличие: <span>{i.available}</span>*/}
                         </p>
                         <p className='prodCard__itemDescription__aboutProdBlock__price'>
-                          {i.price === undefined || i.price === null ? i.price : (i.price).toFixed(2)}
-                          $
-                          - {(i.price * currency).toFixed(0)}сом (1USD = {currency}KGS)
+                          {i.price === undefined || i.price === null ? i.price : (i.price).toFixed(2)}$
+                          - {(i.price * currency).toFixed(0)}сом
+                          <br/>
+                          <span style={{fontSize: 12}}>1USD = {currency}KGS</span>
                         </p>
                         <p className='prodCard__itemDescription__aboutProdBlock__attention'>
                           Убедительная просьба
-                          уточнять цену товара на момент заказа
+                          уточнять цену и наличие товара на момент заказа
                         </p>
                       </div>
                       <div className='prodCard__itemDescription__aboutProdBlock'>
@@ -147,7 +147,6 @@ function ProdCard({ currency, products }) {
                         <div className='prodCard__itemDescription__aboutProdBlock__block'>
                           <button
                             type='button'
-                                        // disabled={shopping.includes(i.code)}
                             onClick={() => shopHandler(i)}
                             className='prodCard__itemDescription__wishBuy'
                           >
@@ -200,7 +199,6 @@ function ProdCard({ currency, products }) {
                           </button>
                           <button
                             type='button'
-                                        // disabled={wishes.includes(i.code)}
                             onClick={() => wishHandler(i)}
                             className='prodCard__itemDescription__wishBuy'
                           >

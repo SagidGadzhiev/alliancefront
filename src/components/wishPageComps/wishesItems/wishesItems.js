@@ -6,6 +6,8 @@ import {
   clearAllWishes, getCateg, getShopping, removeWish,
 } from '../../../redux/reducers/storeItems';
 import useDebounce from '../../../hooks/useDebounce';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function WishesItems({ currency, wishesProducts }) {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ function WishesItems({ currency, wishesProducts }) {
         position: toast.POSITION.TOP_CENTER,
       });
     }
-    toast.success(`Товар ${prod.product} добавлен в корзину!`, {
+    toast.success(`Товар добавлен в корзину!`, {
       position: toast.POSITION.TOP_CENTER,
     });
     return debouncedShop(prod);
@@ -30,7 +32,7 @@ function WishesItems({ currency, wishesProducts }) {
 
   return (
     <div className='wishesItems'>
-      <ToastContainer autoClose={1000} />
+      <ToastContainer autoClose={1000} closeButton={false} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <p className='wishesItems__title'>Мой список желаемого</p>
         <button
@@ -65,19 +67,17 @@ function WishesItems({ currency, wishesProducts }) {
                                           {
                                                     i.img.length === 0
                                                       ? (
-                                                        <a
-                                                          className='wishesItems__table__tbody__tr__td__googleSearch'
-                                                          title='Найти в google'
-                                                          rel='noreferrer'
-                                                          target='_blank'
-                                                          href={`http://www.google.kg/search?q=${i.product}`}
-                                                        >
-                                                          <img
-                                                            className='wishesItems__table__tbody__tr__td__img'
-                                                            src='https://enter.kg/images/yandex.png'
-                                                            alt=''
-                                                          />
-                                                        </a>
+                                                            <Link
+                                                                onClick={() => {
+                                                                  getCategHandler(i.class);
+                                                                }}
+                                                                className='wishesItems__table__tbody__tr__td__googleSearch'
+                                                                to={`/${i.code}`}
+                                                            >
+                                                              <EmptyPhoto
+                                                                  className='wishesItems__table__tbody__tr__td__img'
+                                                              />
+                                                            </Link>
                                                       )
                                                       : (
                                                         <Link

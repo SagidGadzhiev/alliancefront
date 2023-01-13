@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getCateg } from '../../../redux/reducers/storeItems';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function ProdsUndCategs({ currency, products }) {
   const dispatch = useDispatch();
@@ -12,28 +14,29 @@ function ProdsUndCategs({ currency, products }) {
 
   return (
     <div className='prodsUndCategs'>
-      <p className='prodsUndCategs__title'><span>Лидеры продаж</span></p>
+      <p className='prodsUndCategs__title'><span>Wi-fi камеры</span></p>
       <div className='prodsUndCategs__productsBlock'>
         {
-                    products.filter((i) => (i.category === 'Acer' ? i : i.class === 'Клавиатуры' ? i : i.class === 'Мыши' ? i : null)).slice(0, 10).map((i) => (
+                    products
+                        .filter(i => !i.product.includes('DAHUA') ? i.subcategory === 'IP кубические, WiFi' : null)
+                        .slice(0, 15)
+                        .map((i) => (
                       <div key={i.id} className='prodsUndCategs__product'>
                         {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='prodsUndCategs__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
-                                    >
-                                      <img
-                                        className='prodsUndCategs__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
-                                  )
+                                        <Link
+                                            onClick={() => {
+                                                getCategHandler(i.class);
+                                            }}
+                                            className='prodsUndCategs__product__googleSearch'
+                                            to={`/${i.code}`}
+                                        >
+                                            <EmptyPhoto
+                                                className='prodsUndCategs__product__img'
+                                            />
+                                        </Link>
+                                    )
                                   : (
                                     <Link
                                       onClick={() => {

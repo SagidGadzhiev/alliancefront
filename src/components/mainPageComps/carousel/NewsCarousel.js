@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import allianceSlide from '../../../assets/img/allianceSlide.png';
 import allianceSlideNotebooks from '../../../assets/img/allianceSlideNotebooks.png';
 import allianceSlideAccessory from '../../../assets/img/allianceSlideAccessory.png';
+import andaseatChair from '../../../assets/img/andaseatChairs.jpg';
+import hikvisionImg from '../../../assets/img/hikvision.jpg';
 import { clearCurrentProducts } from '../../../redux/reducers/storeItems';
 
 function NewsCarousel() {
@@ -20,6 +22,20 @@ function NewsCarousel() {
       showArrows
       showThumbs={false}
     >
+      <Link
+          onClick={() => dispatch(clearCurrentProducts())}
+          className='carousel-wrap__block'
+          to='/subcategory/IP купольные'
+      >
+        <img className='carousel-img' src={hikvisionImg} alt='pic' />
+      </Link>
+      <Link
+          onClick={() => dispatch(clearCurrentProducts())}
+          className='carousel-wrap__block'
+          to='/type/Игровая мебель'
+      >
+        <img className='carousel-img' src={andaseatChair} alt='pic' />
+      </Link>
       <Link
         onClick={() => dispatch(clearCurrentProducts())}
         className='carousel-wrap__block'

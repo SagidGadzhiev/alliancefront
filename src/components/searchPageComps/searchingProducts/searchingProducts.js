@@ -7,6 +7,8 @@ import useDebounce from '../../../hooks/useDebounce';
 import { ReactComponent as CheckSvg } from '../../../assets/check-circle-solid.svg';
 import { ReactComponent as ShoppingCartSvg } from '../../../assets/shopping-cart-solid.svg';
 import { ReactComponent as HeartSvg } from '../../../assets/heart-solid.svg';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function SearchingProducts({ currency, products }) {
   const dispatch = useDispatch();
@@ -57,19 +59,17 @@ function SearchingProducts({ currency, products }) {
                       {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='categPageProducts__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
-                                    >
-                                      <img
-                                        className='categPageProducts__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
+                                        <Link
+                                            onClick={() => {
+                                              getCategHandler(i.class);
+                                            }}
+                                            className='categPageProducts__product__googleSearch'
+                                            to={`/${i.code}`}
+                                        >
+                                          <EmptyPhoto
+                                              className='categPageProducts__product__img'
+                                          />
+                                        </Link>
                                   )
                                   : (
                                     <Link
@@ -116,8 +116,7 @@ function SearchingProducts({ currency, products }) {
                         <p className='categPageProducts__product__price'>
                           {i.price === undefined ? i.price : (i.price).toFixed(2)}
                           $
-                          -
-                          {(i.price * currency).toFixed(0)}
+                          - {(i.price * currency).toFixed(0)}
                           сом
                         </p>
                         <p className={`${i.available === 'В наличии' ? 'categPageProducts__product__text' : 'categPageProducts__product__text__dontExist'}`}>{i.available}</p>

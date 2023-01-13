@@ -2,6 +2,10 @@ import React, {useState, useEffect} from "react";
 import XLSX from "xlsx";
 import axios from "axios";
 
+
+const serverApi = process.env.REACT_APP_SERVER_API;
+const localApi = process.env.REACT_APP_LOCAL_API;
+
 function ExcelToCSV() {
 
   const [products, setProducts] = useState([]);
@@ -9,7 +13,7 @@ function ExcelToCSV() {
 
   useEffect(() => {
     const getProducts = async () => {
-      const res = await axios.get('https://allianceplusserver.herokuapp.com/products');
+      const res = await axios.get(`${localApi}/products`);
       // const res = await axios.get('http://localhost:8080/products');
       return setProducts(res.data)
     };
@@ -18,7 +22,7 @@ function ExcelToCSV() {
 
   useEffect(() => {
     const updateDatabase = async () => {
-      return newProducts.length === 0 ? null : await axios.put('https://allianceplusserver.herokuapp.com/products', newProducts);
+      return newProducts.length === 0 ? null : await axios.put(`${localApi}/products`, newProducts);
       // return newProducts.length === 0 ? null : await axios.put('http://localhost:8080/products', newProducts);
     };
     updateDatabase()

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import allianceLogo from '../../../assets/allianceLogos/allianceComputers.png';
+import allianceLogo from '../../../assets/allianceLogos/AllianceLogo.jpeg';
 
 function Footer() {
   const windowTop = () => window.scrollTo(0, 0);
@@ -17,7 +17,7 @@ function Footer() {
             }}
             >
               <Link onClick={windowTop} to='/'>
-                <img style={{ width: '100px' }} src={allianceLogo} alt='pic' />
+                <img style={{ width: '100px', borderRadius: '5px' }} src={allianceLogo} alt='pic' />
               </Link>
               {/* <Link onClick={() => { */}
               {/*    windowTop() */}
@@ -26,8 +26,8 @@ function Footer() {
 
             {/* <Link onClick={() => {windowTop()}} to='/' className='logotype'>Alliance<span className='logotype__text'>Plus</span></Link> */}
             <p className='footer__block__aboutShop'>
-              AllianceComputers.kg - интернет-магазин по продаже
-              компьютерной техники.
+              AlliancePlus.kg - интернет-магазин по продаже
+              компьютерной техники и видеонаблюдения
             </p>
           </div>
           <div className='footer__block__aboutUs footer__block__footerNews'>

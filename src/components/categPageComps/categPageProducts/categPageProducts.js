@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import { getCateg, getShopping, getWishes } from '../../../redux/reducers/storeItems';
 import useDebounce from '../../../hooks/useDebounce';
+import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+
 
 function CategPageProducts({
   currency, currentProduct, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax,
@@ -18,24 +20,26 @@ function CategPageProducts({
   const addShopProd = (prod) => dispatch(getShopping(prod));
   const debouncedWish = useDebounce(addWishProd, 2500);
   const debouncedShop = useDebounce(addShopProd, 2500);
+
   const wishHandler = (prod) => {
     if (wishes.includes(prod.code)) {
       return toast.error('Товар уже находится в списке желаний!', {
         position: toast.POSITION.TOP_CENTER,
       });
     }
-    toast.success(`Товар ${prod.product} добавлен в список желаемого!`, {
+    toast.success(`Товар добавлен в список желаемого!`, {
       position: toast.POSITION.TOP_CENTER,
     });
     return debouncedWish(prod);
   };
+
   const shopHandler = (prod) => {
     if (shopping.includes(prod.code)) {
       return toast.error('Товар уже находится в корзине!', {
         position: toast.POSITION.TOP_CENTER,
       });
     }
-    toast.success(`Товар ${prod.product} добавлен в корзину!`, {
+    toast.success(`Товар добавлен в корзину!`, {
       position: toast.POSITION.TOP_CENTER,
     });
     return debouncedShop(prod);
@@ -43,34 +47,44 @@ function CategPageProducts({
 
   const getCategHandler = (prodCateg) => dispatch(getCateg(prodCateg));
 
+  const selectChangeHandler = (evt) => {
+    return evt.target.value === 'Цена по возрастанию' ? sortHandlerMin('price') : sortHandlerMax('price');
+  };
 
   return (
     <div className='categPageProducts'>
-      <ToastContainer autoClose={1000} />
+      <ToastContainer autoClose={1000} closeButton={false} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <button
-            className='categPageProducts__sortBtn'
-            type='submit'
-            onClick={() => {
-              sortHandlerMin('price');
-            }}
+        {/*<div>*/}
+          <select
+              onChange={(e) => selectChangeHandler(e)}
+              className='categPageProducts__sortBtn'
           >
-            Цена +
-          </button>
-          <button
-            className='categPageProducts__sortBtn'
-            type='submit'
-            onClick={() => {
-              sortHandlerMax('price');
-            }}
-          >
-            Цена -
-          </button>
-        </div>
+            <option defaultValue='Сортировать'>Сортировать</option>
+            <option>Цена по возрастанию</option>
+            <option>Цена по убыванию</option>
+          </select>
+          {/*<button*/}
+          {/*  className='categPageProducts__sortBtn'*/}
+          {/*  type='submit'*/}
+          {/*  onClick={() => {*/}
+          {/*    sortHandlerMin('price');*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  Цена +*/}
+          {/*</button>*/}
+          {/*<button*/}
+          {/*  className='categPageProducts__sortBtn'*/}
+          {/*  type='submit'*/}
+          {/*  onClick={() => {*/}
+          {/*    sortHandlerMax('price');*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  Цена -*/}
+          {/*</button>*/}
+        {/*</div>*/}
         <h3 className='categPageProducts__currentPage'>
-          Страница:
-          {currentPage}
+          Страница : {currentPage}
         </h3>
       </div>
 
@@ -81,20 +95,18 @@ function CategPageProducts({
                       {
                                 i.img.length === 0
                                   ? (
-                                    <a
-                                      className='categPageProducts__product__googleSearch'
-                                      title='Найти в google'
-                                      rel='noreferrer'
-                                      target='_blank'
-                                      href={`http://www.google.kg/search?q=${i.product}`}
-                                    >
-                                      <img
-                                        className='categPageProducts__product__img'
-                                        src='https://enter.kg/images/yandex.png'
-                                        alt=''
-                                      />
-                                    </a>
-                                  )
+                                        <Link
+                                            onClick={() => {
+                                              getCategHandler(i.class);
+                                            }}
+                                            className='categPageProducts__product__googleSearch'
+                                            to={`/${i.code}`}
+                                        >
+                                          <EmptyPhoto
+                                              className='categPageProducts__product__img'
+                                          />
+                                        </Link>
+                                    )
                                   : (
                                     <Link
                                       onClick={() => {
@@ -256,8 +268,7 @@ function CategPageProducts({
                   .slice(firstCountryIndex, lastCountryIndex)
             }
       <h3 className='categPageProducts__currentPage' style={{textAlign: 'right', marginTop: 20}}>
-        Страница:
-        {currentPage}
+        Страница : {currentPage}
       </h3>
     </div>
   );

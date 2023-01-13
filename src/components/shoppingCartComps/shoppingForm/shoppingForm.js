@@ -8,6 +8,10 @@ import {
   getOrdered,
 } from '../../../redux/reducers/storeItems';
 
+
+const localApi = process.env.REACT_APP_LOCAL_API;
+const serverApi = process.env.REACT_APP_SERVER_API;
+
 function ShoppingForm({ currency, shoppingProducts, totalPrice }) {
   const dispatch = useDispatch();
 
@@ -31,7 +35,7 @@ function ShoppingForm({ currency, shoppingProducts, totalPrice }) {
     if (shoppingProducts.length === 0) {
       alert('Ваша корзина пуста, добавьте товары чтобы оформить заказ');
     } else {
-      axios.post('https://allianceplusserver.herokuapp.com/orders', {
+      axios.post(`${localApi}/orders`, {
         shopping: shoppingProducts,
         buyer: person,
         phone,

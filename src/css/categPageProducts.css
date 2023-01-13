@@ -16,6 +16,7 @@
     object-position: center;
     display: inline-block;
     margin-right: 20px;
+    fill: gray;
 }
 
 .categPageProducts__product__name {
@@ -104,11 +105,11 @@
     font-weight: bold;
     color: #ddd;
     background: #666;
-    text-align: center;
+    /*text-align: center;*/
     cursor: pointer;
-    border: 1px solid #6a6d71;
-    padding: 10px;
-    margin-right: 10px;
+    /*border: 1px solid #6a6d71;*/
+    padding: 5px;
+    /*margin-right: 10px;*/
 }
 
 .categPageProducts__sortBtn:last-child {
@@ -116,9 +117,9 @@
 }
 
 .categPageProducts__sortBtn:hover {
-    background: #e33033;
+    /*background: #e33033;*/
     color: #fff;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 .categPageProducts__currentPage {

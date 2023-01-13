@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPage, getSearching, removeSearching } from '../../../redux/reducers/storeItems';
-import allianceLogo from '../../../assets/allianceLogos/allianceComputers.png';
+import allianceLogo from '../../../assets/allianceLogos/AllianceLogo.jpeg';
 
 import useDebounce from '../../../hooks/useDebounce';
 
@@ -43,23 +43,32 @@ function Header() {
         <div style={{
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           flexWrap: 'wrap',
         }}
         >
           <Link onClick={windowTop} to='/'>
-            <img style={{ width: '150px' }} src={allianceLogo} alt='pic' />
+            <img style={{ width: '150px', borderRadius: '5px' }} src={allianceLogo} alt='pic' />
           </Link>
-          <Link
-            onClick={() => {
-              windowTop();
-            }}
-            to='/'
-            className='logotype'
-          >
-            Alliance
-            <span className='logotype__text'>Computers</span>
-          </Link>
+          <h3 style={{color: '#fff', fontWeight: 'bold', fontStyle: 'italic', marginLeft: '5px'}}>
+            <span style={{fontSize: 12}}>Официальный дистрибьютор</span>
+            <br/>
+            <span style={{color: '#e10800'}}>HIK</span>VISION
+            <br/>
+            <span style={{color: '#e10800'}}>HI</span>WATCH
+            <br/>
+            <span style={{fontSize: 12}}>в Кыргызстане</span>
+          </h3>
+          {/*<Link*/}
+          {/*  onClick={() => {*/}
+          {/*    windowTop();*/}
+          {/*  }}*/}
+          {/*  to='/'*/}
+          {/*  className='logotype'*/}
+          {/*>*/}
+          {/*  Alliance*/}
+          {/*  <span className='logotype__text'>Computers</span>*/}
+          {/*</Link>*/}
         </div>
 
         <nav className='header__nav'>

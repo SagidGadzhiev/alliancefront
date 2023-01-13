@@ -5,6 +5,10 @@ import ExcelToCSV from '../components/adminPageComps/excelCSVconverter';
 import useDebounce from '../hooks/useDebounce';
 import { useSelector } from 'react-redux';
 
+
+const serverApi = process.env.REACT_APP_SERVER_API;
+const localApi = process.env.REACT_APP_LOCAL_API;
+
 function AdminPage({
   products, nova, setNova, selling, setSelling,
 }) {
@@ -24,7 +28,7 @@ function AdminPage({
 
   useEffect(() => {
     function fetchData() {
-      return axios('https://allianceplusserver.herokuapp.com/products')
+      return axios(`${localApi}/products`)
         .then(({ data }) => setProductsArray(data));
     }
 
@@ -37,22 +41,22 @@ function AdminPage({
   };
 
   function getAllProducts() {
-    return axios('https://allianceplusserver.herokuapp.com/products').then(({ data }) => setProductsArray(data));
+    return axios(`${localApi}/products`).then(({ data }) => setProductsArray(data));
   }
 
   async function addImg(prod, prodId, url) {
-    await axios.patch(`https://allianceplusserver.herokuapp.com/image/${prodId}`, { ...prod, img: url }).then();
+    await axios.patch(`${localApi}/image/${prodId}`, { ...prod, img: url }).then();
     return setInput('');
   }
 
   async function addNovaProd() {
-    await axios.post('https://allianceplusserver.herokuapp.com/nova', nova).then();
+    await axios.post(`${localApi}/nova`, nova).then();
     setNova([]);
     return setNovaProd('');
   }
 
   async function addSaleProd() {
-    await axios.post('https://allianceplusserver.herokuapp.com/sale', selling).then();
+    await axios.post(`${localApi}/sale`, selling).then();
     setSelling([]);
     return setSaleProd('');
   }
@@ -131,7 +135,7 @@ function AdminPage({
         <ExcelToCSV />
         <form style={{margin: '10px 0'}} onSubmit={async (e) => {
           e.preventDefault();
-          await axios.put('https://allianceplusserver.herokuapp.com/currency', { currency: newCurrencyValue });
+          await axios.put(`${localApi}/currency`, { currency: newCurrencyValue });
           setNewCurrencyValue('');
         }}>
           <label>
@@ -141,7 +145,7 @@ function AdminPage({
                    placeholder='Введите новый курс...' />
           </label>
           <button onClick={async () => {
-            await axios.put('https://allianceplusserver.herokuapp.com/currency', { currency: newCurrencyValue });
+            await axios.put(`${localApi}/currency`, { currency: newCurrencyValue });
             setNewCurrencyValue('');
           }} type="submit">Изменить курс
           </button>

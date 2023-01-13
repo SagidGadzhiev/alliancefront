@@ -23,6 +23,7 @@
     min-height: 459px;
     max-width: 455px;
     max-height: 459px;
+    fill: gray;
 }
 
 .prodCard__itemDescription__aboutProdBlock {
@@ -59,6 +60,7 @@
     padding: 10px;
     background: #999;
     color: white;
+    border: none;
 }
 
 .prodCard__itemDescription__wishBuy:hover {

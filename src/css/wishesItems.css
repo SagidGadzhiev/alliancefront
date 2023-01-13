@@ -95,6 +95,7 @@ table {
     height: 70px;
     object-fit: contain;
     object-position: center;
+    fill: gray;
 }
 
 .wishesItems__table__tbody__tr__td__name {
