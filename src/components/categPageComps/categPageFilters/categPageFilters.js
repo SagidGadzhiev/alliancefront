@@ -41,33 +41,125 @@ const CategPageFilters = ({ prodsArr, filtersIndexArray, setFiltersIndexArray, p
                 },
                 {
                     id: 2,
-                    name: 'Процессор',
+                    name: 'Тип жесткого диска',
                     data: [
-                        { id: 11, name: 'i3' },
-                        { id: 12, name: 'i5' },
-                        { id: 13, name: 'i7' }
+                        { id: 11, name: 'SSD' }
                     ]
                 },
                 {
                     id: 3,
-                    name: 'Оперативка',
+                    name: 'Процессор',
                     data: [
-                        { id: 14, name: '8GB' },
-                        { id: 15, name: '16GB' },
-                        { id: 16, name: '32GB' }
+                        { id: 12, name: 'i3' },
+                        { id: 13, name: 'i5' },
+                        { id: 14, name: 'i7' },
+                        { id: 15, name: 'Ryzen 3' },
+                        { id: 16, name: 'Ryzen 5' },
+                        { id: 17, name: 'Ryzen 7' },
+                        { id: 18, name: 'Athlon' },
                     ]
                 },
+                {
+                    id: 4,
+                    name: 'Оперативка',
+                    data: [
+                        { id: 19, name: '8GB' },
+                        { id: 20, name: '12GB' },
+                        { id: 21, name: '16GB' },
+                        { id: 22, name: '32GB' }
+                    ]
+                },
+                {
+                    id: 5,
+                    name: 'Видеокарта',
+                    data: [
+                        { id: 23, name: 'mx130' },
+                        { id: 24, name: 'mx150' },
+                        { id: 25, name: 'mx230' },
+                        { id: 26, name: 'mx330' },
+                        { id: 27, name: 'mx350' },
+                        { id: 28, name: 'mx450' },
+                        { id: 29, name: 'mx550' },
+                        { id: 30, name: 'gtx1650' },
+                        { id: 31, name: '3050' }
+                    ]
+                }
             ]
         },
         {
             id: 1,
             name: 'Жесткие диски',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Объем',
+                    data: [
+                        { id: 0, name: '120GB' },
+                        { id: 1, name: '128GB' },
+                        { id: 2, name: '240GB' },
+                        { id: 3, name: '256GB' },
+                        { id: 4, name: '480GB' },
+                        { id: 5, name: '500GB' },
+                        { id: 6, name: '512GB' },
+                        { id: 7, name: '960GB' },
+                        { id: 8, name: '1TB' },
+                        { id: 9, name: '2TB' },
+                        { id: 10, name: '4TB' },
+                        { id: 11, name: '6TB' }
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Формат',
+                    data: [
+                        { id: 12, name: 'M.2' },
+                        { id: 13, name: 'SATA' }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Тип ЖД',
+                    data: [
+                        { id: 14, name: 'SSD' }
+                    ]
+                }
+            ]
         },
         {
             id: 2,
             name: 'Корпуса и блоки питания',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Блок питания(мощность)',
+                    data: [
+                        {id: 0, name: '250W'},
+                        {id: 1, name: '280W'},
+                        {id: 2, name: '300W'},
+                        {id: 3, name: '400W'},
+                        {id: 4, name: '420W'},
+                        {id: 5, name: '450W'},
+                        {id: 6, name: '480W'},
+                        {id: 7, name: '500W'},
+                        {id: 8, name: '550W'},
+                        {id: 9, name: '600W'},
+                        {id: 10, name: '650W'},
+                        {id: 11, name: '700W'},
+                        {id: 12, name: '750W'},
+                        {id: 13, name: '800W'},
+                        {id: 14, name: '850W'},
+                        {id: 15, name: '1000W'},
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Корпус(формат)',
+                    data: [
+                        {id: 16, name: 'ATX'},
+                        {id: 17, name: 'mATX'}
+                    ]
+                }
+            ]
         },
         {
             id: 3,
@@ -158,14 +250,19 @@ const CategPageFilters = ({ prodsArr, filtersIndexArray, setFiltersIndexArray, p
 
     return (
         <div className='categPageFilters'>
-            <button
-                style={{ margin: `${filterIsOpen ? '0 0 20px 0' : '0'}` }}
-                className='openFilterBtn'
-                type="button"
-                onClick={filterOpenHandler}
-            >
-                {filterIsOpen ? 'Закрыть фильтры' : 'Открыть фильтры'}
-            </button>
+            {
+                reduceArr().length !== 0 ?
+                    <button
+                        style={{ margin: `${filterIsOpen ? '0 0 20px 0' : '0'}` }}
+                        className='openFilterBtn'
+                        type="button"
+                        onClick={filterOpenHandler}
+                    >
+                        {filterIsOpen ? 'Закрыть фильтры' : 'Открыть фильтры'}
+                    </button>
+                    :
+                    null
+            }
             <div className="categPageFilters__flexBox">
                 {
                     filterIsOpen ?

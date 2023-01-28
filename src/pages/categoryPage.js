@@ -42,7 +42,7 @@ function CategoryPage({ currency, products }) {
                 .filter(item => {
                   let counter = 0;
                   for (let i = 0; i < filtersIndexArray.length; i++) {
-                    if (item.product.indexOf(filtersIndexArray[i].value) > -1)
+                    if (item.product.toLowerCase().indexOf(filtersIndexArray[i].value.toLowerCase()) > -1)
                       counter++;
                   }
                   return counter === propertiesCounter;

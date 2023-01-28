@@ -15,8 +15,6 @@ function BestsellProds({ currency, products, bestsellersProducts }) {
       <p className='prodsUndCategs__title'><span>Популярные товары</span></p>
       <div className='prodsUndCategs__productsBlock'>
         {
-            // products
-            //     .filter((i) => (i.category === 'Lenovo' ? i : null))
             bestsellersProducts
                 .map((i) => (
                       <div key={i.id} className='prodsUndCategs__product'>
