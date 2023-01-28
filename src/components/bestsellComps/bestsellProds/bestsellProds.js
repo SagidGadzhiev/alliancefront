@@ -5,7 +5,7 @@ import { getCateg } from '../../../redux/reducers/storeItems';
 import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
 
 
-function BestsellProds({ currency, products }) {
+function BestsellProds({ currency, products, bestsellersProducts }) {
   const dispatch = useDispatch();
 
   const getCategHandler = (prodCateg) => dispatch(getCateg(prodCateg));
@@ -15,7 +15,10 @@ function BestsellProds({ currency, products }) {
       <p className='prodsUndCategs__title'><span>Популярные товары</span></p>
       <div className='prodsUndCategs__productsBlock'>
         {
-                    products.filter((i) => (i.category === 'Lenovo' ? i : null)).map((i) => (
+            // products
+            //     .filter((i) => (i.category === 'Lenovo' ? i : null))
+            bestsellersProducts
+                .map((i) => (
                       <div key={i.id} className='prodsUndCategs__product'>
                         {
                                 i.img.length === 0

@@ -21,6 +21,7 @@
 @import "contacts.css";
 @import "aboutUs.css";
 @import "admin.css";
+@import "categPageFilters.css";
 
 * {
     margin: 0;

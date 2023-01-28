@@ -4,6 +4,7 @@ import axios from 'axios';
 import ExcelToCSV from '../components/adminPageComps/excelCSVconverter';
 import useDebounce from '../hooks/useDebounce';
 import { useSelector } from 'react-redux';
+import Bestsellers from '../components/adminPageComps/bestsellers';
 
 
 const serverApi = process.env.REACT_APP_SERVER_API;
@@ -298,6 +299,7 @@ function AdminPage({
               </div>
           ))
         }
+        <Bestsellers products={products} />
       </div>
     </div>
   );

@@ -64,25 +64,6 @@ function CategPageProducts({
             <option>Цена по возрастанию</option>
             <option>Цена по убыванию</option>
           </select>
-          {/*<button*/}
-          {/*  className='categPageProducts__sortBtn'*/}
-          {/*  type='submit'*/}
-          {/*  onClick={() => {*/}
-          {/*    sortHandlerMin('price');*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  Цена +*/}
-          {/*</button>*/}
-          {/*<button*/}
-          {/*  className='categPageProducts__sortBtn'*/}
-          {/*  type='submit'*/}
-          {/*  onClick={() => {*/}
-          {/*    sortHandlerMax('price');*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  Цена -*/}
-          {/*</button>*/}
-        {/*</div>*/}
         <h3 className='categPageProducts__currentPage'>
           Страница : {currentPage}
         </h3>

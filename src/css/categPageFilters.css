@@ -1,0 +1,91 @@
+/*Если firstElement пустой*/
+.categPageFiltersEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.categPageFiltersEmpty__title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.categPageFiltersEmpty__clearBtn {
+    border: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.categPageFiltersEmpty__clearBtn:hover {
+    color: #e33033;
+}
+
+/*Если firstElement не пустой*/
+.categPageFilters {
+}
+
+.categPageFilters__flexBox {
+    display: flex;
+}
+
+.openFilterBtn {
+    border: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.openFilterBtn:hover {
+    color: #e33033;
+}
+
+.filterForm {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.filterForm__clearBtn {
+    border: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filterForm__clearBtn:hover {
+    color: #e33033;
+}
+
+.filterForm__propertyBlock {
+}
+
+.filterForm__propertyBlock__title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #e33033;
+    margin-bottom: 5px;
+}
+
+.filterForm__propertyBlock__propertyValueBlock {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.filterForm__propertyBlock__propertyValueBlock--input {
+}
+
+.filterForm__propertyBlock__propertyValueBlock--label {
+    font-size: 12px;
+    margin-left: 5px;
+}
+

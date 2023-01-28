@@ -20,7 +20,8 @@ const initState = {
   currentPageNumber: 1,
   startPage: 0,
   endPage: 5,
-  currency: 0
+  currency: 0,
+  bestsellers: []
 };
 
 export default (state = initState, action) => {
@@ -181,6 +182,12 @@ export default (state = initState, action) => {
         currency: action.currency,
       }
     }
+    case actions.GET_BESTSELLERS_PRODUCTS: {
+      return {
+        ...state,
+        bestsellers: action.bestsellers,
+      }
+    }
     default:
       return state;
   }
@@ -323,4 +330,14 @@ export const getCurrency = () => (dispatch) => {
       .then(({data}) => {
         dispatch({type: actions.GET_CURRENCY, currency: data[0].currency})
       })
+};
+
+export const getBestsellersProducts = () => (dispatch) => {
+  axios(`${localAPI}/bestsellers`)
+      .then(({ data }) => {
+        dispatch({
+          type: actions.GET_BESTSELLERS_PRODUCTS,
+          bestsellers: data,
+        });
+      });
 };

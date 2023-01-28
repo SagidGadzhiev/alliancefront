@@ -65,9 +65,9 @@
         padding: 0 15px;
     }
 
-    .prodsUndCategs {
-        margin-top: 102px;
-    }
+    /*.prodsUndCategs {*/
+    /*    margin-top: 102px;*/
+    /*}*/
 
     .burger-menu {
         display: block !important;
@@ -234,6 +234,10 @@
 }
 
 @media (max-width: 768px) {
+
+    .carousel-img.fill_img {
+        object-fit: contain;
+    }
 
     .shoppingForm__form__label {
         width: unset;

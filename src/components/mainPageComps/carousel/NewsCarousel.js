@@ -8,7 +8,9 @@ import allianceSlideNotebooks from '../../../assets/img/allianceSlideNotebooks.p
 import allianceSlideAccessory from '../../../assets/img/allianceSlideAccessory.png';
 import andaseatChair from '../../../assets/img/andaseatChairs.jpg';
 import hikvisionImg from '../../../assets/img/hikvision.jpg';
+import aerocoolChairs from '../../../assets/img/aerocoolChairs.jpg';
 import { clearCurrentProducts } from '../../../redux/reducers/storeItems';
+
 
 function NewsCarousel() {
   const dispatch = useDispatch();
@@ -19,8 +21,10 @@ function NewsCarousel() {
       autoPlay={5000}
       infiniteLoop
       stopOnHover
-      showArrows
+      showArrows={false}
       showThumbs={false}
+      showStatus={false}
+      showIndicators={false}
     >
       <Link
           onClick={() => dispatch(clearCurrentProducts())}
@@ -34,7 +38,14 @@ function NewsCarousel() {
           className='carousel-wrap__block'
           to='/type/Игровая мебель'
       >
-        <img className='carousel-img' src={andaseatChair} alt='pic' />
+        <img className='carousel-img fill_img' src={andaseatChair} alt='pic' />
+      </Link>
+      <Link
+          onClick={() => dispatch(clearCurrentProducts())}
+          className='carousel-wrap__block'
+          to='/type/Игровая мебель'
+      >
+        <img className='carousel-img fill_img' src={aerocoolChairs} alt='pic' />
       </Link>
       <Link
         onClick={() => dispatch(clearCurrentProducts())}

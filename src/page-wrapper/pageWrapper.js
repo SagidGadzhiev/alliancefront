@@ -20,7 +20,7 @@ const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const AboutUs = lazy(() => import('../pages/aboutUs'));
 
 function PageWrapper({
-  products, currency, wishesProducts, shoppingProducts, nova, setNova, selling, setSelling,
+  products, currency, wishesProducts, shoppingProducts, nova, setNova, selling, setSelling, bestsellersProducts
 }) {
   const loading = useSelector((s) => s.storeItems.loading);
 
@@ -42,7 +42,7 @@ function PageWrapper({
           <Route path='/shopping' component={() => <ShoppingCartPage currency={currency} shoppingProducts={shoppingProducts} />} />
           <Route path='/new' component={() => <NovaProductsPage currency={currency} products={products} nova={nova} setNova={setNova} />} />
           <Route path='/sale' component={() => <SalePage currency={currency} products={products} selling={selling} setSelling={setSelling} />} />
-          <Route path='/bestsellers' component={() => <BestsellersPage currency={currency} products={products} />} />
+          <Route path='/bestsellers' component={() => <BestsellersPage currency={currency} products={products} bestsellersProducts={bestsellersProducts} />} />
           <Route path='/ordered' component={() => <OrderedPage />} />
           <Route path='/shipping' component={() => <ShippingPage />} />
           <Route path='/contacts' component={() => <ContactsPage />} />

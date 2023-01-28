@@ -13,7 +13,7 @@ function SearchingPage({ currency, products }) {
 
   const lastCountryIndex = currentPageNumber * productsPerPage;
   const firstCountryIndex = lastCountryIndex - productsPerPage;
-  const currentProduct = products.filter((i) => i.product.toLowerCase().includes(searching.toLowerCase())).slice(firstCountryIndex, lastCountryIndex);
+  const currentProduct = products.filter(i => i.product.toLowerCase().includes(searching.toLowerCase()));
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -24,13 +24,18 @@ function SearchingPage({ currency, products }) {
         <div style={{ padding: '15px', width: '100%' }}>
           <Pagination
             productsPerPage={productsPerPage}
-            totalProducts={products.filter((i) => i.product.toLowerCase().includes(searching.toLowerCase())).length}
+            totalProducts={currentProduct.length}
             paginate={paginate}
           />
-          <SearchingProducts currency={currency} products={currentProduct} />
+          <SearchingProducts
+              currency={currency}
+              products={currentProduct}
+              firstCountryIndex={firstCountryIndex}
+              lastCountryIndex={lastCountryIndex}
+          />
           <Pagination
             productsPerPage={productsPerPage}
-            totalProducts={products.filter((i) => i.product.toLowerCase().includes(searching.toLowerCase())).length}
+            totalProducts={currentProduct.length}
             paginate={paginate}
           />
         </div>

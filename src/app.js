@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getAllOrders, getCurrency,
+  getAllOrders, getBestsellersProducts, getCurrency,
   getNovasProducts,
   getOrderedLocalStorage,
   getProducts,
@@ -25,6 +25,7 @@ function App() {
   const shoppingProducts = useSelector((s) => s.storeItems.shopping);
   const ordered = useSelector((s) => s.storeItems.ordered);
   const currency = useSelector((s) => s.storeItems.currency);
+  const bestsellersProducts = useSelector(s => s.storeItems.bestsellers);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -35,6 +36,7 @@ function App() {
     dispatch(getShoppingLocalStorage(JSON.parse(localStorage.getItem('shopping')) || []));
     dispatch(getOrderedLocalStorage(JSON.parse(localStorage.getItem('ordered')) || []));
     dispatch(getCurrency());
+    dispatch(getBestsellersProducts());
   }, []);
 
   useEffect(() => {
@@ -70,6 +72,7 @@ function App() {
             setNova={setNova}
             selling={selling}
             setSelling={setSelling}
+            bestsellersProducts={bestsellersProducts}
           />
         </Route>
       </Switch>

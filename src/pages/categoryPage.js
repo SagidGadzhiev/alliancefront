@@ -6,7 +6,13 @@ import CategPageProducts from '../components/categPageComps/categPageProducts';
 import Pagination from '../components/categPageComps/pagination';
 import { getCurrentPage, getCurrentProducts } from '../redux/reducers/storeItems';
 
+
+import CategPageFilters from '../components/categPageComps/categPageFilters';
+
 function CategoryPage({ currency, products }) {
+
+  const [filtersIndexArray, setFiltersIndexArray] = useState([]);
+
   const dispatch = useDispatch();
   const currentProducts = useSelector((s) => s.storeItems.currentProducts);
   const currentPageNumber = useSelector((s) => s.storeItems.currentPageNumber);
@@ -22,40 +28,54 @@ function CategoryPage({ currency, products }) {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const [currentProduct, setCurrentProduct] = useState([]);
+
+  const reduceToObject = filtersIndexArray.map(i => i.name);
+  const propertiesCounter = reduceToObject.sort().filter((it, idx, arr) => it !== arr[idx + 1]).length;
+
   useEffect(() => {
-    setCurrentProduct(
-      products.filter((i) => (i.class === categ ? i
-        : i.category === categ ? i
-          : i.subcategory === categ ? i : null)),
-    );
-  }, [products, categ]);
+    return filtersIndexArray.length === 0 ?
+        setCurrentProduct(products.filter(i => (i.class === categ ? i : i.category === categ ? i : i.subcategory === categ ? i : null)))
+        :
+        setCurrentProduct(
+            products
+                .filter(i => (i.class === categ ? i : i.category === categ ? i : i.subcategory === categ ? i : null))
+                .filter(item => {
+                  let counter = 0;
+                  for (let i = 0; i < filtersIndexArray.length; i++) {
+                    if (item.product.indexOf(filtersIndexArray[i].value) > -1)
+                      counter++;
+                  }
+                  return counter === propertiesCounter;
+                })
+        )
+  }, [products, categ, filtersIndexArray]);
 
   const sortHandlerMin = (price) => {
     dispatch(getCurrentPage(1));
     paginate(1);
-    return dispatch(getCurrentProducts(
-      currentProduct.sort((a, b) => (a[price] > b[price] ? 1 : -1)),
-    ));
+    return dispatch(getCurrentProducts(currentProduct.sort((a, b) => (a[price] > b[price] ? 1 : -1))));
   };
   const sortHandlerMax = (price) => {
     dispatch(getCurrentPage(1));
     paginate(1);
-    return dispatch(getCurrentProducts(
-      currentProduct.sort((a, b) => (a[price] < b[price] ? 1 : -1)),
-    ));
+    return dispatch(getCurrentProducts(currentProduct.sort((a, b) => (a[price] < b[price] ? 1 : -1))));
   };
 
   return (
     <div className='categoryPage'>
       <div className='container' style={{ display: 'flex' }}>
-        <ProdCardCategs paginate={paginate} />
+        <ProdCardCategs paginate={paginate} setFiltersIndexArray={setFiltersIndexArray} />
         <div style={{ padding: '15px', width: '100%' }}>
           <Pagination
             productsPerPage={productsPerPage}
-            totalProducts={products.filter((i) => (i.class === categ ? i
-              : i.category === categ ? i
-                : i.subcategory === categ ? i : null)).length}
+            totalProducts={currentProduct.length}
             paginate={paginate}
+          />
+          <CategPageFilters
+              paginate={paginate}
+              prodsArr={currentProducts.length === 0 ? currentProduct : currentProducts}
+              filtersIndexArray={filtersIndexArray}
+              setFiltersIndexArray={setFiltersIndexArray}
           />
           <CategPageProducts
             currency={currency}
@@ -67,9 +87,7 @@ function CategoryPage({ currency, products }) {
           />
           <Pagination
             productsPerPage={productsPerPage}
-            totalProducts={products.filter((i) => (i.class === categ ? i
-              : i.category === categ ? i
-                : i.subcategory === categ ? i : null)).length}
+            totalProducts={currentProduct.length}
             paginate={paginate}
           />
         </div>

@@ -10,9 +10,8 @@ import { ReactComponent as HeartSvg } from '../../../assets/heart-solid.svg';
 import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
 
 
-function SearchingProducts({ currency, products }) {
+function SearchingProducts({ currency, products, firstCountryIndex, lastCountryIndex }) {
   const dispatch = useDispatch();
-  const searching = useSelector((s) => s.storeItems.searching);
   const currentPage = useSelector((s) => s.storeItems.currentPageNumber);
   const wishes = useSelector((s) => s.storeItems.wishes.map((i) => i.code));
   const shopping = useSelector((s) => s.storeItems.shopping.map((i) => i.code));
@@ -54,7 +53,7 @@ function SearchingProducts({ currency, products }) {
       </h3>
       {
                 products
-                  .filter((i) => i.product.toLowerCase().includes(searching.toLowerCase())).map((i) => (
+                    .map((i) => (
                     <div className='categPageProducts__product' key={i.id}>
                       {
                                 i.img.length === 0
@@ -147,6 +146,7 @@ function SearchingProducts({ currency, products }) {
                       </div>
                     </div>
                   ))
+                    .slice(firstCountryIndex, lastCountryIndex)
             }
       <h3 style={{ textAlign: 'right', margin: '10px 0 0 0' }} className='categPageProducts__currentPage'>
         Страница:
