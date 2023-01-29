@@ -49,6 +49,7 @@ function CategoryPage({ currency, products }) {
                 })
         )
   }, [products, categ, filtersIndexArray]);
+  useEffect(() => setFiltersIndexArray([]), [categ]);
 
   const sortHandlerMin = (price) => {
     dispatch(getCurrentPage(1));
@@ -64,7 +65,7 @@ function CategoryPage({ currency, products }) {
   return (
     <div className='categoryPage'>
       <div className='container' style={{ display: 'flex' }}>
-        <ProdCardCategs paginate={paginate} setFiltersIndexArray={setFiltersIndexArray} />
+        <ProdCardCategs paginate={paginate} />
         <div style={{ padding: '15px', width: '100%' }}>
           <Pagination
             productsPerPage={productsPerPage}

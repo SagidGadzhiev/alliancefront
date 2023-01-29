@@ -156,7 +156,8 @@ const CategPageFilters = ({ prodsArr, filtersIndexArray, setFiltersIndexArray, p
                     name: 'Корпус(формат)',
                     data: [
                         {id: 16, name: 'ATX'},
-                        {id: 17, name: 'mATX'}
+                        {id: 17, name: 'mATX'},
+                        {id: 18, name: 'EATX'},
                     ]
                 }
             ]
@@ -169,43 +170,284 @@ const CategPageFilters = ({ prodsArr, filtersIndexArray, setFiltersIndexArray, p
         {
             id: 4,
             name: 'Материнские платы',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Бренд',
+                    data: [
+                        {id: 0, name: 'Asus'},
+                        {id: 1, name: 'Gigabyte'},
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Форм-фактор',
+                    data: [
+                        {id: 2, name: 'ATX'},
+                        {id: 3, name: 'mATX'},
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Сокет',
+                    data: [
+                        {id: 4, name: 'AM4'},
+                        {id: 5, name: 'AM5'},
+                        {id: 6, name: 'LGA1151'},
+                        {id: 7, name: 'LGA1151v2'},
+                        {id: 8, name: 'LGA1200'},
+                        {id: 9, name: 'LGA1700'}
+                    ]
+                },
+                {
+                    id: 3,
+                    name: 'Чипсет',
+                    data: [
+                        {id: 10, name: 'B550'},
+                        {id: 11, name: 'X570'},
+                        {id: 12, name: 'X670'},
+                        {id: 13, name: 'B150'},
+                        {id: 14, name: 'B250'},
+                        {id: 15, name: 'B365'},
+                        {id: 16, name: 'B460'},
+                        {id: 17, name: 'B560'},
+                        {id: 18, name: 'B660'},
+                        {id: 19, name: 'H110'},
+                        {id: 20, name: 'H310'},
+                        {id: 21, name: 'H470'},
+                        {id: 22, name: 'H510'},
+                        {id: 23, name: 'H610'},
+                        {id: 24, name: 'H670'},
+                        {id: 25, name: 'Z590'},
+                        {id: 26, name: 'Z690'},
+                        {id: 27, name: 'Z790'}
+                    ]
+                },
+                {
+                    id: 4,
+                    name: 'Слоты оперативки',
+                    data: [
+                        {id: 28, name: '2xDDR4'},
+                        {id: 29, name: '4xDDR4'},
+                        {id: 30, name: '4xDDR5'}
+                    ]
+                }
+            ]
         },
         {
             id: 5,
             name: 'Мониторы',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Диагональ',
+                    data: [
+                        {id: 0, name: '18'},
+                        {id: 1, name: '23'},
+                        {id: 2, name: '24'},
+                        {id: 3, name: '27'},
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Разрешение',
+                    data: [
+                        {id: 4, name: ' HD'},
+                        {id: 5, name: 'FHD'},
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Бренд',
+                    data: [
+                        {id: 6, name: 'AOC'},
+                        {id: 7, name: 'LG'},
+                        {id: 8, name: 'Samsung'},
+                        {id: 9, name: 'Philips'},
+                        {id: 10, name: 'DAHUA'},
+                        {id: 11, name: 'UNIARCH'},
+                        {id: 12, name: 'UNIVIEW'},
+                        {id: 13, name: 'ASUS'},
+                        {id: 14, name: 'Xiaomi'},
+                    ]
+                }
+            ]
         },
         {
             id: 6,
             name: 'Мыши',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Провод',
+                    data: [
+                        {id: 0, name: 'Wireless'},
+                    ]
+                }
+            ]
         },
         {
             id: 7,
             name: 'Память',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Форм-фактор',
+                    data: [
+                        {id: 0, name: 'SODIMM'},
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Поколение',
+                    data: [
+                        {id: 1, name: 'DDR3'},
+                        {id: 2, name: 'DDR4'},
+                        {id: 3, name: 'DDR5'},
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Объем',
+                    data: [
+                        {id: 4, name: '4GB'},
+                        {id: 5, name: '8GB'},
+                        {id: 6, name: '16GB'},
+                        {id: 7, name: '32GB'},
+                        {id: 8, name: '64GB'},
+                    ]
+                },
+                {
+                    id: 3,
+                    name: 'Частота(MHz)',
+                    data: [
+                        {id: 9, name: '1600'},
+                        {id: 10, name: '2133'},
+                        {id: 11, name: '2400'},
+                        {id: 12, name: '2666'},
+                        {id: 13, name: '3000'},
+                        {id: 14, name: '3200'},
+                        {id: 15, name: '3600'},
+                        {id: 16, name: '4800'},
+                        {id: 17, name: '5200'},
+                    ]
+                },
+            ]
         },
         {
             id: 8,
             name: 'Процессоры',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Производитель',
+                    data: [
+                        {id: 0, name: 'AMD'},
+                        {id: 1, name: 'Intel'},
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Сокет',
+                    data: [
+                        {id: 2, name: 'AM5'},
+                        {id: 3, name: 'LGA1151'},
+                        {id: 4, name: 'LGA1151v2'},
+                        {id: 5, name: 'LGA1200'},
+                        {id: 6, name: 'LGA1700'},
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Вид процессора',
+                    data: [
+                        {id: 7, name: 'RYZEN 5'},
+                        {id: 8, name: 'RYZEN 7'},
+                        {id: 9, name: 'Celeron'},
+                        {id: 10, name: 'Pentium'},
+                        {id: 11, name: 'i3'},
+                        {id: 12, name: 'i5'},
+                        {id: 13, name: 'i7'},
+                        {id: 14, name: 'i9'},
+                    ]
+                }
+            ]
         },
         {
             id: 9,
             name: 'Системы безопасности',
-            data: []
+            data: [
+                {
+                    id: 0,
+                    name: 'Кол-во мегапикселей',
+                    data: [
+                        {id: 0, name: '1MP'},
+                        {id: 1, name: '2MP'},
+                        {id: 2, name: '3MP'},
+                        {id: 3, name: '4MP'},
+                        {id: 4, name: '5MP'},
+                        {id: 5, name: '6MP'},
+                        {id: 6, name: '8MP'},
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Подсветка',
+                    data: [
+                        {id: 7, name: 'IR'},
+                        {id: 8, name: 'LED'},
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Внутр. память',
+                    data: [
+                        {id: 9, name: 'MicroSD'},
+                    ]
+                },
+            ]
         },
         {
             id: 10,
-            name: 'Флэш-память и USB флеш',
-            data: []
+            name: 'Флэш-память и USB флэш',
+            data: [
+                {
+                    id: 0,
+                    name: 'Бренд',
+                    data: [
+                        {id: 0, name: 'Apacer'},
+                        {id: 1, name: 'A-DATA'},
+                        {id: 2, name: 'Kingston'},
+                        {id: 3, name: 'Hikvision'},
+                    ]
+                },
+                {
+                    id: 1,
+                    name: 'Объем',
+                    data: [
+                        {id: 4, name: '32GB'},
+                        {id: 5, name: '64GB'},
+                        {id: 6, name: '128GB'},
+                        {id: 7, name: '256GB'},
+                        {id: 8, name: '512GB'},
+                        {id: 9, name: '1TB'},
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Формат',
+                    data: [
+                        {id: 10, name: 'Micro Secure Digital'},
+                        {id: 11, name: 'Pen drive'},
+                    ]
+                }
+            ]
         }
     ];
 
     const reduceArr = () => {
         return indexArr.reduce((acc, rec) => {
-            return rec.name === firstElem ? rec.data : acc;
+            return rec.name.toLowerCase() === firstElem.toLowerCase() ? rec.data : acc;
         }, []);
     };
 
@@ -283,7 +525,10 @@ const CategPageFilters = ({ prodsArr, filtersIndexArray, setFiltersIndexArray, p
                                                 mainDataObject.data.map(subDataObject => (
                                                     <div key={subDataObject.id}
                                                          className='filterForm__propertyBlock__propertyValueBlock'
-                                                         onClick={() => dispatch(clearCurrentProducts())}
+                                                         onClick={() => {
+                                                             dispatch(clearCurrentProducts());
+                                                             setFirstPage();
+                                                         }}
                                                     >
                                                         <input
                                                             onChange={(e) => inputHandler(e, mainDataObject.name)}

@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { clearCurrentProducts, getCurrentPage } from '../../../redux/reducers/storeItems';
 
 
-function ProdCardCategs({ paginate, setFiltersIndexArray }) {
+function ProdCardCategs({ paginate }) {
+
     const dispatch = useDispatch();
 
     const [show] = useState(false);
@@ -56,7 +57,6 @@ function ProdCardCategs({ paginate, setFiltersIndexArray }) {
                                         dispatch(getCurrentPage(1));
                                         paginate(1);
                                         removeActive();
-                                        setFiltersIndexArray([])
                                     }}
                                     className='categories__link'
                                     to={`/type/${i}#page=1`}
@@ -127,7 +127,6 @@ function ProdCardCategs({ paginate, setFiltersIndexArray }) {
                                                             windowTop();
                                                             paginate(1);
                                                             removeActive();
-                                                            setFiltersIndexArray([])
                                                         }}
                                                         to={`/category/${el}#page=1`}
                                                     >
@@ -149,7 +148,6 @@ function ProdCardCategs({ paginate, setFiltersIndexArray }) {
                                                                                 windowTop();
                                                                                 paginate(1);
                                                                                 removeActive();
-                                                                                setFiltersIndexArray([])
                                                                             }}
                                                                             key={idxx + 2}
                                                                             style={{

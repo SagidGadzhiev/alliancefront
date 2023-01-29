@@ -93,3 +93,16 @@
     margin-left: 5px;
 }
 
+@media (max-width: 760px) {
+    .filterForm {
+        justify-content: space-between;
+    }
+
+    .filterForm__clearBtn {
+        width: unset;
+    }
+
+    .filterForm__propertyBlock {
+        width: unset;
+    }
+}
