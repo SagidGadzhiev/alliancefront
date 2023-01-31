@@ -7,7 +7,7 @@ import allianceLogo from '../../../assets/allianceLogos/AllianceLogo.jpeg';
 import useDebounce from '../../../hooks/useDebounce';
 
 
-function Header() {
+function Header({ wishesProducts, shoppingProducts }) {
     const history = useHistory();
     const debouncedSearch = useDebounce(setSearchingHandler, 500);
     const dispatch = useDispatch();
@@ -209,6 +209,7 @@ function Header() {
                             />
                         </svg>
                         <p className='searching__wishes__wish__title'>Желаемое</p>
+                        <span style={{marginLeft: 3, fontSize: 13}}>({wishesProducts.length})</span>
                     </Link>
                     <Link to='/shopping' className='searching__wishes__cart'>
                         <svg
@@ -227,6 +228,7 @@ function Header() {
                             />
                         </svg>
                         <p className='searching__wishes__cart__title'>Корзина</p>
+                        <span style={{marginLeft: 3, fontSize: 13}}>({shoppingProducts.length})</span>
                     </Link>
                 </nav>
             </nav>

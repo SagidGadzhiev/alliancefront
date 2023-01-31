@@ -2,38 +2,35 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-const localApi = process.env.REACT_APP_LOCAL_API;
 const serverApi = process.env.REACT_APP_SERVER_API;
+const localApi = process.env.REACT_APP_LOCAL_API;
 
-const Bestsellers = ({ products }) => {
+const Sales = ({ products, selling, setSelling }) => {
 
-    const [bestsellersArray, setBestsellersArray] = useState([]);
-    const [bestsellerValue, setBestsellerValue] = useState('');
+    const [saleProd, setSaleProd] = useState('');
 
-    async function addBestsellerProd() {
-        await axios.post(`${localApi}/bestsellers`, bestsellersArray).then();
-        setBestsellersArray([]);
-        return setBestsellerValue('');
-    }
+    const addSaleProd = async () => {
+        await axios.post(`${localApi}/sale`, selling).then();
+        setSelling([]);
+        return setSaleProd('');
+    };
 
-    async function clearBestsellersProducts() {
-        await axios.delete(`${localApi}/bestsellers`).then();
-        setBestsellersArray([]);
-        return setBestsellerValue('');
+    async function clearSalesProducts() {
+        await axios.delete(`${localApi}/sale`).then();
+        setSelling([]);
+        return setSaleProd('');
     }
 
     return (
-        <div className='addBestsellers'>
-            <div
-                style={{ marginTop: '50px' }}
-            >
-                <h2 style={{ marginBottom: '20px' }}>Добавление популярного товара</h2>
+        <div className='addSales'>
+            <div style={{ marginTop: '50px' }}>
+                <h2 style={{ marginBottom: '20px' }}>Добавление акционного товара</h2>
                 <input
                     style={{ width: '100%', height: '40px' }}
-                    onChange={(e) => setBestsellerValue(e.target.value)}
+                    onChange={(e) => setSaleProd(e.target.value)}
                     type='text'
                     placeholder='Введите код товара'
-                    value={bestsellerValue}
+                    value={saleProd}
                 />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <button
@@ -41,32 +38,32 @@ const Bestsellers = ({ products }) => {
                         style={{ width: '100%', height: '40px', marginTop: 10, cursor: 'pointer', }}
                         type='submit'
                         onClick={() => {
-                            setBestsellersArray(products.filter((i) => i.code === bestsellerValue));
+                            setSelling(products.filter((i) => i.code === saleProd));
                         }}
                     >
                         Найти товар
                     </button>
                     <button
                         className='admin-page-btns'
-                        disabled={bestsellersArray.length === 0}
+                        disabled={selling.length === 0}
                         style={{ width: '100%', height: '40px', marginTop: 10, cursor: 'pointer', }}
                         type='submit'
-                        onClick={() => addBestsellerProd(bestsellerValue)}
+                        onClick={() => addSaleProd(saleProd)}
                     >
-                        Добавить новый популярный товар
+                        Добавить новый акционный товар
                     </button>
                     <button
                         className='admin-page-btns'
                         style={{ width: '100%', height: '40px', marginTop: 10, cursor: 'pointer', }}
                         type='submit'
-                        onClick={clearBestsellersProducts}
+                        onClick={clearSalesProducts}
                     >
-                        Очистить список популярных товаров
+                        Очистить список акцинных товаров
                     </button>
                 </div>
             </div>
             {
-                bestsellersArray.map((i) => (
+                selling.map((i) => (
                     <div key={i.id}>
                         {
                             i.img === '' ?
@@ -99,4 +96,4 @@ const Bestsellers = ({ products }) => {
     );
 };
 
-export default Bestsellers;
+export default Sales;

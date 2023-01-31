@@ -6,6 +6,11 @@ import axios from "axios";
 const serverApi = process.env.REACT_APP_SERVER_API;
 const localApi = process.env.REACT_APP_LOCAL_API;
 
+const converterBlockStyles = {border: '1px solid black', borderRadius: '5px', padding: '5px'};
+const titleStyles = {margin: '0 0 10px 0'};
+const inputStyles = {display: 'block'};
+const convertBtnStyles = {margin: '10px 0'};
+
 function ExcelToCSV() {
 
   const [products, setProducts] = useState([]);
@@ -14,7 +19,6 @@ function ExcelToCSV() {
   useEffect(() => {
     const getProducts = async () => {
       const res = await axios.get(`${localApi}/products`);
-      // const res = await axios.get('http://localhost:8080/products');
       return setProducts(res.data)
     };
     getProducts().then()
@@ -23,7 +27,6 @@ function ExcelToCSV() {
   useEffect(() => {
     const updateDatabase = async () => {
       return newProducts.length === 0 ? null : await axios.put(`${localApi}/products`, newProducts);
-      // return newProducts.length === 0 ? null : await axios.put('http://localhost:8080/products', newProducts);
     };
     updateDatabase()
   }, [newProducts]);
@@ -126,7 +129,7 @@ function ExcelToCSV() {
           .map(el => ({
             ...el,
             price: el.price ?? 0
-          }))
+          }));
       // .concat(products)
       // .sort((a, b) => {
       //     return a.code > b.code ? 1 : -1
@@ -172,15 +175,16 @@ function ExcelToCSV() {
       // XLSX.utils.book_append_sheet(new_workbook, new_worksheet, "CSV_Sheet");
       // XLSX.writeFile(new_workbook, fileNameWithoutExtension + ".csv")
 
-      setNewProducts(json)
+      setNewProducts(json);
     })
   };
 
 
   return (
-      <div className="App">
-        <input type="file" id="file-selector"/>
-        <button onClick={ConvertToCSV}>Convert</button>
+      <div style={converterBlockStyles} className="Excel-CSV-Converter">
+        <h6 style={titleStyles}>Выберите файл чтобы обновить список товаров</h6>
+        <input style={inputStyles} type="file" id="file-selector"/>
+        <button style={convertBtnStyles} onClick={ConvertToCSV}>Обновить</button>
       </div>
   );
 }

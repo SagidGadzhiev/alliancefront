@@ -27,7 +27,7 @@ function PageWrapper({
   return (
     <div className='page-wrapper'>
       <div className='preloader' style={{ width: `${loading ? '80%' : '100%'}`, display: `${loading ? 'block' : 'none'}` }} />
-      <Header />
+      <Header shoppingProducts={shoppingProducts} wishesProducts={wishesProducts} />
       <Suspense
         fallback={(
           <div className='loadingBlock'>
