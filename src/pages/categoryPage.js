@@ -5,9 +5,8 @@ import ProdCardCategs from '../components/productCardComps/prodCardCategs/prodCa
 import CategPageProducts from '../components/categPageComps/categPageProducts';
 import Pagination from '../components/categPageComps/pagination';
 import { getCurrentPage, getCurrentProducts } from '../redux/reducers/storeItems';
-
-
 import CategPageFilters from '../components/categPageComps/categPageFilters';
+
 
 function CategoryPage({ currency, products }) {
 
@@ -17,7 +16,7 @@ function CategoryPage({ currency, products }) {
   const currentProducts = useSelector((s) => s.storeItems.currentProducts);
   const currentPageNumber = useSelector((s) => s.storeItems.currentPageNumber);
 
-  const { categ } = useParams();
+  const { categories } = useParams();
 
   const [, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(20);
@@ -34,11 +33,11 @@ function CategoryPage({ currency, products }) {
 
   useEffect(() => {
     return filtersIndexArray.length === 0 ?
-        setCurrentProduct(products.filter(i => (i.class === categ ? i : i.category === categ ? i : i.subcategory === categ ? i : null)))
+        setCurrentProduct(products.filter(i => (i.class === categories ? i : i.category === categories ? i : i.subcategory === categories ? i : null)))
         :
         setCurrentProduct(
             products
-                .filter(i => (i.class === categ ? i : i.category === categ ? i : i.subcategory === categ ? i : null))
+                .filter(i => (i.class === categories ? i : i.category === categories ? i : i.subcategory === categories ? i : null))
                 .filter(item => {
                   let counter = 0;
                   for (let i = 0; i < filtersIndexArray.length; i++) {
@@ -48,8 +47,8 @@ function CategoryPage({ currency, products }) {
                   return counter === propertiesCounter;
                 })
         )
-  }, [products, categ, filtersIndexArray]);
-  useEffect(() => setFiltersIndexArray([]), [categ]);
+  }, [products, categories, filtersIndexArray]);
+  useEffect(() => setFiltersIndexArray([]), [categories]);
 
   const sortHandlerMin = (price) => {
     dispatch(getCurrentPage(1));

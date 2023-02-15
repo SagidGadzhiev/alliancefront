@@ -32,7 +32,7 @@ const AddImgProducts = () => {
                 .then(({ data }) => setProductsArray(data));
         };
         fetchData().then((res) => res);
-    }, []);
+    }, [input]);
 
     return (
         <div className='addImgProducts'>

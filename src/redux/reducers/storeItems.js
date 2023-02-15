@@ -21,7 +21,8 @@ const initState = {
   startPage: 0,
   endPage: 5,
   currency: 0,
-  bestsellers: []
+  bestsellers: [],
+  compareProductsArray: [],
 };
 
 export default (state = initState, action) => {
@@ -188,6 +189,30 @@ export default (state = initState, action) => {
         bestsellers: action.bestsellers,
       }
     }
+    case actions.SET_COMPARE_PRODUCTS_ARRAY: {
+      return {
+        ...state,
+        compareProductsArray: [...state.compareProductsArray, action.compareProductsArray]
+      }
+    }
+    case actions.CLEAR_COMPARE_PRODUCTS_ARRAY: {
+      return {
+        ...state,
+        compareProductsArray: []
+      }
+    }
+    case actions.CLEAR_COMPARE_PRODUCTS_BY_FILTER: {
+      return {
+        ...state,
+        compareProductsArray: action.compareProductsArray
+      }
+    }
+    case actions.GET_COMPARE_LOCALSTORAGE: {
+      return {
+        ...state,
+        compareProductsArray: action.compareProductsArray
+      }
+    }
     default:
       return state;
   }
@@ -341,3 +366,22 @@ export const getBestsellersProducts = () => (dispatch) => {
         });
       });
 };
+
+export const setCompareProductsArray = (newCompareProduct) => ({
+  type: actions.SET_COMPARE_PRODUCTS_ARRAY,
+  compareProductsArray: newCompareProduct
+});
+
+export const clearCompareProductsArray = () => ({
+  type: actions.CLEAR_COMPARE_PRODUCTS_ARRAY
+});
+
+export const clearCompareProductsByFilter = (newCompareProducts) => ({
+  type: actions.CLEAR_COMPARE_PRODUCTS_BY_FILTER,
+  compareProductsArray: newCompareProducts
+});
+
+export const getCompareLocalStorage = (compareProducts) => ({
+  type: actions.GET_COMPARE_LOCALSTORAGE,
+  compareProductsArray: compareProducts
+});

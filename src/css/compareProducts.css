@@ -1,0 +1,120 @@
+.compare-products-page {
+    overflow: auto;
+    position: relative;
+}
+
+.compareProdsCategories {
+    width: 100%;
+}
+
+.compareProdsCategories__title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #666666;
+    margin-left: 10px;
+}
+
+.compareProdsCategories__clearBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.compareProdsCategories__clearBtn:hover {
+    color: #e33033;
+}
+
+.compareProdsCategories__noCompare {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #666666;
+}
+
+.compareProdsCategories__link {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    color: #000;
+    border-left: 1px solid #000;
+}
+
+.compareProdsCategories__link:hover {
+    color: #e33033;
+    text-decoration: underline;
+    list-style-type: circle;
+}
+
+/*COMPARE PRODUCTS*/
+.compare-products {}
+
+.compare-products__clearBtn {
+    position: absolute;
+    top: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.compare-products__clearBtn:hover {
+    color: #e33033;
+}
+
+.compare-products__compareProductFlexBox {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+.compare-products__compareProduct {
+    margin: 0 50px 10px;
+}
+
+.compareProduct--photoLink {}
+
+.compareProduct--photoSvg {
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+    fill: gray;
+}
+
+.compareProduct--productLink {
+    font-size: 12px;
+    color: #444;
+}
+
+.compareProduct--productLink:hover {
+    color: #e33033;
+}
+
+.compareProduct--textInfo {
+    font-size: 12px;
+    color: #444;
+    margin: 15px 0 5px;
+}
+
+.compareProduct--textInfo:hover {
+    color: #e33033;
+}
+
+.compareProduct--textInfo:first-of-type {
+    border-top: 1px solid #000;
+    padding-top: 5px;
+}

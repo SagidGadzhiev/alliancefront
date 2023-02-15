@@ -2,20 +2,27 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import { getCateg, getShopping, getWishes } from '../../../redux/reducers/storeItems';
+import { getCateg, getShopping, getWishes, setCompareProductsArray } from '../../../redux/reducers/storeItems';
 import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
+import { ReactComponent as CompareSvg } from '../../../assets/chart-simple-solid.svg';
+import { ReactComponent as IsProductAddedSvg } from '../../../assets/is-product-added.svg';
 import useDebounce from '../../../hooks/useDebounce';
 
 
 function ProdCard({ currency, products }) {
   const { productCode } = useParams();
+
   const dispatch = useDispatch();
   const wishes = useSelector((s) => s.storeItems.wishes.map((i) => i.code));
   const shopping = useSelector((s) => s.storeItems.shopping.map((i) => i.code));
+  const compareProductsArray = useSelector(s => s.storeItems.compareProductsArray.map(i => i.code));
+
   const addWishProd = (prod) => dispatch(getWishes(prod));
   const addShopProd = (prod) => dispatch(getShopping(prod));
+  const addCompareProd = (prod) => dispatch(setCompareProductsArray(prod));
   const debouncedWish = useDebounce(addWishProd, 2500);
   const debouncedShop = useDebounce(addShopProd, 2500);
+  const debouncedCompareProd = useDebounce(addCompareProd, 500);
   const wishHandler = (prod) => {
     if (wishes.includes(prod.code)) {
       return toast.error('Товар уже находится в списке желаний!', {
@@ -37,6 +44,18 @@ function ProdCard({ currency, products }) {
       position: toast.POSITION.TOP_CENTER,
     });
     return debouncedShop(prod);
+  };
+
+  const addCompareProduct = (newCompareProduct) => {
+    if (compareProductsArray.includes(newCompareProduct.code)) {
+      return toast.error('Товар уже находится в списке сравнений!', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+    toast.success(`Товар добавлен в список сравнений!`, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    return debouncedCompareProd(newCompareProduct);
   };
 
   const getCategHandler = (prodCateg) => dispatch(getCateg(prodCateg));
@@ -172,30 +191,17 @@ function ProdCard({ currency, products }) {
                               </p>
                             </div>
                             {
-                                            shopping.includes(i.code)
-                                              ? (
-                                                <svg
-                                                  style={{
-                                                    fill: '#ea3a3c',
-                                                    width: '20px',
-                                                    height: '20px',
-                                                  }}
-                                                  aria-hidden='true'
-                                                  focusable='false'
-                                                  data-prefix='fas'
-                                                  data-icon='check-circle'
-                                                  className='svg-inline--fa fa-check-circle fa-w-16'
-                                                  role='img'
-                                                  xmlns='http://www.w3.org/2000/svg'
-                                                  viewBox='0 0 512 512'
-                                                >
-                                                  <path
-                                                    fill=''
-                                                    d='M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z'
-                                                  />
-                                                </svg>
-                                              ) : null
-                                        }
+                              shopping.includes(i.code) ?
+                                  <IsProductAddedSvg
+                                      style={{
+                                        fill: '#ea3a3c',
+                                        width: '20px',
+                                        height: '20px',
+                                      }}
+                                  />
+                                  :
+                                  null
+                            }
                           </button>
                           <button
                             type='button'
@@ -224,30 +230,35 @@ function ProdCard({ currency, products }) {
                               </p>
                             </div>
                             {
-                                            wishes.includes(i.code)
-                                              ? (
-                                                <svg
-                                                  style={{
-                                                    fill: '#ea3a3c',
-                                                    width: '20px',
-                                                    height: '20px',
-                                                  }}
-                                                  aria-hidden='true'
-                                                  focusable='false'
-                                                  data-prefix='fas'
-                                                  data-icon='check-circle'
-                                                  className='svg-inline--fa fa-check-circle fa-w-16'
-                                                  role='img'
-                                                  xmlns='http://www.w3.org/2000/svg'
-                                                  viewBox='0 0 512 512'
-                                                >
-                                                  <path
-                                                    fill=''
-                                                    d='M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z'
-                                                  />
-                                                </svg>
-                                              ) : null
-                                        }
+                              wishes.includes(i.code) ?
+                                  <IsProductAddedSvg
+                                      style={{
+                                        fill: '#ea3a3c',
+                                        width: '20px',
+                                        height: '20px',
+                                      }}
+                                  />
+                                  :
+                                  null
+                            }
+                          </button>
+                          <button onClick={() => {addCompareProduct(i)}} type="button" className='prodCard__itemDescription__wishBuy'>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                              <CompareSvg className='prodCard__itemDescription__wishBuy__pic' />
+                              <p className='prodCard__itemDescription__wishBuy__text'>Добавить в сравнение</p>
+                            </div>
+                            {
+                              compareProductsArray.includes(i.code) ?
+                                  <IsProductAddedSvg
+                                      style={{
+                                        fill: '#ea3a3c',
+                                        width: '20px',
+                                        height: '20px',
+                                      }}
+                                  />
+                                  :
+                                  null
+                            }
                           </button>
                         </div>
                       </div>

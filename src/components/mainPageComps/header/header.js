@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPage, getSearching, removeSearching } from '../../../redux/reducers/storeItems';
-import allianceLogo from '../../../assets/allianceLogos/AllianceLogo.jpeg';
-
+import APLogo from '../../../assets/allianceLogos/APLogo.png';
+import APLogoText from '../../../assets/allianceLogos/APLogoText.png';
+import { ReactComponent as CompareSvg } from '../../../assets/chart-simple-solid.svg';
 import useDebounce from '../../../hooks/useDebounce';
 
 
@@ -43,25 +44,11 @@ function Header({ wishesProducts, shoppingProducts }) {
     return (
         <nav className='header' id='top'>
             <div className='container'>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'flex-start',
-                    flexWrap: 'wrap',
-                }}
-                >
-                    <Link onClick={windowTop} to='/'>
-                        <img style={{ width: '150px', borderRadius: '5px' }} src={allianceLogo} alt='pic' />
+                <div className='header__logotypeBlock'>
+                    <Link className='header__logotypeBlock--link' onClick={windowTop} to='/'>
+                        <img className='header__logotypeBlock--link__imgLogo' src={APLogo} alt="" />
+                        <img className='header__logotypeBlock--link__imgText' src={APLogoText} alt="" />
                     </Link>
-                    <h3 style={{ color: '#fff', fontWeight: 'bold', fontStyle: 'italic', marginLeft: '5px' }}>
-                        <span style={{ fontSize: 12 }}>Официальный дистрибьютор</span>
-                        <br />
-                        <span style={{ color: '#e10800' }}>HIK</span>VISION
-                        <br />
-                        <span style={{ color: '#e10800' }}>HI</span>WATCH
-                        <br />
-                        <span style={{ fontSize: 12 }}>в Кыргызстане</span>
-                    </h3>
                 </div>
 
                 <nav className='header__nav'>
@@ -229,6 +216,9 @@ function Header({ wishesProducts, shoppingProducts }) {
                         </svg>
                         <p className='searching__wishes__cart__title'>Корзина</p>
                         <span style={{marginLeft: 3, fontSize: 13}}>({shoppingProducts.length})</span>
+                    </Link>
+                    <Link to='/compare-products' className='compare-link'>
+                        <CompareSvg className='compare-link-svg'/>
                     </Link>
                 </nav>
             </nav>

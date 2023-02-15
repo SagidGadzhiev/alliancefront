@@ -10,6 +10,7 @@ import andaseatChair from '../../../assets/img/andaseatChairs.jpg';
 import hikvisionImg from '../../../assets/img/hikvision.jpg';
 import aerocoolChairs from '../../../assets/img/aerocoolChairs.jpg';
 import { clearCurrentProducts } from '../../../redux/reducers/storeItems';
+import allProductsLogos from '../../../assets/allianceLogos/AllProductsLogos.png';
 
 
 function NewsCarousel() {
@@ -21,11 +22,18 @@ function NewsCarousel() {
       autoPlay={5000}
       infiniteLoop
       stopOnHover
-      showArrows={false}
+      showArrows={true}
       showThumbs={false}
       showStatus={false}
       showIndicators={false}
     >
+      <Link
+          onClick={() => dispatch(clearCurrentProducts())}
+          className='carousel-wrap__block'
+          to='/'
+      >
+        <img className='carousel-img' src={allProductsLogos} alt='pic' />
+      </Link>
       <Link
           onClick={() => dispatch(clearCurrentProducts())}
           className='carousel-wrap__block'

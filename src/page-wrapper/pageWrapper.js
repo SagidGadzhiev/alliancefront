@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Header from '../components/mainPageComps/header';
 import Footer from '../components/mainPageComps/footer';
 
+
 const MainPage = lazy(() => import('../pages/mainPage'));
 const WishPage = lazy(() => import('../pages/wishPage'));
 const ProductCard = lazy(() => import('../pages/productCard'));
@@ -18,6 +19,8 @@ const OrderedByDatePage = lazy(() => import('../pages/orderedByDatePage'));
 const ShippingPage = lazy(() => import('../pages/ShippingPage'));
 const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const AboutUs = lazy(() => import('../pages/aboutUs'));
+const CompareProductsPage = lazy(() => import('../pages/compareProductsPage'));
+
 
 function PageWrapper({
   products, currency, wishesProducts, shoppingProducts, nova, setNova, selling, setSelling, bestsellersProducts
@@ -47,11 +50,12 @@ function PageWrapper({
           <Route path='/shipping' component={() => <ShippingPage />} />
           <Route path='/contacts' component={() => <ContactsPage />} />
           <Route path='/aboutUs' component={() => <AboutUs />} />
+          <Route path='/compare-products' component={() => <CompareProductsPage />} />
           <Route path='/order/:num' component={() => <OrderedByDatePage currency={currency} />} />
           <Route path='/search=:searchingValue' component={() => <SearchingPage currency={currency} products={products} />} />
-          <Route path='/type/:categ' component={() => <CategoryPage currency={currency} products={products} />} />
-          <Route path='/category/:categ' component={() => <CategoryPage currency={currency} products={products} />} />
-          <Route path='/subcategory/:categ' component={() => <CategoryPage currency={currency} products={products} />} />
+          <Route path='/type/:categories' component={() => <CategoryPage currency={currency} products={products} />} />
+          <Route path='/category/:categories' component={() => <CategoryPage currency={currency} products={products} />} />
+          <Route path='/subcategory/:categories' component={() => <CategoryPage currency={currency} products={products} />} />
           <Route path='/:productCode' component={() => <ProductCard products={products} currency={currency} />} />
         </Switch>
       </Suspense>

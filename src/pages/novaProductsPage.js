@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import ProdCardCategs from '../components/productCardComps/prodCardCategs/prodCardCategs';
 import NovaProds from '../components/novaProdsComps/novaProds';
 
-function NovaProductsPage({
-  currency, products, nova, setNova,
-}) {
-  // eslint-disable-next-line no-unused-vars
-  const [currentPage, setCurrentPage] = useState(1);
+function NovaProductsPage({ currency, products, nova, setNova, }) {
 
+  const [, setCurrentPage] = useState(1);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (

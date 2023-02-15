@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getCateg } from '../../../redux/reducers/storeItems';
 import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
 
 
 function MainPageProducts({ currency, products }) {
   const dispatch = useDispatch();
-
-  const novas = useSelector((s) => s.storeItems.novas);
 
   const getCategHandler = (prodCateg) => dispatch(getCateg(prodCateg));
 
@@ -19,7 +17,6 @@ function MainPageProducts({ currency, products }) {
       <p className='mainPageProducts__title'><span>Компьютерные корпусы</span></p>
       <div className='mainPageProducts__productsBlock'>
         {
-                    // novas
             products
                 .filter(i => i.subcategory === 'DEEPCOOL')
                 .slice(0, 21)

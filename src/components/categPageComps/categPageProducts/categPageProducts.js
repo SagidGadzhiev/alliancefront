@@ -11,7 +11,7 @@ import { ReactComponent as EmptyPhoto} from '../../../assets/camera-solid.svg';
 function CategPageProducts({
   currency, currentProduct, firstCountryIndex, lastCountryIndex, sortHandlerMin, sortHandlerMax,
 }) {
-  const { categ } = useParams();
+  const { categories } = useParams();
   const dispatch = useDispatch();
   const wishes = useSelector((s) => s.storeItems.wishes.map((i) => i.code));
   const shopping = useSelector((s) => s.storeItems.shopping.map((i) => i.code));
@@ -104,7 +104,7 @@ function CategPageProducts({
                         <Link
                           to={`/${i.code}`}
                           onClick={() => {
-                            getCategHandler(categ);
+                            getCategHandler(categories);
                           }}
                           className='categPageProducts__product__name'
                         >
