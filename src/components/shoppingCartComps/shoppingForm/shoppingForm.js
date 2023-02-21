@@ -9,8 +9,7 @@ import {
 } from '../../../redux/reducers/storeItems';
 
 
-const localApi = process.env.REACT_APP_LOCAL_API;
-const serverApi = process.env.REACT_APP_SERVER_API;
+const localApi = 'http://176.126.164.60:8080';
 
 function ShoppingForm({ currency, shoppingProducts, totalPrice }) {
   const dispatch = useDispatch();

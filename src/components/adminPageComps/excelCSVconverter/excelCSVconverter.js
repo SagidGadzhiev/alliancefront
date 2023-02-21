@@ -3,8 +3,7 @@ import XLSX from "xlsx";
 import axios from "axios";
 
 
-const serverApi = process.env.REACT_APP_SERVER_API;
-const localApi = process.env.REACT_APP_LOCAL_API;
+const localApi = 'http://176.126.164.60:8080';
 
 const converterBlockStyles = {border: '1px solid black', borderRadius: '5px', padding: '5px'};
 const titleStyles = {margin: '0 0 10px 0'};

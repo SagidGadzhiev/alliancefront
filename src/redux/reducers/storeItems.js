@@ -2,8 +2,7 @@ import axios from 'axios';
 import actions from './actions';
 
 
-const api = process.env.REACT_APP_LOCAL_API;
-const localAPI = process.env.REACT_APP_LOCAL_API;
+const localAPI = 'http://176.126.164.60:8080';
 
 const initState = {
   products: [],
