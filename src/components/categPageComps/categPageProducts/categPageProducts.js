@@ -55,7 +55,6 @@ function CategPageProducts({
     <div className='categPageProducts'>
       <ToastContainer autoClose={1000} closeButton={false} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {/*<div>*/}
           <select
               onChange={(e) => selectChangeHandler(e)}
               className='categPageProducts__sortBtn'
