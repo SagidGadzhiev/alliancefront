@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-const PORT = process.env.REACT_APP_PORT || 80;
+const PORT = process.env.REACT_APP_PORT || 5000;
 
 const app = express();
 app.use(express.static(__dirname));

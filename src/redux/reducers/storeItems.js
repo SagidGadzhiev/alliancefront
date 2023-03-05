@@ -2,7 +2,7 @@ import axios from 'axios';
 import actions from './actions';
 
 
-const localAPI = 'http://176.126.164.60:8080';
+const api = process.env.REACT_APP_NODE_ENV === 'prod' ? process.env.REACT_APP_SERVER_API : process.env.REACT_APP_LOCAL_API;
 
 const initState = {
   products: [],
@@ -218,7 +218,7 @@ export default (state = initState, action) => {
 };
 
 export const getProducts = () => (dispatch) => {
-  axios(`${localAPI}/products`)
+  axios(`${api}/products`)
     .then( async ({ data }) => {
       await dispatch({ type: actions.GET_PRODUCTS, products: data });
       return dispatch({ type: actions.CHANGE_LOADING, loading: false });
@@ -270,13 +270,13 @@ export const getShoppingLocalStorage = (prod) => ({
   shopping: prod,
 });
 
-export const getSearchingLocalStorage = (val) => ({
-  type: actions.GET_SEARCHING_LOCALSTORAGE,
-  searching: val,
-});
+// export const getSearchingLocalStorage = (val) => ({
+//   type: actions.GET_SEARCHING_LOCALSTORAGE,
+//   searching: val,
+// });
 
 export const getNovasProducts = () => (dispatch) => {
-  axios(`${localAPI}/nova`)
+  axios(`${api}/nova`)
     .then(({ data }) => {
       dispatch({
         type: actions.GET_NOVAS_PRODUCTS,
@@ -286,7 +286,7 @@ export const getNovasProducts = () => (dispatch) => {
 };
 
 export const getSalesProducts = () => (dispatch) => {
-  axios(`${localAPI}/sale`)
+  axios(`${api}/sale`)
     .then(({ data }) => {
       dispatch({ type: actions.GET_SALES_PRODUCTS, sales: data });
     });
@@ -315,7 +315,7 @@ export const getOrderedLocalStorage = (prod) => ({
 });
 
 export const getAllOrders = () => (dispatch) => {
-  axios(`${localAPI}/orders`)
+  axios(`${api}/orders`)
     .then(({ data }) => {
       dispatch({ type: actions.GET__ALL__ORDERS, orders: data });
     });
@@ -350,14 +350,14 @@ export const setEndPage = (page) => ({
 });
 
 export const getCurrency = () => (dispatch) => {
-  axios(`${localAPI}/currency`)
+  axios(`${api}/currency`)
       .then(({data}) => {
         dispatch({type: actions.GET_CURRENCY, currency: data[0].currency})
       })
 };
 
 export const getBestsellersProducts = () => (dispatch) => {
-  axios(`${localAPI}/bestsellers`)
+  axios(`${api}/bestsellers`)
       .then(({ data }) => {
         dispatch({
           type: actions.GET_BESTSELLERS_PRODUCTS,

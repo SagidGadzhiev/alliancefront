@@ -3,7 +3,7 @@ import axios from 'axios';
 import useDebounce from '../../../hooks/useDebounce';
 
 
-const localApi = 'http://176.126.164.60:8080';
+const localApi = process.env.REACT_APP_NODE_ENV === 'prod' ? process.env.REACT_APP_SERVER_API : process.env.REACT_APP_LOCAL_API;
 
 const AddImgProducts = () => {
 
