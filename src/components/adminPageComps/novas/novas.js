@@ -15,7 +15,7 @@ const Novas = ({ products, nova, setNova }) => {
     };
 
     async function clearNovaProducts() {
-        await axios.delete(`${localApi}/sale`).then();
+        await axios.delete(`${localApi}/nova`).then();
         setNova([]);
         return setNovaProd('');
     }
@@ -57,7 +57,7 @@ const Novas = ({ products, nova, setNova }) => {
                         type='submit'
                         onClick={clearNovaProducts}
                     >
-                        Очистить список акцинных товаров
+                        Очистить список новых товаров
                     </button>
                 </div>
             </div>

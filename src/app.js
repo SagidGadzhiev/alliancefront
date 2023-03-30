@@ -56,7 +56,7 @@ function App() {
   return (
     <div className='app'>
       <Switch>
-        <Route exact path='/admin'>
+        <Route exact path='/security-admin-page'>
           <AdminPage
             products={products}
             nova={nova}
