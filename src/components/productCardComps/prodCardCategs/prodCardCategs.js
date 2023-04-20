@@ -41,14 +41,38 @@ function ProdCardCategs({ paginate }) {
                     classes.map((classesElement, idx) => (
                         <div key={idx} className='categBlockWrap'>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Link
-                                    onClick={resetCategories}
-                                    className='categories__link'
-                                    to={`/type/${classesElement}#page=1`}
-                                    style={{ color: `${classesElement === categories ? '#e33033' : '#fff'}` }}
-                                >
-                                    {classesElement}
-                                </Link>
+                                {
+                                    classesElement.toLowerCase().includes('hikvision') ?
+                                        <Link
+                                            onClick={resetCategories}
+                                            className='categories__link'
+                                            to={`/type/${classesElement}#page=1`}
+                                            style={{
+                                                fontStyle: 'italic',
+                                                textTransform: 'uppercase',
+                                                color: `${classesElement === categories ? '#e33033' : '#fff'}`
+                                            }}
+                                        >
+                                            {classesElement}
+                                        </Link>
+                                        :
+                                        <Link
+                                            onClick={resetCategories}
+                                            className='categories__link'
+                                            to={`/type/${classesElement}#page=1`}
+                                            style={{ color: `${classesElement === categories ? '#e33033' : '#fff'}` }}
+                                        >
+                                            {classesElement}
+                                        </Link>
+                                }
+                                {/*<Link*/}
+                                {/*    onClick={resetCategories}*/}
+                                {/*    className='categories__link'*/}
+                                {/*    to={`/type/${classesElement}#page=1`}*/}
+                                {/*    style={{ color: `${classesElement === categories ? '#e33033' : '#fff'}` }}*/}
+                                {/*>*/}
+                                {/*    {classesElement}*/}
+                                {/*</Link>*/}
                                 {
                                     categs
                                         .filter((q) => q.class === classesElement && q.category !== '')

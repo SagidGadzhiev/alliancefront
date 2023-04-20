@@ -45,6 +45,7 @@
 }
 
 .header__nav__link {
+    color: #fff;
     flex: 1 1 125px;
     display: inline-block;
     /*font-size: 14px;*/
@@ -55,8 +56,10 @@
 }
 
 .header__nav__link:hover {
-    color: #fff;
-    background: #000;
+    color: #000;
+    background: #fff;
+    /*color: #fff;*/
+    /*background: #000;*/
 }
 
 .header__nav__link:last-child {
@@ -140,6 +143,8 @@
 }
 
 .searching__form__label__btn__pic {
+    width: 100%;
+    height: 100%;
     fill: #e33033;
 }
 

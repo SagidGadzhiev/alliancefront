@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPage, getSearching, removeSearching } from '../../../redux/reducers/storeItems';
-import APLogo from '../../../assets/allianceLogos/APLogo.png';
-import APLogoText from '../../../assets/allianceLogos/APLogoText.png';
+// import APLogo from '../../../assets/allianceLogos/APLogo.png';
+// import APLogoText from '../../../assets/allianceLogos/APLogoText.png';
+import APLogo from '../../../assets/allianceLogos/APLogoWhite.png';
+import APLogoText from '../../../assets/allianceLogos/APLogoTextWhite.png';
 import { ReactComponent as CompareSvg } from '../../../assets/chart-simple-solid.svg';
 import useDebounce from '../../../hooks/useDebounce';
 

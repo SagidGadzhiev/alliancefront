@@ -44,18 +44,47 @@ function Content() {
                     classes.map((i, idx) => (
                       <div key={idx} className='categBlockWrap'>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <Link
-                            onClick={() => {
-                              dispatch(clearCurrentProducts());
-                              dispatch(getCurrentPage(1));
-                              windowTop();
-                              removeActive();
-                            }}
-                            className='categories__link'
-                            to={`/type/${i}`}
-                          >
-                            {i}
-                          </Link>
+                          {
+                            i.toLowerCase().includes('hikvision') ?
+                                <Link
+                                    style={{fontStyle: 'italic', textTransform: 'uppercase', color: '#e33033'}}
+                                    onClick={() => {
+                                      dispatch(clearCurrentProducts());
+                                      dispatch(getCurrentPage(1));
+                                      windowTop();
+                                      removeActive();
+                                    }}
+                                    className='categories__link'
+                                    to={`/type/${i}`}
+                                >
+                                  {i}
+                                </Link>
+                                :
+                                <Link
+                                    onClick={() => {
+                                      dispatch(clearCurrentProducts());
+                                      dispatch(getCurrentPage(1));
+                                      windowTop();
+                                      removeActive();
+                                    }}
+                                    className='categories__link'
+                                    to={`/type/${i}`}
+                                >
+                                  {i}
+                                </Link>
+                          }
+                          {/*<Link*/}
+                          {/*  onClick={() => {*/}
+                          {/*    dispatch(clearCurrentProducts());*/}
+                          {/*    dispatch(getCurrentPage(1));*/}
+                          {/*    windowTop();*/}
+                          {/*    removeActive();*/}
+                          {/*  }}*/}
+                          {/*  className='categories__link'*/}
+                          {/*  to={`/type/${i}`}*/}
+                          {/*>*/}
+                          {/*  {i}*/}
+                          {/*</Link>*/}
                           {
                                     categs
                                       .filter((q) => q.class === i && q.category !== '')
